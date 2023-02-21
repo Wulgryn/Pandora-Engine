@@ -4,7 +4,7 @@
     
       {
         "label": "prebuild app",
-        "command": "g++ -Wall -Wextra -g -std=c++23 -Og -c '../sources/*.cpp' -I '../headers' -I '../../.dependencies/headers' ",
+        "command": "g++ -Wall -Wextra -g -std=c++23 -Og -c '../sources/*.cpp' -I '../headers' -I '../../.dependencies/headers'  -I '../../Pandora Core/headers' -I '../../Pandora IO/headers'",
         "type": "shell",
         "problemMatcher": [
           "$msCompile",
@@ -24,7 +24,7 @@
       },
       {
         "label": "app",
-        "command": "robocopy \"app\\resources\" \".bin\\app\\resources\" /mir & powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og 'app/.temp/*.o' -o '.bin/app/app.exe'\" & del \"app\\.temp\\*.o\"",
+        "command": "robocopy \"app\\resources\" \".bin\\app\\resources\" /mir & powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og 'app/.temp/*.o' -o '.bin/app/app.exe' '.bin/Pandora Core.dll' '.bin/Pandora IO.dll'\" & del \"app\\.temp\\*.o\"",
         "type": "shell",
         "problemMatcher": [
           "$msCompile",
@@ -51,12 +51,44 @@
         }
       },
     
+{
+  "label": "Pandora IO",
+  "command": "powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og -c -shared '../sources/*.cpp' -I '../headers' -I '../../.dependencies/headers'\" & cd ../../ & powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og 'Pandora IO/.temp/*.o' -shared -o '.bin/Pandora IO.dll'\" & cd \"Pandora IO/.temp\" & del *.o",
+  "type": "shell",
+  "problemMatcher": [
+    "$msCompile",
+    "$gcc"
+  ],
+  "presentation": {
+    "reveal": "always",
+    "clear": false,
+    "showReuseMessage": false,
+    "close": false,
+    "focus": true
+  },
+
+  "group": "build",
+  "options": {
+    "shell": {
+      "executable": "cmd.exe",
+      "args": [
+        "/d",
+        "/c"
+      ]
+    },
+    "cwd": "${workspaceFolder}/Pandora IO/.temp"
+  }
+},
     {
       "label": "vsc Build all",
-      "dependsOn": [ "vsc Build apps" ],
+      "dependsOn": [ "vsc Build dlls", "vsc Build apps" ],
       "dependsOrder": "sequence"
     },
-    
+    {
+      "label": "vsc Build dlls",
+      "dependsOn": [ "Pandora IO", ],
+      "dependsOrder": "parallel"
+    },
     {
       "label": "vsc Build apps",
       "dependsOn": [ "app", ],

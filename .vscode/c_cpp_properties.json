@@ -7,6 +7,8 @@
 				"${default}",
 				"${workspaceFolder}/.dependencies/headers",
 				"${workspaceFolder}/app/headers",
+				"${workspaceFolder}/Pandora Core/headers",
+				"${workspaceFolder}/Pandora IO/headers",
 			],
 			"cppStandard": "c++23"
 		}
