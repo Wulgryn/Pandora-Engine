@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    
+  ],
+  "compounds": [
+    {
+      "name": "Main Launch",
+      "configurations": [  ],
+      "stopAll": true,
+      "preLaunchTask": "vsc INIT Build",
+      "presentation": {
+        "hidden": false,
+        "group": ".main",
+        "order": 1
+      }
+    }
+  ]
+}

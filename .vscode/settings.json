@@ -1,0 +1,11 @@
+﻿{
+  "files.exclude": {
+    "**/desktop.ini": true,
+    "**/.temp": true,
+    "**/.vscode": true,
+    "**/.dependencies":  true,
+    "**/headers": true,
+    "**/.tours": true,
+    "**/.dllib":  true
+  }
+}
