@@ -1,11 +1,28 @@
 {
   "configurations": [
     
+    {
+      "name": "app",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/.bin/app/app.exe",
+      "cwd": "${workspaceFolder}/.bin/app",
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\msys2\\mingw64\\bin\\gdb.exe",
+      "externalConsole": true,
+      //"console": "externalTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "presentation": {
+        "hidden": false,
+        "group": "App",
+        "order": 2
+      }
+    },
   ],
   "compounds": [
     {
       "name": "Main Launch",
-      "configurations": [  ],
+      "configurations": [ "app" ],
       "stopAll": true,
       "preLaunchTask": "vsc INIT Build",
       "presentation": {

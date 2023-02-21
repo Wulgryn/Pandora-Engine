@@ -2,10 +2,66 @@
   "version": "2.0.0",
   "tasks": [
     
+      {
+        "label": "prebuild app",
+        "command": "g++ -Wall -Wextra -g -std=c++23 -Og -c '../sources/*.cpp' -I '../headers' -I '../../.dependencies/headers' ",
+        "type": "shell",
+        "problemMatcher": [
+          "$msCompile",
+          "$gcc"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}/app/.temp"
+        },
+        "presentation": {
+          "reveal": "always",
+          "clear": false,
+          "showReuseMessage": false,
+          "close": false,
+          "focus": true
+        },
+        "group": "build"
+      },
+      {
+        "label": "app",
+        "command": "robocopy \"app\\resources\" \".bin\\app\\resources\" /mir & powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og 'app/.temp/*.o' -o '.bin/app/app.exe'\" & del \"app\\.temp\\*.o\"",
+        "type": "shell",
+        "problemMatcher": [
+          "$msCompile",
+          "$gcc"
+        ],
+        "presentation": {
+          "reveal": "always",
+          "clear": false,
+          "showReuseMessage": false,
+          "close": false,
+          "focus": true
+        },
+        "group": "build",
+        "dependsOn": [ "prebuild app" ],
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": [
+              "/d",
+              "/c"
+            ]
+          },
+          "cwd": "${workspaceFolder}"
+        }
+      },
     
+    {
+      "label": "vsc Build all",
+      "dependsOn": [ "vsc Build apps" ],
+      "dependsOrder": "sequence"
+    },
     
-    
-    
+    {
+      "label": "vsc Build apps",
+      "dependsOn": [ "app", ],
+      "dependsOrder": "parallel"
+    },
     {
       "label": "vsc INIT Build",
       "dependsOn": "vsc Build all",

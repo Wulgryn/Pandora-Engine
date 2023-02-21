@@ -6,6 +6,7 @@
 			"includePath": [
 				"${default}",
 				"${workspaceFolder}/.dependencies/headers",
+				"${workspaceFolder}/app/headers",
 			],
 			"cppStandard": "c++23"
 		}
