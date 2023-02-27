@@ -52,8 +52,8 @@
       },
     
 {
-  "label": "Pandora IO",
-  "command": "powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og -c -shared '../sources/*.cpp' -I '../headers' -I '../../.dependencies/headers'\" & cd ../../ & powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og 'Pandora IO/.temp/*.o' -shared -o '.bin/Pandora IO.dll'\" & cd \"Pandora IO/.temp\" & del *.o",
+  "label": "Pandora Core",
+  "command": "powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og -c -shared '../sources/*.cpp' -I '../headers' -I '../../.dependencies/headers'\" & cd ../../ & powershell -Command \"g++ -Wall -Wextra -g -std=c++23 -Og 'Pandora Core/.temp/*.o' -shared -o '.bin/Pandora Core.dll'\" & cd \"Pandora Core/.temp\" & del *.o",
   "type": "shell",
   "problemMatcher": [
     "$msCompile",
@@ -76,7 +76,7 @@
         "/c"
       ]
     },
-    "cwd": "${workspaceFolder}/Pandora IO/.temp"
+    "cwd": "${workspaceFolder}/Pandora Core/.temp"
   }
 },
     {
@@ -86,7 +86,7 @@
     },
     {
       "label": "vsc Build dlls",
-      "dependsOn": [ "Pandora IO", ],
+      "dependsOn": [ "Pandora Core", ],
       "dependsOrder": "parallel"
     },
     {

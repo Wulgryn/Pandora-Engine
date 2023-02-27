@@ -8,8 +8,8 @@
       "program": "${workspaceFolder}/.bin/app/app.exe",
       "cwd": "${workspaceFolder}/.bin/app",
       "MIMode": "gdb",
-      "miDebuggerPath": "C:\\msys2\\mingw64\\bin\\gdb.exe",
-      "externalConsole": true,
+      "miDebuggerPath": "E:\\msys2\\mingw64\\bin\\gdb.exe",
+      "externalConsole": true ,
       //"console": "externalTerminal",
       "internalConsoleOptions": "neverOpen",
       "presentation": {
