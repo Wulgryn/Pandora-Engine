@@ -1,10 +1,13 @@
-#include "test/test.hpp"
+#include "CONSOLE/fancyLog.hpp"
 #include <iostream>
-#include "GLFW/glfw3.h"
+using namespace std;
+
+#include "IO/files.hpp"
+
+using namespace io;
 
 int main() {
-    std::cout << "Hello Pandora Engine!" << std::endl;
-    say_hello();
+    logInfo("§YELLOWexperimental version 0.0.1 alpha");
+    
     return 0;
 }
-
