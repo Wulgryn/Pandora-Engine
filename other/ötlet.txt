@@ -1,0 +1,44 @@
+Pos class:
+
+Pozíciókat tartalmaz(double, int egyszerre). Ha intként adjuk be, beállítja az intet és a doublet is így ugyanz lesz mindkettő, de ha double-t adunk meg akkor a double double értéket fog tartalmazni, de az int integert íyg mindkettővel könnyen dolgozhatunk.
+
+pl.:
+
+pos(1,2);
+pos.iX //=1
+pos.iY //=2
+pos.dX //=1.0
+pos.dY //=2.0
+
+pos(1.1, 2.2);
+pos.iX //=1
+pos.iY //=2
+pos.dX //=1.1
+pos.dY //=2.2
+
+-----------------------------
+\c a log ban (loginfo) és mint a %d, ahanyadik utána, oda rakja azt a színt
+
+logInfo("experimental \cversion 0.0.1 alpha", ConsoleColors.YELLOW);
+
+=az experimental után a version 0.0.1 alpha sárga lesz
+
+----------------------------
+class a files és a directories hoz/hez
+
+ha meglesz akkor ha fájlt olvasok be vagy készítek akár a classt is vissza adhatnák
+
+----------------------------
+safe_file reading
+
+valami olyasmi, hogy külön szedni a try/catch és a nem try/catch file kezelést (az előbbi a safe_file)
+
+----------------------------
+beépíteni az NTFS DATA STREAMET hogy könnyebb legyen használni
+
+az amikor egy fájl alatt egy másik fájl van bár nemtudom linuxon működik e
+
+-----------------------------
+a file kezeléshez hozzáadni egy writeLine és readLine nem sorok, csak sor
+
+az appendet is bele lehetne rakni

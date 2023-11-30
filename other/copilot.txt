@@ -1,0 +1,9 @@
+logging:
+
+use logInfo(string,...), logWarning(string,...), logError(string,...), logSuccess(string,...) to log this method using "CONSOLE/fancyLog.hpp"
+and create error handling too
+
+---------------------------------------------------
+TODO:
+
+add more stuff to the list
