@@ -16,10 +16,12 @@ if(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 file(GLOB_RECURSE HEADERS 
-    src/*.[h]pp
+    src/*.hpp
+    src/*.h
 )
 file(GLOB_RECURSE CS_HEADERS 
-    "src/C# DLL/*.[h]pp"
+    "src/C# DLL/*.h"
+    "src/C# DLL/*.hpp"
 )
 list(REMOVE_ITEM HEADERS ${CS_HEADERS})
 
@@ -72,6 +74,7 @@ endif(CMAKE_BUILD_TYPE MATCHES Debug)
 
 file(GLOB_RECURSE SOURCES 
     ${PROJECT_SOURCE_DIR}/src/*.[hc]pp
+    ${PROJECT_SOURCE_DIR}/src/*.[hc]
 )
 
 file(GLOB_RECURSE CS_SOURCES_ONLY
@@ -82,13 +85,13 @@ list(REMOVE_ITEM SOURCES ${CS_SOURCES_ONLY})
 
 file(GLOB_RECURSE CS_SOURCES 
     ${PROJECT_SOURCE_DIR}/src/*.[hc]pp
+    ${PROJECT_SOURCE_DIR}/src/*.[hc]
 )
 
 file(GLOB_RECURSE LIBS
     ${PROJECT_SOURCE_DIR}/libs/*.so
 )
 
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} '${PROJECT_SOURCE_DIR}/dlls/glfw3.dll'")
 
 include_directories("src")
 include_directories("include")

@@ -7,3 +7,8 @@ and create error handling too
 TODO:
 
 add more stuff to the list
+
+---------------------------------------------------
+
+/doc write varning, exception, error if there is none then skip it
+IGNORE THE DLL IN FOR DONT EVEN MENTION IT IN THE NOTE
