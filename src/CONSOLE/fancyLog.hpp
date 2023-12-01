@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-#include "ESSENTIALS/dll.hpp"
+#include "DLL/dll.hpp"
 
 enum ConsoleClockPrecision {
     SECONDS,
@@ -15,30 +15,39 @@ extern ConsoleClockPrecision consoleClockPrecision;
 
 /**
  * @brief Indicates whether console logging is enabled or not.
- * @note By default, console logging is enabled.
+  * @note By default, console logging is enabled.
  */
 extern bool consoleLogEnabled; 
 
-/// @brief Prints out a text format: (in blue) [ (time) ][INFO]> your text
-///
-/// @param str The text to be logged
-/// @param ... Additional arguments for formatting the log message
+
+/**
+ * @brief Logs an informational message.
+ * 
+ * @param str The message to be logged.
+ * @param ... Additional arguments for formatting the message (optional).
+ */
 DLL void logInfo(std::string str, ...);
 
-/// @brief Prints out a text format: (in yellow) [ (time) ][WARNING]> your text
-///
-/// @param str The text to be logged
-/// @param ... Additional arguments for formatting the log message
+/**
+ * @brief Logs a warning message.
+ * 
+ * @param str The warning message to be logged.
+ * @param ... Additional arguments for formatting the message (optional).
+ */
 DLL void logWarning(std::string str, ...);
 
-/// @brief Prints out a text format: (all text in red) [ (time) ][ERROR]> your text
-///
-/// @param str The text to be logged
-/// @param ... Additional arguments for formatting the log message
+/**
+ * @brief Logs an error message.
+ * 
+ * @param str The error message to be logged.
+ * @param ... Additional arguments for formatting the error message (optional).
+ */
 DLL void logError(std::string str, ...);
 
-/// @brief Prints out a text format: (all text in green) [ (time) ][SUCCESS]> your text
-///
-/// @param str The text to be logged
-/// @param ... Additional arguments for formatting the log message
-DLL void logSuccess(std::string str, ...);
+/**
+ * @brief Logs a success message.
+ * 
+ * @param str The success message to be logged.
+ * @param ... Additional arguments for formatting the message (optional).
+ */
+void logSuccess(std::string str, ...);
