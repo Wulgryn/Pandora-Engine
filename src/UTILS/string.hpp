@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+#include "ESSENTIALS/dll.hpp"
+
 namespace utils {
     
     namespace strings {
@@ -13,6 +15,6 @@ namespace utils {
         * @param to The substring to replace with.
         * @return The modified string after replacement.
         */
-        std::string replace(std::string& str, std::string what, std::string to);
+        DLL std::string replace(std::string& str, std::string what, std::string to);
     }
 }

@@ -1,8 +1,12 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <iostream>
 
+#include <complex.h>
+
 #include "UTILS/bool.hpp"
+#include "ESSENTIALS/dll.hpp"
 
 /**
 * @brief Contains functions for file input/output operations.
@@ -15,14 +19,13 @@ namespace io
      */
     namespace files
     {
-
             /**
              * @brief Creates a file at the specified path.
              *
              * @param path The path of the file to create.
              * @param overwrite Flag indicating whether to overwrite the file if it already exists. Default is false.
              */
-            void create(std::string path, utils::Bool::Bool overwrite = false);
+            DLL void create(std::string path, utils::Bool::Bool overwrite = false);
 
             /**
              * @brief Creates a file at the specified path with the given content.
@@ -31,7 +34,7 @@ namespace io
              * @param content The content to write to the file.
              * @param overwrite Flag indicating whether to overwrite the file if it already exists. Default is false.
              */
-            void create(std::string path, std::string content, utils::Bool::Bool overwrite = false);
+            DLL void create(std::string path, std::string content, utils::Bool::Bool overwrite = false);
 
             /**
              * @brief Creates a file at the specified path with the given lines.
@@ -40,14 +43,13 @@ namespace io
              * @param lines The lines to write to the file.
              * @param overwrite Flag indicating whether to overwrite the file if it already exists. Default is false.
              */
-            void create(std::string path, std::vector<std::string> lines, utils::Bool::Bool overwrite = false);
-
+            DLL void create(std::string path, std::vector<std::string> lines, utils::Bool::Bool overwrite = false);
             /**
              * @brief Removes the file at the specified path.
              *
              * @param path The path of the file to remove.
              */
-            void remove(std::string path);
+            DLL void remove(std::string path);
 
             /**
              * @brief Reads the contents of a file into a string.
@@ -55,7 +57,7 @@ namespace io
              * @param path The path to the file.
              * @return The contents of the file as a string.
              */
-            std::string read(std::string path);
+            DLL std::string read(std::string path);
 
             /**
              * @brief Reads the lines from a file specified by the given path.
@@ -63,7 +65,7 @@ namespace io
              * @param path The path of the file to read.
              * @return A vector of strings containing the lines read from the file.
              */
-            std::vector<std::string> readLines(std::string path);
+            DLL std::vector<std::string> readLines(std::string path);
 
             /**
              * @brief Writes a string to an existing file.
@@ -71,7 +73,7 @@ namespace io
              * @param path The path to the file.
              * @param content The string to write.
              */
-            void write(std::string path, std::string content);
+            DLL void write(std::string path, std::string content);
 
             /**
              * @brief Writes a vector of strings as lines to an existing file.
@@ -79,7 +81,7 @@ namespace io
              * @param path The path to the file.
              * @param lines The vector of strings to write as lines.
              */
-            void writeLines(std::string path, std::vector<std::string> lines);
+            DLL void writeLines(std::string path, std::vector<std::string> lines);
 
             /**
              * @brief Calculates and returns the length of a file specified by the given path.
@@ -87,7 +89,7 @@ namespace io
              * @param path The path of the file.
              * @return The length of the file in bytes.
              */
-            long getLength(std::string path);
+            DLL long getLength(std::string path);
 
             /**
              * @brief Renames a file specified by the given path.
@@ -96,7 +98,7 @@ namespace io
              * @param newName The new name of the file.
              * @param overwrite Flag indicating whether to overwrite the file if it already exists. Default is false.
              */
-            void rename(std::string path, std::string newName, utils::Bool::Bool overwrite = false);
+            DLL void rename(std::string path, std::string newName, utils::Bool::Bool overwrite = false);
 
             /**
              * @brief Copies a file specified by the given path to a new location.
@@ -105,7 +107,7 @@ namespace io
              * @param newPath The path of the new location.
              * @param overwrite Flag indicating whether to overwrite the file if it already exists. Default is false.
              */
-            void copy(std::string path, std::string newPath, utils::Bool::Bool overwrite = false);
+            DLL void copy(std::string path, std::string newPath, utils::Bool::Bool overwrite = false);
 
             /**
              * @brief Moves a file specified by the given path to a new location.
@@ -114,6 +116,6 @@ namespace io
              * @param newPath The path of the new location.
              * @param overwrite Flag indicating whether to overwrite the file if it already exists. Default is false.
              */
-            void move(std::string path, std::string newPath, utils::Bool::Bool overwrite = false);
+            DLL void move(std::string path, std::string newPath, utils::Bool::Bool overwrite = false);
         }
 }

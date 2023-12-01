@@ -42,3 +42,6 @@ az amikor egy fájl alatt egy másik fájl van bár nemtudom linuxon működik e
 a file kezeléshez hozzáadni egy writeLine és readLine nem sorok, csak sor
 
 az appendet is bele lehetne rakni
+
+-----------------------------
+ha valamit meg akarok változtatni, akkor majd csinálok egy deprecated.hpp és abba rakom a régit és kommentbe felé írom mi lett az új helyette
