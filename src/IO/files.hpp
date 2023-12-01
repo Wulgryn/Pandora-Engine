@@ -6,7 +6,7 @@
 #include <complex.h>
 
 #include "UTILS/bool.hpp"
-#include "ESSENTIALS/dll.hpp"
+#include "DLL/dll.hpp"
 
 /**
 * @brief Contains functions for file input/output operations.
