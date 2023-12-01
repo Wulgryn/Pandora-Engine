@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/src/"
+            ],
+            "defines": [],
+            "compilerPath": "G:/msys2/mingw64/bin/g++",
+            "cStandard": "c23",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

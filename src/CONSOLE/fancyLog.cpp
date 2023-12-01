@@ -15,6 +15,7 @@ using namespace std;
 using namespace chrono;
 
 ConsoleClockPrecision consoleClockPrecision = SECONDS;
+bool consoleLogEnabled = true;
 
 static const char *formatColoredText(const char *str)
 {
@@ -64,6 +65,7 @@ static void PrintTime()
 
 void logInfo(string str, ...)
 {
+    if(!consoleLogEnabled) return;
     cout << "\033[0m";
 
     PrintTime();
@@ -83,6 +85,7 @@ void logInfo(string str, ...)
 
 void logWarning(string str, ...)
 {
+    if(!consoleLogEnabled) return;
     cout << "\033[0m";
 
     PrintTime();
@@ -102,6 +105,7 @@ void logWarning(string str, ...)
 
 void logError(string str, ...)
 {
+    if(!consoleLogEnabled) return;
     cout << "\033[1;31m";
 
     PrintTime();
@@ -121,6 +125,7 @@ void logError(string str, ...)
 
 void logSuccess(string str, ...)
 {
+    if(!consoleLogEnabled) return;
     cout << "\033[0;32m";
 
     PrintTime();

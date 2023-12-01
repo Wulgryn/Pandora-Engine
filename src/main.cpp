@@ -6,6 +6,7 @@ using namespace std;
 
 using namespace io;
 
+
 int main() {
     logInfo("§YELLOWexperimental version 0.0.1 alpha");
     
