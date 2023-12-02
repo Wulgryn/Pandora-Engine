@@ -4,7 +4,12 @@
         {
             "label": "cmake",
             "type": "shell",
-            "command": "cmake --build \\\"${workspaceFolder}/build\\\" --config Debug --target all -- -j 4",
+            "windows": {
+                "command": "cmake --build \\\"${workspaceFolder}/build\\\" --config Debug --target all -- -j 4",
+            },
+            "linux": {
+                "command": "cmake --build \"${workspaceFolder}/build\" --config Debug --target all -- -j 4",
+            },
             "options": {
                 "cwd": "build"
             },

@@ -5,7 +5,12 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${command:cmake.launchTargetDirectory}/Pandora.exe",
+            "windows": {
+                "program": "${command:cmake.launchTargetDirectory}/Pandora.exe",
+            },
+            "linux": {
+                "program": "${command:cmake.launchTargetDirectory}/Pandora",
+            },
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
