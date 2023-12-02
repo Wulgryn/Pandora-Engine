@@ -84,8 +84,11 @@ file(GLOB_RECURSE CS_SOURCES
     ${PROJECT_SOURCE_DIR}/src/*.[hc]pp
 )
 
+file(GLOB_RECURSE LIBS
+    ${PROJECT_SOURCE_DIR}/libs/*.so
+)
 
-# add_compile_definitions(MY_LIBRARY_EXPORTS)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} '${PROJECT_SOURCE_DIR}/dlls/glfw3.dll'")
 
 include_directories("src")
 include_directories("include")
@@ -94,9 +97,11 @@ include_directories("include")
 
 add_library(PandoraEngine SHARED ${SOURCES})
 set_target_properties(PandoraEngine PROPERTIES PREFIX "")
+target_link_libraries(PandoraEngine ${LIBS})
 
 add_library(PandoraEngineCS SHARED ${CS_SOURCES})
 set_target_properties(PandoraEngineCS PROPERTIES PREFIX "")
+target_link_libraries(PandoraEngineCS ${LIBS})
 
 if(NOT CMAKE_BUILD_TYPE MATCHES Release)
     add_executable(Pandora ${SOURCES})

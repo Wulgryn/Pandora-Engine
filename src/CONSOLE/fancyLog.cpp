@@ -16,6 +16,8 @@ using namespace chrono;
 ConsoleClockPrecision consoleClockPrecision = SECONDS;
 bool consoleLogEnabled = true;
 
+string console_suffix = "";
+
 static const char *formatColoredText(const char *str)
 {
     string str_ = str;
@@ -69,7 +71,7 @@ void logInfo(string str, ...)
 
     PrintTime();
 
-    cout << "\033[0;34m[INFO]> \033[0m";
+    cout << "\033[0;34m[INFO" << console_suffix << "]> \033[0m";
 
     va_list args;
     va_start(args, str);
@@ -109,7 +111,7 @@ void logError(string str, ...)
 
     PrintTime();
 
-    cout << "[ERROR]> ";
+    cout << "[ERROR" << console_suffix << "]> ";
 
     va_list args;
     va_start(args, str);
@@ -129,7 +131,7 @@ void logSuccess(string str, ...)
 
     PrintTime();
 
-    cout << "[SUCCESS]> ";
+    cout << "[SUCCESS" << console_suffix << "]> ";
 
     va_list args;
     va_start(args, str);
@@ -140,4 +142,9 @@ void logSuccess(string str, ...)
     va_end(args);
 
     cout << formatColoredText(buffer) << "\033[0m" << endl;
+}
+
+void logType(string str)
+{
+    console_suffix = str == "" ? "" : "/" + str;
 }

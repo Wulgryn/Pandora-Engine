@@ -50,4 +50,12 @@ DLL void logError(std::string str, ...);
  * @param str The success message to be logged.
  * @param ... Additional arguments for formatting the message (optional).
  */
-void logSuccess(std::string str, ...);
+DLL void logSuccess(std::string str, ...);
+
+/**
+ * @brief Specify the type of the log.
+ * 
+ * @param str The type that will be shown.
+ * @note eg. format: [INFO/(type)].
+ */
+DLL void logType(std::string str = "");
