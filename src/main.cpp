@@ -1,10 +1,5 @@
-//#include "DLL/init.hpp"
-#include "GLFW/glfw3.h"
-#include <iostream>
-using namespace std;
+#include "DLL/init.hpp"
 int main() {
-    //PandoraEngine::init();
-    glfwInit();
-    cout << "Hello, World!" << endl;
+    PandoraEngine::init();
     return 0;
 }
