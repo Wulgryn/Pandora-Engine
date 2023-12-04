@@ -101,25 +101,24 @@ link_directories("dlls")
 #link_libraries("libs")
 
 
-add_library(PandoraEngine SHARED ${SOURCES})
-set_target_properties(PandoraEngine PROPERTIES PREFIX "")
-target_link_libraries(PandoraEngine ${LIBS})
+# add_library(PandoraEngine SHARED ${SOURCES})
+# set_target_properties(PandoraEngine PROPERTIES PREFIX "")
+# target_link_libraries(PandoraEngine ${LIBS})
 
 # add_library(PandoraEngineStatic STATIC ${SOURCES})
 # set_target_properties(PandoraEngineStatic PROPERTIES PREFIX "")
 
 
-add_library(PandoraEngineCS SHARED ${CS_SOURCES})
-set_target_properties(PandoraEngineCS PROPERTIES PREFIX "")
-target_link_libraries(PandoraEngineCS ${LIBS})
+# add_library(PandoraEngineCS SHARED ${CS_SOURCES})
+# set_target_properties(PandoraEngineCS PROPERTIES PREFIX "")
+# target_link_libraries(PandoraEngineCS ${LIBS})
 
-if(NOT CMAKE_BUILD_TYPE MATCHES Release)
-    add_executable(Pandora ${SOURCES})
-    target_link_libraries(Pandora ${LIBS})
-    target_link_options(Pandora PRIVATE -static-libgcc -static-libstdc++ -static)
-endif(NOT CMAKE_BUILD_TYPE MATCHES Release)
+# if(NOT CMAKE_BUILD_TYPE MATCHES Release)
+add_executable(Pandora ${SOURCES})
+target_link_libraries(Pandora ${LIBS})
+target_link_options(Pandora PRIVATE -static-libgcc -static-libstdc++ -static)
+# endif(NOT CMAKE_BUILD_TYPE MATCHES Release)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
-

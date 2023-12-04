@@ -11,6 +11,10 @@
             "linux": {
                 "program": "${command:cmake.launchTargetDirectory}/Pandora",
             },
+            "osx": {
+                "program": "${command:cmake.launchTargetDirectory}/Pandora",
+            },
+            "program": "${command:cmake.launchTargetDirectory}/Pandora.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

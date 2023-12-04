@@ -10,6 +10,7 @@
             "linux": {
                 "command": "cmake --build \"${workspaceFolder}/build\" --config Debug --target all -- -j 4",
             },
+            "command": "cmake --build \\\"${workspaceFolder}/build\\\" --config Debug --target all -- -j 4",
             "options": {
                 "cwd": "build"
             },

@@ -19,6 +19,9 @@ void error_callback(int error, const char* description)
 
 void PandoraEngine::init()
 {
+#ifndef DEBUG
+    system("title Pandora Engine");
+#endif
     logInfo("§YELLOWexperimental version 0.0.1 alpha");
     glfwSetErrorCallback(error_callback);
     srand(time(NULL));

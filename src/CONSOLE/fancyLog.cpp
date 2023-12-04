@@ -76,8 +76,9 @@ void logInfo(string str, ...)
     va_list args;
     va_start(args, str);
 
-    char *buffer = (char *)malloc(str.size() + 1);
-    vsnprintf(buffer, str.size() + 1, str.c_str(), args);
+    int size = vsnprintf(nullptr, 0, str.c_str(), args) + 1;
+    char *buffer = (char *)malloc(size);
+    vsnprintf(buffer, size, str.c_str(), args);
 
     va_end(args);
 
@@ -96,8 +97,9 @@ void logWarning(string str, ...)
     va_list args;
     va_start(args, str);
 
-    char *buffer = (char *)malloc(str.size() + 1);
-    vsnprintf(buffer, str.size() + 1, str.c_str(), args);
+    int size = vsnprintf(nullptr, 0, str.c_str(), args) + 1;
+    char *buffer = (char *)malloc(size);
+    vsnprintf(buffer, size, str.c_str(), args);
 
     va_end(args);
 
@@ -116,8 +118,9 @@ void logError(string str, ...)
     va_list args;
     va_start(args, str);
 
-    char *buffer = (char *)malloc(str.size() + 1);
-    vsnprintf(buffer, str.size() + 1, str.c_str(), args);
+    int size = vsnprintf(nullptr, 0, str.c_str(), args) + 1;
+    char *buffer = (char *)malloc(size);
+    vsnprintf(buffer, size, str.c_str(), args);
 
     va_end(args);
 
@@ -136,8 +139,9 @@ void logSuccess(string str, ...)
     va_list args;
     va_start(args, str);
 
-    char *buffer = (char *)malloc(str.size() + 1);
-    vsnprintf(buffer, str.size() + 1, str.c_str(), args);
+    int size = vsnprintf(nullptr, 0, str.c_str(), args) + 1;
+    char *buffer = (char *)malloc(size);
+    vsnprintf(buffer, size, str.c_str(), args);
 
     va_end(args);
 

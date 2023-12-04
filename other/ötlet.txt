@@ -45,3 +45,20 @@ az appendet is bele lehetne rakni
 
 -----------------------------
 ha valamit meg akarok változtatni, akkor majd csinálok egy deprecated.hpp és abba rakom a régit és kommentbe felé írom mi lett az új helyette
+
+----------------------------
+
+real time shader visualisation és szerkesztés
+
+-----------------------------
+
+saját string minden érték befogadásával, egyéb extensionokkal
+
+const char* + string types
+
+"asd" + 10 <- oké
+------------------------------
+https://www.khronos.org/opengl/wiki/Getting_Started
+
+manual opengl creation
+-----------------------------
