@@ -9,8 +9,8 @@
         "**/build": true,
     },
     "files.associations": {
-        "*.vertexShader": "glsl",
         "*.fragmentShader": "glsl",
+        "*.vertexShader": "glsl",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
@@ -94,7 +94,8 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "future": "cpp"
     },
     "C_Cpp.default.compilerPath": "G:\\msys2\\mingw64\\bin\\g++.exe"
 }
