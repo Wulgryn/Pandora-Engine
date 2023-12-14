@@ -95,7 +95,9 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "fstream": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "*.def": "cpp"
     },
-    "C_Cpp.default.compilerPath": "G:\\msys2\\mingw64\\bin\\g++.exe"
+    "C_Cpp.default.compilerPath": "G:\\msys2\\mingw64\\bin\\g++.exe",
+    "C_Cpp.errorSquiggles": "enabled"
 }

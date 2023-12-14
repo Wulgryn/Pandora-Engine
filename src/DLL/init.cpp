@@ -2,7 +2,9 @@
 
 #include "CONSOLE/fancyLog.hpp"
 
+#define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
+#include "glad/gl.h"
 
 #include <string>
 #include <cstdlib>
@@ -32,6 +34,8 @@ void PandoraEngine::init()
         return;
     }
     logSuccess("GLFW initialized successfully!");
+
+    
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);

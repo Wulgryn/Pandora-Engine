@@ -1,26 +1,24 @@
 #include "window.hpp"
 
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 #include "glad/gl.h"
 
 #include "CONSOLE/fancyLog.hpp"
-#include <thread>
-#include <future>
-#include <chrono>
 #include "UTILS/timer.hpp"
+#include "PANDORA/objects.hpp"
 
 using namespace io;
 using namespace std;
 using namespace utils;
-using namespace utils::_2D_;
 
 Window::Window(int width, int height, string title)
 {
     GLFWwindow *window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     // Set the window object
     this->glfw_window = window;
-    parameters.setSize(Size(width, height));
     if (!window)
     {
         // Handle window creation error
@@ -32,6 +30,17 @@ Window::Window(int width, int height, string title)
 
     // Set the current context to the newly created window
     glfwMakeContextCurrent(window);
+
+    if (!gladLoadGL(glfwGetProcAddress))
+    {
+        logError("Failed to initialize GLAD!");
+        glfwDestroyWindow(window);
+        return;
+    }
+    logSuccess("GLAD initialized successfully!");
+
+    parameters.setSize(Size(width, height));
+    input = new Input(this);
 }
 
 Window::~Window()
@@ -46,6 +55,11 @@ void Window::setUpdateFunction(int (*updateFunction)(int, Window &))
     this->updateFunction = updateFunction;
 }
 
+void Window::setThreadUpdateFunction(int (*threadUpdateFunction)(int, Window &))
+{
+    this->threadUpdateFunction = threadUpdateFunction;
+}
+
 void Window::setStartFunction(int (*startFunction)(Window &))
 {
     this->startFunction = startFunction;
@@ -56,8 +70,21 @@ void Window::setSetupFunction(int (*setupFunction)())
     this->setupFunction = setupFunction;
 }
 
+void Window::setRenderFunction(void (*renderFunction)())
+{
+    this->renderFunction = renderFunction;
+}
+
 void Window::setTargetFPS(int targetFPS)
 {
+    GLFWmonitor *monitor = properties.getPrimaryMonitor();
+    const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+    if (targetFPS == -1)
+        glfwSwapInterval(0);
+    // if (mode->refreshRate <= targetFPS)
+    //     glfwSwapInterval(1);
+    // else if(targetFPS != -1)
+    //     glfwSwapInterval(targetFPS / mode->refreshRate);
     this->targetFPS = targetFPS;
 }
 
@@ -76,9 +103,22 @@ int Window::getCurrentTPS()
     return currentTPS;
 }
 
-void updateThreadCallback(int (*updateFunction)(int, Window &), int currentFPS, Window &window, int &result)
+GLFWwindow *Window::getWindow()
 {
-    result = updateFunction(currentFPS, window);
+    return glfw_window;
+}
+
+void updateThreadCallback(int (*threadUpdateFunction)(int, Window &), int currentFPS, Window &window, int &result)
+{
+    int _result = threadUpdateFunction(currentFPS, window);
+    if(result == -1) return;
+    result = _result;
+    return;
+}
+
+double Window::deltaTime()
+{
+    return _deltaTime;
 }
 
 void Window::start()
@@ -90,12 +130,12 @@ void Window::start()
 
     double targetTickTime = 1.0 / targetTPS;
     double tps_currentTime = currentTime;
-    
+
     int FPS_count = 0;
-    //double lastFPStime = currentTime;
+    // double lastFPStime = currentTime;
 
     int TPS_count = 0;
-    //double lastTPStime = currentTime;
+    // double lastTPStime = currentTime;
 
     double lasLogTime = currentTime;
 
@@ -114,16 +154,21 @@ void Window::start()
         glfwSetWindowShouldClose(glfw_window, true);
         return;
     }
-    future<void> updateFuture;
     thread updateThread;
     Timer timer;
     timer.timeType = "RENDER_THREAD_TIME";
     timer.logTimeOnStop = false;
+
+    if (renderFunction == nullptr)
+        renderFunction = pandora::objects::render;
+
     while (!glfwWindowShouldClose(glfw_window))
     {
         timer.start();
         currentTime = glfwGetTime();
 
+        glClearColor(this->backgroundColor.getRedF(), this->backgroundColor.getGreenF(), this->backgroundColor.getBlueF(), this->backgroundColor.getAlphaF());
+        glClear(GL_COLOR_BUFFER_BIT);
 
         if (result == -1)
         {
@@ -131,38 +176,39 @@ void Window::start()
             glfwSetWindowShouldClose(glfw_window, true);
         }
 
-
-        if ( tps_currentTime + targetTickTime < currentTime || targetTPS == -1)
-        {
-            tps_currentTime = currentTime;
-            TPS_count++;
-            if (!properties.waitForUpdate)
-            {
-                if(!updateFuture.valid()) updateFuture = async(launch::async, updateThreadCallback, updateFunction, currentFPS, ref(*this), ref(result));
-                // updateThread = thread(updateThreadCallback, updateFunction, currentFPS, ref(*this), ref(result));
-                // updateThread.detach();
-            }
-            else result = updateFunction(currentFPS, *this);
-        }
-
-
-
-        if (fps_currentTime + targetFrameTime < currentTime || targetFPS == -1)
+        if (targetFPS == -1 || fps_currentTime + targetFrameTime < currentTime)
         {
             fps_currentTime = currentTime;
             FPS_count++;
+
+            // Render here
+            renderFunction();
 
             // Swap the buffers
             glfwSwapBuffers(glfw_window);
             // Poll for events
             glfwPollEvents();
+            result = updateFunction(currentFPS, *this);
         }
 
+        if (tps_currentTime + targetTickTime < currentTime || targetTPS == -1)
+        {
+            _deltaTime = currentTime - tps_currentTime;
+            tps_currentTime = currentTime;
+            TPS_count++;
+            
+            if (threadUpdateFunction && !updateThread.joinable())
+            {
+                updateThread = thread(updateThreadCallback, threadUpdateFunction, currentFPS, ref(*this), ref(result));
+                updateThread.detach();
+            }
+        }
 
+        input->resetInputs();
 
         timer.stop();
-
-        if(lasLogTime + 1.0 < currentTime)
+        string ellapsedTime = timer.getEllapsedTime(timer::TimerClockPrecision::NANOSECOND);
+        if (lasLogTime + 1.0 < currentTime)
         {
             lasLogTime = currentTime;
             currentTPS = TPS_count;
@@ -181,52 +227,75 @@ void Window::start()
                 logInfo("%d", currentFPS);
                 logType();
             }
-            if(log.logMainThreadTime)
+            if (log.logMainThreadTime)
             {
                 logType("MAIN_THREAD_TIME");
-                logInfo(timer.getEllapsedTime(timer::TimerClockPrecision::NANOSECOND));
+                logInfo(ellapsedTime);
                 logType();
             }
         }
     }
-    if (updateFuture.valid())
-        updateFuture.wait();
 }
+
+//______________________________________________________________________________________________________________________
+// PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS
+//______________________________________________________________________________________________________________________
+#pragma region PARAMETERS
 
 Window::Parameters::Parameters(Window &window)
 {
     this->window = &window;
 }
 
-Location Window::Parameters::getLocation()
+Position Window::Parameters::getPosition()
 {
     int x, y;
     glfwGetWindowPos(window->glfw_window, &x, &y);
-    return Location(x, y);
+    return Position(x, y);
 }
 
-void Window::Parameters::setLocation(Location location)
+void Window::Parameters::setPosition(Position position)
 {
-    glfwSetWindowPos(window->glfw_window, location.ix, location.iy);
+    glfwSetWindowPos(window->glfw_window, position.x, position.y);
 }
 
 Size Window::Parameters::getSize()
 {
-    Size size;
     int width, height;
     glfwGetWindowSize(window->glfw_window, &width, &height);
-    return size.set(width, height);
+    return Size(width, height);
 }
 
 void Window::Parameters::setSize(Size size)
 {
-    glfwSetWindowSize(window->glfw_window, size.iHeight, size.iHeight);
+    glfwSetWindowSize(window->glfw_window, size.Width, size.Height);
+    glViewport(0, 0, size.Width, size.Height);
 }
+
+//______________________________________________________________________________________________________________________
+// PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS  |  PARAMETERS
+//______________________________________________________________________________________________________________________
+#pragma endregion PARAMETERS
+
+//______________________________________________________________________________________________________________________
+// PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES
+//______________________________________________________________________________________________________________________
+#pragma region PROPERTIES
 
 Window::Properties::Properties(Window &window)
 {
     this->window = &window;
     primary_monitor = glfwGetPrimaryMonitor();
+}
+
+GLFWmonitor *Window::Properties::getPrimaryMonitor()
+{
+    return primary_monitor;
+}
+
+void Window::Properties::setPrimaryMonitor(GLFWmonitor *monitor)
+{
+    primary_monitor = monitor;
 }
 
 bool Window::Properties::isFullscreen()
@@ -244,7 +313,7 @@ void Window::Properties::setFullscreen(bool fullscreen)
         return;
     }
     Size s = window->parameters.getSize();
-    glfwSetWindowMonitor(window->glfw_window, nullptr, 0, 0, s.iWidth, s.iHeight, GLFW_DONT_CARE);
+    glfwSetWindowMonitor(window->glfw_window, nullptr, 0, 0, s.Width, s.Height, GLFW_DONT_CARE);
 }
 
 void Window::Properties::toggleFullscreen()
@@ -342,7 +411,72 @@ void Window::Properties::setFocusOnShow(bool focusOnShow)
     glfwSetWindowAttrib(window->glfw_window, GLFW_FOCUS_ON_SHOW, focusOnShow);
 }
 
+//______________________________________________________________________________________________________________________
+// PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES  |  PROPERTIES
+//______________________________________________________________________________________________________________________
+#pragma endregion PROPERTIES
+
 Window::Log::Log(Window &window)
+{
+    this->window = &window;
+}
+
+//______________________________________________________________________________________________________________________
+// EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS
+//______________________________________________________________________________________________________________________
+#pragma region EVENTS
+
+Window::Events::Events(Window &window)
+{
+    this->window = &window;
+}
+
+bool Window::Events::getKey(Keycode keycode)
+{
+    return window->input->getKey(static_cast<int>(keycode));
+}
+
+bool Window::Events::getKeyPressed(Keycode keycode)
+{
+    return window->input->getKeyPressed(static_cast<int>(keycode));
+}
+
+bool Window::Events::getKeyDown(Keycode keycode)
+{
+    return window->input->getKeyDown(static_cast<int>(keycode));
+}
+
+bool Window::Events::getKeyReleased(Keycode keycode)
+{
+    return window->input->getKeyReleased(static_cast<int>(keycode));
+}
+
+bool Window::Events::getKeyUp(Keycode keycode)
+{
+    return window->input->getKeyUp(static_cast<int>(keycode));
+}
+
+bool Window::Events::getMouseButton(MouseButton button)
+{
+    return window->input->getMouseButton(static_cast<int>(button));
+}
+
+bool Window::Events::getMouseButtonReleased(MouseButton button)
+{
+    return window->input->getMouseButtonReleased(static_cast<int>(button));
+}
+
+bool Window::Events::getMouseButtonDown(MouseButton button)
+{
+    return window->input->getMouseButtonDown(static_cast<int>(button));
+}
+
+//______________________________________________________________________________________________________________________
+// EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS
+//______________________________________________________________________________________________________________________
+#pragma endregion EVENTS
+
+Window::Keys::Keys(Window &window)
 {
     this->window = &window;
 }
