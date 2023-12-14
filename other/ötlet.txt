@@ -1,3 +1,23 @@
+!!!!
+https://www.youtube.com/@simondev758
+!!!!
+
+glad/gl doc https://registry.khronos.org/OpenGL-Refpages/gl4/html/
+
+!!https://www.youtube.com/@Vercidium/videos
+
+!!!https://registry.khronos.org/OpenGL-Refpages/
+
+!!perlin noise
+
+!!!https://www.youtube.com/watch?v=ob3VwY4JyzE
+
+??https://www.youtube.com/watch?v=fv-wlo8yVhk
+
+??https://developer.nvidia.com/tools-overview-old
+
+???chaos theory
+---------------------------------
 Pos class:
 
 Pozíciókat tartalmaz(double, int egyszerre). Ha intként adjuk be, beállítja az intet és a doublet is így ugyanz lesz mindkettő, de ha double-t adunk meg akkor a double double értéket fog tartalmazni, de az int integert íyg mindkettővel könnyen dolgozhatunk.
@@ -56,9 +76,29 @@ saját string minden érték befogadásával, egyéb extensionokkal
 
 const char* + string types
 
-"asd" + 10 <- oké
+"asd" + 10 <- oké = "asd10"
 ------------------------------
 https://www.khronos.org/opengl/wiki/Getting_Started
 
 manual opengl creation
 -----------------------------
+
+Shaderek indexelése, hogy az alap shadert kapja minden object de igazából csak az indexét
+Ha pedig valami változtatást csinálunk a shaderben akkor regisztrálja mint más shader és kicseréli a linkelt indexet
+-----------------------------
+perlin noise visualisation
+-----------------------------
+CPU CORE THREADING
+másik "logikai" magon futtatni a szálat
+
+és akár saját thread classt írni amiben be lehet állítani egyéb dolgokat rajta
+pl:
+logikai mag affinitás(kiválasztás)
+max cpu useage
+-----------------------------
+2 update threadet csinálni:
+mivel ha külön threadból nézem a getKey-t akkor furán működik így majd később egy upfate function-t ami nem threadből indul
+hanem csak simán meg lesz hívva meg egy másikat ami threadből indul és talán azt is belehetne állítani,
+ hogy másik magon fusson
+-----------------------------
+majd kell egy input overhaul a windowhoz

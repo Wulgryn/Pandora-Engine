@@ -92,7 +92,7 @@ void logWarning(string str, ...)
 
     PrintTime();
 
-    cout << "\033[1;33m[WARNING]> \033[0m";
+    cout << "\033[1;33m[WARNING" << console_suffix << "]> \033[0m";
 
     va_list args;
     va_start(args, str);
