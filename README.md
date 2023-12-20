@@ -1,12 +1,37 @@
-# Pandora Engine
-This is my game engine, if you can't find anything in master branch that means I still testing stuffs. It is recommended to check the test braches, these wont be commented as much as i plan the main branch.
+<h1> Pandora Engine </h1>
 
-I will also try to add some unique rendering system, as well compressing system.
+[![Latest Release](https://img.shields.io/github/v/release/Wulgryn/Pandora-Engine)](https://github.com/Wulgryn/Pandora-Engine/releases/latest)
 
-Future plans:<p>
+## Latest info
+
+It has no documentation, because it's an experimental release.<br>
+But you can still use it. In <b>[src/main.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/main.cpp)</b> you can see some example code. Also in <b>[src/test.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/test.cpp)</b>.
+
+<p>
+
+#### Link sources
+
+##### <b>[src/main.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/main.cpp)</b><br><b>[src/test.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/test.cpp)</b>
+<br>
+
+## About
+This is my game engine. <p> It is recommended to check the other branches, because I only merge with <br>the <b>[main](https://github.com/Wulgryn/Pandora-Engine/tree/main)</b> branch  if I finish the changes in other branch I am working on.
+
+<br>
+
+## [how to use](#how-to-use)
+### *!Experimental!* 
+
+Coming soon...
+
+
+<br>
+
+## Future plans:
 <p>- reworked rendering system
-<p>- reworked compressing system
-<p>- some type of AI
-<p>- like nvidia surround, but inbuilt and with mixed resolution
-<p>- full graphical interface
-<p>- c# support (with the choice of C#/C++)
+<br>- reworked compressing system
+<br>- some type of AI
+<br>- like nvidia surround, but inbuilt and with mixed resolution
+<br>- full graphical interface
+<br>- c# support (with the choice of C#/C++)
+<p> I will also try to add some unique rendering system, as well as compressing system.
