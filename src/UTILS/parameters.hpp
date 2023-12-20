@@ -26,8 +26,8 @@ namespace utils
              */
             Size toWindowRate(struct Size windowSize)
             {
-                return Size((Width - windowSize.Width / 2) / (windowSize.Width / 2),
-                            (Height - windowSize.Height / 2) / (windowSize.Height / 2));
+                return Size(Width / windowSize.Width,
+                        Height / windowSize.Height);
             }
             double Width;
             double Height;

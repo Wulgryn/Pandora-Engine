@@ -9,10 +9,15 @@
 #include "CONSOLE/fancyLog.hpp"
 #include "UTILS/timer.hpp"
 #include "PANDORA/objects.hpp"
+#include "PANDORA/COMPONENTS/shader.hpp"
+#include "PANDORA/COMPONENTS/transform.hpp"
+#include "PANDORA/mainWindow.hpp"
+#include "PANDORA/scenes.hpp"
 
 using namespace io;
 using namespace std;
 using namespace utils;
+using namespace pandora;
 
 Window::Window(int width, int height, string title)
 {
@@ -39,6 +44,7 @@ Window::Window(int width, int height, string title)
     }
     logSuccess("GLAD initialized successfully!");
 
+    glfwSetFramebufferSizeCallback(window, window::defaultResizeCallback);
     parameters.setSize(Size(width, height));
     input = new Input(this);
 }
@@ -50,14 +56,14 @@ Window::~Window()
     logInfo("GLFW window destroyed!");
 }
 
+void Window::setFixedUpdateFunction(int (*fixedUpdateFunction)(int, Window &))
+{
+    this->fixedUpdateFunction = fixedUpdateFunction;
+}
+
 void Window::setUpdateFunction(int (*updateFunction)(int, Window &))
 {
     this->updateFunction = updateFunction;
-}
-
-void Window::setThreadUpdateFunction(int (*threadUpdateFunction)(int, Window &))
-{
-    this->threadUpdateFunction = threadUpdateFunction;
 }
 
 void Window::setStartFunction(int (*startFunction)(Window &))
@@ -68,6 +74,18 @@ void Window::setStartFunction(int (*startFunction)(Window &))
 void Window::setSetupFunction(int (*setupFunction)())
 {
     this->setupFunction = setupFunction;
+}
+
+void Window::doSetup()
+{
+    if (setupFunction != nullptr)
+        result = setupFunction();
+}
+
+void Window::doStart()
+{
+    if (startFunction != nullptr)
+        result = startFunction(*this);
 }
 
 void Window::setRenderFunction(void (*renderFunction)())
@@ -111,7 +129,8 @@ GLFWwindow *Window::getWindow()
 void updateThreadCallback(int (*threadUpdateFunction)(int, Window &), int currentFPS, Window &window, int &result)
 {
     int _result = threadUpdateFunction(currentFPS, window);
-    if(result == -1) return;
+    if (result == -1)
+        return;
     result = _result;
     return;
 }
@@ -139,7 +158,7 @@ void Window::start()
 
     double lasLogTime = currentTime;
 
-    int result = setupFunction();
+    doSetup();
 
     if (result == -1)
     {
@@ -147,7 +166,7 @@ void Window::start()
         glfwSetWindowShouldClose(glfw_window, true);
         return;
     }
-    result = startFunction(*this);
+    doStart();
     if (result == -1)
     {
         // Close the window
@@ -175,6 +194,10 @@ void Window::start()
             // Close the window
             glfwSetWindowShouldClose(glfw_window, true);
         }
+        if (glfwWindowShouldClose(glfw_window))
+        {
+            glfwSetWindowShouldClose(glfw_window, true);
+        }
 
         if (targetFPS == -1 || fps_currentTime + targetFrameTime < currentTime)
         {
@@ -188,7 +211,8 @@ void Window::start()
             glfwSwapBuffers(glfw_window);
             // Poll for events
             glfwPollEvents();
-            result = updateFunction(currentFPS, *this);
+            if (fixedUpdateFunction)
+                result = fixedUpdateFunction(currentFPS, *this);
         }
 
         if (tps_currentTime + targetTickTime < currentTime || targetTPS == -1)
@@ -196,10 +220,10 @@ void Window::start()
             _deltaTime = currentTime - tps_currentTime;
             tps_currentTime = currentTime;
             TPS_count++;
-            
-            if (threadUpdateFunction && !updateThread.joinable())
+
+            if (updateFunction && !updateThread.joinable())
             {
-                updateThread = thread(updateThreadCallback, threadUpdateFunction, currentFPS, ref(*this), ref(result));
+                updateThread = thread(updateThreadCallback, updateFunction, currentFPS, ref(*this), ref(result));
                 updateThread.detach();
             }
         }
@@ -479,4 +503,42 @@ bool Window::Events::getMouseButtonDown(MouseButton button)
 Window::Keys::Keys(Window &window)
 {
     this->window = &window;
+}
+
+void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
+{
+    for (pandora::Object *object : pandora::objects::getObjcectsList())
+    {
+        if (!object->followWindowResize)
+        {
+            Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(pandora::mainWindow::get()->parameters.getSize());
+            std::vector<float> vertices = {
+                // positions                                // texture coords
+                static_cast<float>(-size.Width), static_cast<float>(-size.Height), 0.0f, 0.0f, 0.0f, // bottom left
+                static_cast<float>(size.Width), static_cast<float>(-size.Height), 0.0f, 1.0f, 0.0f,  // bottom right
+                static_cast<float>(size.Width), static_cast<float>(size.Height), 0.0f, 1.0f, 1.0f,   // top right
+                static_cast<float>(-size.Width), static_cast<float>(size.Height), 0.0f, 0.0f, 1.0f   // top left
+            };
+            object->Components().get<pandora::Shader>()->setVerticies(vertices);
+        }
+    }
+    if (scenes::getCurrentSceneID() != -1)
+    {
+        for (Object *object : scenes::getScenesList()[scenes::getCurrentSceneID()]->getObjectsList())
+        {
+            if (!object->followWindowResize)
+            {
+                Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(pandora::mainWindow::get()->parameters.getSize());
+                std::vector<float> vertices = {
+                    // positions                                // texture coords
+                    static_cast<float>(-size.Width), static_cast<float>(-size.Height), 0.0f, 0.0f, 0.0f, // bottom left
+                    static_cast<float>(size.Width), static_cast<float>(-size.Height), 0.0f, 1.0f, 0.0f,  // bottom right
+                    static_cast<float>(size.Width), static_cast<float>(size.Height), 0.0f, 1.0f, 1.0f,   // top right
+                    static_cast<float>(-size.Width), static_cast<float>(size.Height), 0.0f, 0.0f, 1.0f   // top left
+                };
+                object->Components().get<pandora::Shader>()->setVerticies(vertices);
+            }
+        }
+    }
+    glViewport(0, 0, width, height);
 }

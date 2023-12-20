@@ -9,6 +9,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug)
 add_compile_definitions(DEBUG)
+add_compile_definitions(BUILD_DLL)
 
 if(NOT CMAKE_BUILD_TYPE)
     add_compile_definitions(UNKNOWN)
@@ -101,9 +102,9 @@ link_directories("dlls")
 #link_libraries("libs")
 
 
-# add_library(PandoraEngine SHARED ${SOURCES})
-# set_target_properties(PandoraEngine PROPERTIES PREFIX "")
-# target_link_libraries(PandoraEngine ${LIBS})
+add_library(PandoraEngine SHARED ${SOURCES})
+set_target_properties(PandoraEngine PROPERTIES PREFIX "")
+target_link_libraries(PandoraEngine ${LIBS})
 
 # add_library(PandoraEngineStatic STATIC ${SOURCES})
 # set_target_properties(PandoraEngineStatic PROPERTIES PREFIX "")
