@@ -6,11 +6,6 @@
 namespace pandora
 {
     typedef unsigned int SceneID;
-    enum class ObjectType
-    {
-        SCENE,
-        UI
-    };
     class DLL Object
     {
     private:
