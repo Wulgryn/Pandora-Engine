@@ -14,34 +14,34 @@ namespace io
     {
         ANY = -1,
         A = GLFW_KEY_A,
-        Á = (int)'á',
+        Á = (int)L'á',
         B = GLFW_KEY_B,
         C = GLFW_KEY_C,
         D = GLFW_KEY_D,
         E = GLFW_KEY_E,
-        É = (int)'é',
+        É = (int)L'é',
         F = GLFW_KEY_F,
         G = GLFW_KEY_G,
         H = GLFW_KEY_H,
         I = GLFW_KEY_I,
-        Í = (int)'í',
+        Í = (int)L'í',
         J = GLFW_KEY_J,
         K = GLFW_KEY_K,
         L = GLFW_KEY_L,
         M = GLFW_KEY_M,
         N = GLFW_KEY_N,
-        Ñ = (int)'ñ',
+        Ñ = (int)L'ñ',
         O = GLFW_KEY_O,
-        Ó = (int)'ó',
+        Ó = (int)L'ó',
         P = GLFW_KEY_P,
         Q = GLFW_KEY_Q,
         R = GLFW_KEY_R,
         S = GLFW_KEY_S,
         T = GLFW_KEY_T,
         U = GLFW_KEY_U,
-        Ú = (int)'ú',
-        Ü = (int)'ü',
-        Ű = (int)'ű',
+        Ú = (int)L'ú',
+        Ü = (int)L'ü',
+        Ű = (int)L'ű',
         V = GLFW_KEY_V,
         W = GLFW_KEY_W,
         X = GLFW_KEY_X,
@@ -147,8 +147,8 @@ namespace io
         int targetTPS = 60;
 
 
+        int (*fixedUpdateFunction)(int, Window &) = nullptr;
         int (*updateFunction)(int, Window &) = nullptr;
-        int (*threadUpdateFunction)(int, Window &) = nullptr;
         int (*startFunction)(Window &) = nullptr;
         int (*setupFunction)() = nullptr;
 
@@ -156,6 +156,8 @@ namespace io
         Input *input;
 
         double _deltaTime = 0;
+
+        int result = 0;
     public:
 
         utils::Color backgroundColor;
@@ -166,11 +168,18 @@ namespace io
         ///@param updateFunction: function that is called every
         /// frame and returns -1 if the window should close,
         /// also takes the current frame number as a parameter
+        /// called every frame
+        void setFixedUpdateFunction(int (*FixedUpdateFunction)(int, Window &));
+
+        /// called every frame but as new thread 
         void setUpdateFunction(int (*updateFunction)(int, Window &));
-        void setThreadUpdateFunction(int (*updateFunction)(int, Window &));
         void setStartFunction(int (*startFunction)(Window &));
         void setSetupFunction(int (*setupFunction)());
 
+        void doSetup();
+        void doStart();
+
+        //the function that runs throught every Object and renders it(by default).
         void setRenderFunction(void (*renderFunction)() = nullptr);
 
         void start();
@@ -184,6 +193,7 @@ namespace io
         GLFWwindow *getWindow();
 
         double deltaTime();
+
 
 
         class DLL Log
@@ -297,5 +307,6 @@ namespace io
     namespace window
     {
         DLL Window create(int width, int height, std::string title);
+        DLL void defaultResizeCallback(GLFWwindow *window, int width, int height);
     }
 }

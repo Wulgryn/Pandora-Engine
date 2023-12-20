@@ -24,6 +24,9 @@ void PandoraEngine::init()
 #ifndef DEBUG
     system("title Pandora Engine");
 #endif
+#ifdef BUILD_DLL
+    logInfo("§YELLOWbuilding DLL");
+#endif
     logInfo("§YELLOWexperimental version 0.0.1 alpha");
     glfwSetErrorCallback(error_callback);
     srand(time(NULL));

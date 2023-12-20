@@ -55,7 +55,7 @@ valami olyasmi, hogy külön szedni a try/catch és a nem try/catch file kezelé
 
 ----------------------------
 beépíteni az NTFS DATA STREAMET hogy könnyebb legyen használni
-
+//ALTERNATE DATA STREAM
 az amikor egy fájl alatt egy másik fájl van bár nemtudom linuxon működik e
 
 -----------------------------
@@ -102,3 +102,8 @@ hanem csak simán meg lesz hívva meg egy másikat ami threadből indul és tal�
  hogy másik magon fusson
 -----------------------------
 majd kell egy input overhaul a windowhoz
+-----------------------------
+pandora/texture load overhaul
+pandora/components/image overhaul főleg a texture
+-----------------------------
+parameter swizzling

@@ -4,5 +4,7 @@
 #include "COMPONENTS/shader.hpp"
 #include "COMPONENTS/transform.hpp"
 #include "COMPONENTS/image.hpp"
+#include "texture.hpp"
+#include "scenes.hpp"
 
 using namespace pandora;
