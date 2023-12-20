@@ -194,10 +194,6 @@ void Window::start()
             // Close the window
             glfwSetWindowShouldClose(glfw_window, true);
         }
-        if (glfwWindowShouldClose(glfw_window))
-        {
-            glfwSetWindowShouldClose(glfw_window, true);
-        }
 
         if (targetFPS == -1 || fps_currentTime + targetFrameTime < currentTime)
         {
