@@ -503,11 +503,13 @@ Window::Keys::Keys(Window &window)
 
 void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
 {
+    Input *input = static_cast<Input *>(glfwGetWindowUserPointer(window));
+
     for (pandora::Object *object : pandora::objects::getObjcectsList())
     {
-        if (!object->followWindowResize)
+        if (!object->Components().isEmpty() && !object->followWindowResize)
         {
-            Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(pandora::mainWindow::get()->parameters.getSize());
+            Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(input->getWindow()->parameters.getSize());
             std::vector<float> vertices = {
                 // positions                                // texture coords
                 static_cast<float>(-size.Width), static_cast<float>(-size.Height), 0.0f, 0.0f, 0.0f, // bottom left
@@ -524,7 +526,7 @@ void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
         {
             if (!object->followWindowResize)
             {
-                Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(pandora::mainWindow::get()->parameters.getSize());
+                Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(input->getWindow()->parameters.getSize());
                 std::vector<float> vertices = {
                     // positions                                // texture coords
                     static_cast<float>(-size.Width), static_cast<float>(-size.Height), 0.0f, 0.0f, 0.0f, // bottom left

@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: PandoraEngine
-# Configurations: 
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -20,6 +20,11 @@
 
 ninja_required_version = 1.5
 
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -212,167 +217,149 @@ build ContinuousSubmit: phony CMakeFiles/ContinuousSubmit
 
 build cmake_object_order_depends_target_PandoraEngine: phony || CMakeFiles/PandoraEngine.dir
 
-build CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\CONSOLE\fancyLog.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\CONSOLE
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\DLL\init.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\DLL
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\ESSENTIALS\glad.c.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\ESSENTIALS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\files.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\input.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\window.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\components.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\image.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\shader.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\transform.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\mainWindow.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\objects.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\scenes.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\texture.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\UTILS\string.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\UTILS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\UTILS\timer.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\UTILS
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/main.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/main.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\main.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
-build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DUNKNOWN
+build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\test.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
 
 
 # =============================================================================
@@ -382,17 +369,17 @@ build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine
 #############################################
 # Link the shared library F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.dll
 
-build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngine.dll.a: CXX_SHARED_LIBRARY_LINKER__PandoraEngine_ CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj CMakeFiles/PandoraEngine.dir/src/main.cpp.obj CMakeFiles/PandoraEngine.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngine.dll.a: CXX_SHARED_LIBRARY_LINKER__PandoraEngine_Debug CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj CMakeFiles/PandoraEngine.dir/src/main.cpp.obj CMakeFiles/PandoraEngine.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
+  LANGUAGE_COMPILE_FLAGS = -g
   LINK_LIBRARIES = "F:/C++ Engine/Pandora Engine/libs/libSOIL.a"  "F:/C++ Engine/Pandora Engine/libs/libglfw3.a"  "F:/C++ Engine/Pandora Engine/libs/libopengl32.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -L"F:/C++ Engine/Pandora Engine/libs"   -L"F:/C++ Engine/Pandora Engine/dlls"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   RESTAT = 1
-  TARGET_COMPILE_PDB = CMakeFiles\PandoraEngine.dir\
   TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.dll"
   TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\lib\libPandoraEngine.dll.a"
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.pdb"
+  TARGET_PDB = PandoraEngine.dll.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target Pandora
@@ -403,167 +390,149 @@ build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll F$
 
 build cmake_object_order_depends_target_Pandora: phony || CMakeFiles/Pandora.dir
 
-build CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\CONSOLE\fancyLog.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\CONSOLE
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\DLL\init.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\DLL
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\ESSENTIALS\glad.c.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\ESSENTIALS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/IO/files.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/IO/files.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\IO\files.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\IO
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/IO/input.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/IO/input.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\IO\input.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\IO
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/IO/window.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/IO/window.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\IO\window.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\IO
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\components.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\image.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\shader.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\transform.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\mainWindow.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\objects.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\scenes.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\texture.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\UTILS\string.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\UTILS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\UTILS\timer.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\UTILS
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/main.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/main.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\main.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
-build CMakeFiles/Pandora.dir/src/test.cpp.obj: CXX_COMPILER__Pandora_unscanned_ F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG -DUNKNOWN
+build CMakeFiles/Pandora.dir/src/test.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\Pandora.dir\src\test.cpp.obj.d
+  FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
 
 
 # =============================================================================
@@ -573,17 +542,17 @@ build CMakeFiles/Pandora.dir/src/test.cpp.obj: CXX_COMPILER__Pandora_unscanned_ 
 #############################################
 # Link the executable F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.exe
 
-build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/Pandora.exe: CXX_EXECUTABLE_LINKER__Pandora_ CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/Pandora.dir/src/IO/files.cpp.obj CMakeFiles/Pandora.dir/src/IO/input.cpp.obj CMakeFiles/Pandora.dir/src/IO/window.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj CMakeFiles/Pandora.dir/src/main.cpp.obj CMakeFiles/Pandora.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/Pandora.exe: CXX_EXECUTABLE_LINKER__Pandora_Debug CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/Pandora.dir/src/IO/files.cpp.obj CMakeFiles/Pandora.dir/src/IO/input.cpp.obj CMakeFiles/Pandora.dir/src/IO/window.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj CMakeFiles/Pandora.dir/src/main.cpp.obj CMakeFiles/Pandora.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
+  FLAGS = -g
   LINK_FLAGS = -static-libgcc -static-libstdc++ -static
   LINK_LIBRARIES = "F:/C++ Engine/Pandora Engine/libs/libSOIL.a"  "F:/C++ Engine/Pandora Engine/libs/libglfw3.a"  "F:/C++ Engine/Pandora Engine/libs/libopengl32.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -L"F:/C++ Engine/Pandora Engine/libs"   -L"F:/C++ Engine/Pandora Engine/dlls"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\Pandora.dir\
   TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.exe"
   TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\lib\libPandora.dll.a"
-  TARGET_PDB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.pdb"
+  TARGET_PDB = Pandora.exe.dbg
 
 
 #############################################
@@ -896,14 +865,14 @@ build all: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEn
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.27.6/CMakeCCompiler.cmake CMakeFiles/3.27.6/CMakeCXXCompiler.cmake CMakeFiles/3.27.6/CMakeRCCompiler.cmake CMakeFiles/3.27.6/CMakeSystem.cmake F$:/C++$ Engine/Pandora$ Engine/CMakeLists.txt G$:/msys2/mingw64/share/cmake/Modules/CMakeCCompiler.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeCCompilerABI.c G$:/msys2/mingw64/share/cmake/Modules/CMakeCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXCompiler.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCompilerIdDetection.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineRCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineSystem.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeFindBinUtils.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeNinjaFindMake.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeRCCompiler.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeRCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystem.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestCompilerCommon.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestRCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CPack.cmake G$:/msys2/mingw64/share/cmake/Modules/CPackComponent.cmake G$:/msys2/mingw64/share/cmake/Modules/CTest.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestTargets.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestUseLaunchers.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/DartConfiguration.tcl.in G$:/msys2/mingw64/share/cmake/Modules/Internal/FeatureTesting.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-Determine-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake G$:/msys2/mingw64/share/cmake/Templates/CPackConfig.cmake.in
+build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.27.6/CMakeCCompiler.cmake CMakeFiles/3.27.6/CMakeCXXCompiler.cmake CMakeFiles/3.27.6/CMakeRCCompiler.cmake CMakeFiles/3.27.6/CMakeSystem.cmake F$:/C++$ Engine/Pandora$ Engine/CMakeLists.txt G$:/msys2/mingw64/share/cmake/Modules/CMakeCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeRCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake G$:/msys2/mingw64/share/cmake/Modules/CPack.cmake G$:/msys2/mingw64/share/cmake/Modules/CPackComponent.cmake G$:/msys2/mingw64/share/cmake/Modules/CTest.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestTargets.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestUseLaunchers.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/DartConfiguration.tcl.in G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake G$:/msys2/mingw64/share/cmake/Templates/CPackConfig.cmake.in
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build CMakeCache.txt CMakeFiles/3.27.6/CMakeCCompiler.cmake CMakeFiles/3.27.6/CMakeCXXCompiler.cmake CMakeFiles/3.27.6/CMakeRCCompiler.cmake CMakeFiles/3.27.6/CMakeSystem.cmake F$:/C++$ Engine/Pandora$ Engine/CMakeLists.txt G$:/msys2/mingw64/share/cmake/Modules/CMakeCCompiler.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeCCompilerABI.c G$:/msys2/mingw64/share/cmake/Modules/CMakeCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXCompiler.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXCompilerABI.cpp G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCompilerIdDetection.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompileFeatures.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineRCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeDetermineSystem.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeFindBinUtils.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeNinjaFindMake.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeParseImplicitIncludeInfo.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeParseLibraryArchitecture.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeRCCompiler.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeRCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystem.cmake.in G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestCompilerCommon.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeTestRCCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/CPack.cmake G$:/msys2/mingw64/share/cmake/Modules/CPackComponent.cmake G$:/msys2/mingw64/share/cmake/Modules/CTest.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestTargets.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestUseLaunchers.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/ADSP-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/ARMCC-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/ARMClang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/AppleClang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Borland-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Bruce-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Clang-DetermineCompilerInternal.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Compaq-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Cray-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Embarcadero-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GHS-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/HP-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/HP-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IAR-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Intel-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/LCC-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/MSVC-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/NVHPC-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/NVIDIA-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/PGI-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SCO-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SDCC-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SunPro-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/TI-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Tasking-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/Watcom-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XL-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XL-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XLClang-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake G$:/msys2/mingw64/share/cmake/Modules/DartConfiguration.tcl.in G$:/msys2/mingw64/share/cmake/Modules/Internal/FeatureTesting.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-Determine-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake G$:/msys2/mingw64/share/cmake/Templates/CPackConfig.cmake.in: phony
+build CMakeCache.txt CMakeFiles/3.27.6/CMakeCCompiler.cmake CMakeFiles/3.27.6/CMakeCXXCompiler.cmake CMakeFiles/3.27.6/CMakeRCCompiler.cmake CMakeFiles/3.27.6/CMakeSystem.cmake F$:/C++$ Engine/Pandora$ Engine/CMakeLists.txt G$:/msys2/mingw64/share/cmake/Modules/CMakeCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCXXInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeCommonLanguageInclude.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeGenericSystem.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeInitializeConfigs.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeLanguageInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeRCInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake G$:/msys2/mingw64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake G$:/msys2/mingw64/share/cmake/Modules/CPack.cmake G$:/msys2/mingw64/share/cmake/Modules/CPackComponent.cmake G$:/msys2/mingw64/share/cmake/Modules/CTest.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestTargets.cmake G$:/msys2/mingw64/share/cmake/Modules/CTestUseLaunchers.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Compiler/GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/DartConfiguration.tcl.in G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-C.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX-ABI.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU-CXX.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-GNU.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-Initialize.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows-windres.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/Windows.cmake G$:/msys2/mingw64/share/cmake/Modules/Platform/WindowsPaths.cmake G$:/msys2/mingw64/share/cmake/Templates/CPackConfig.cmake.in: phony
 
 
 #############################################

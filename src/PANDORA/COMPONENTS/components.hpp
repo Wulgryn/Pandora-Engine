@@ -24,5 +24,7 @@ namespace pandora
         template<typename ComponentType> void add();
         template<typename ComponentType> ComponentType* get();
 
+        bool isEmpty();
+
     };
 }
