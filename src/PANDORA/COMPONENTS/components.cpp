@@ -42,3 +42,8 @@ ComponentType *Components::get()
     }
     return nullptr;
 }
+
+bool Components::isEmpty()
+{
+    return components_list.size() == 0;
+}

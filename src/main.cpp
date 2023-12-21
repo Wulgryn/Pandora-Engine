@@ -70,12 +70,12 @@ int main(int argc, char **argv)
     PandoraEngine::init();
     
     Window window(1000, 1000, "PandoraEngine");
-    mainWindow::set(&window);
-    window.setFixedUpdateFunction(update);
-    window.setStartFunction(start);
-    window.setSetupFunction(setup);
-    window.setTargetFPS(144);
-    window.setTargetTPS(30);
+    //mainWindow::set(&window);
+    //window.setFixedUpdateFunction(update);
+    //window.setStartFunction(start);
+    //window.setSetupFunction(setup);
+    //window.setTargetFPS(144);
+    //window.setTargetTPS(30);
     //window.properties.setDecorated(false);
     window.start();
     return 0;
