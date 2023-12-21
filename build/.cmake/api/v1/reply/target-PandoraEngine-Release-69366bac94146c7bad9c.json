@@ -2,10 +2,13 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/Pandora.exe"
+			"path" : "F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/PandoraEngine.dll"
 		},
 		{
-			"path" : "F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/Pandora.pdb"
+			"path" : "F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/lib/libPandoraEngine.dll.a"
+		},
+		{
+			"path" : "F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/PandoraEngine.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -13,8 +16,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"target_link_options",
+			"add_library",
 			"link_directories",
 			"target_link_libraries",
 			"add_compile_definitions",
@@ -32,53 +34,53 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 118,
+				"line" : 105,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 120,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
 				"line" : 100,
 				"parent" : 0
 			},
 			{
-				"command" : 2,
+				"command" : 1,
 				"file" : 0,
 				"line" : 101,
 				"parent" : 0
 			},
 			{
-				"command" : 3,
+				"command" : 2,
 				"file" : 0,
-				"line" : 119,
+				"line" : 107,
 				"parent" : 0
 			},
 			{
-				"command" : 4,
+				"command" : 3,
 				"file" : 0,
 				"line" : 12,
 				"parent" : 0
 			},
 			{
-				"command" : 4,
+				"command" : 3,
 				"file" : 0,
 				"line" : 11,
 				"parent" : 0
 			},
 			{
-				"command" : 5,
+				"command" : 3,
+				"file" : 0,
+				"line" : 48,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
 				"file" : 0,
 				"line" : 97,
 				"parent" : 0
 			},
 			{
-				"command" : 5,
+				"command" : 4,
 				"file" : 0,
 				"line" : 98,
 				"parent" : 0
@@ -91,18 +93,25 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
+					"fragment" : "-O3 -DNDEBUG"
 				}
 			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"define" : "BUILD_DLL"
 				},
 				{
-					"backtrace" : 7,
+					"backtrace" : 6,
 					"define" : "DEBUG"
+				},
+				{
+					"define" : "PandoraEngine_EXPORTS"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "RELEASE"
 				}
 			],
 			"includes" : 
@@ -142,18 +151,25 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
+					"fragment" : "-O3 -DNDEBUG"
 				}
 			],
 			"defines" : 
 			[
 				{
-					"backtrace" : 6,
+					"backtrace" : 5,
 					"define" : "BUILD_DLL"
 				},
 				{
-					"backtrace" : 7,
+					"backtrace" : 6,
 					"define" : "DEBUG"
+				},
+				{
+					"define" : "PandoraEngine_EXPORTS"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "RELEASE"
 				}
 			],
 			"includes" : 
@@ -174,56 +190,37 @@
 			]
 		}
 	],
-	"id" : "Pandora::@6890427a1f51a3e7e1df",
+	"id" : "PandoraEngine::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
 			{
 				"fragment" : "",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-static-libgcc",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "-static-libstdc++",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "-static",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 3,
 				"fragment" : "-L\"F:\\C++ Engine\\Pandora Engine\\libs\"",
 				"role" : "libraryPath"
 			},
 			{
-				"backtrace" : 4,
+				"backtrace" : 3,
 				"fragment" : "-L\"F:\\C++ Engine\\Pandora Engine\\dlls\"",
 				"role" : "libraryPath"
 			},
 			{
-				"backtrace" : 5,
+				"backtrace" : 4,
 				"fragment" : "\"F:\\C++ Engine\\Pandora Engine\\libs\\libSOIL.a\"",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 5,
+				"backtrace" : 4,
 				"fragment" : "\"F:\\C++ Engine\\Pandora Engine\\libs\\libglfw3.a\"",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 5,
+				"backtrace" : 4,
 				"fragment" : "\"F:\\C++ Engine\\Pandora Engine\\libs\\libopengl32.a\"",
 				"role" : "libraries"
 			},
@@ -234,8 +231,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "Pandora",
-	"nameOnDisk" : "Pandora.exe",
+	"name" : "PandoraEngine",
+	"nameOnDisk" : "PandoraEngine.dll",
 	"paths" : 
 	{
 		"build" : ".",
@@ -535,5 +532,5 @@
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "EXECUTABLE"
+	"type" : "SHARED_LIBRARY"
 }

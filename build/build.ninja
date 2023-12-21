@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: PandoraEngine
-# Configurations: Debug
+# Configurations: Release
 # =============================================================================
 
 #############################################
@@ -24,7 +24,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = Debug
+CONFIGURATION = Release
 # =============================================================================
 # Include auxiliary files.
 
@@ -217,146 +217,146 @@ build ContinuousSubmit: phony CMakeFiles/ContinuousSubmit
 
 build cmake_object_order_depends_target_PandoraEngine: phony || CMakeFiles/PandoraEngine.dir
 
-build CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\CONSOLE\fancyLog.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\CONSOLE
 
-build CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\DLL\init.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\DLL
 
-build CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\ESSENTIALS\glad.c.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\ESSENTIALS
 
-build CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\files.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
 
-build CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\input.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
 
-build CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\window.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\components.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\image.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\shader.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS\transform.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\mainWindow.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\objects.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\scenes.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
 
-build CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\PANDORA\texture.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\PANDORA
 
-build CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\UTILS\string.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\UTILS
 
-build CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\UTILS\timer.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\UTILS
 
-build CMakeFiles/PandoraEngine.dir/src/main.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/main.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\main.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src
 
-build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_PandoraEngine
-  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS
+build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DBUILD_DLL -DDEBUG -DPandoraEngine_EXPORTS -DRELEASE
   DEP_FILE = CMakeFiles\PandoraEngine.dir\src\test.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src
@@ -367,18 +367,18 @@ build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine
 
 
 #############################################
-# Link the shared library F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.dll
+# Link the shared library F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\release\PandoraEngine.dll
 
-build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngine.dll.a: CXX_SHARED_LIBRARY_LINKER__PandoraEngine_Debug CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj CMakeFiles/PandoraEngine.dir/src/main.cpp.obj CMakeFiles/PandoraEngine.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
-  LANGUAGE_COMPILE_FLAGS = -g
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/lib/libPandoraEngine.dll.a: CXX_SHARED_LIBRARY_LINKER__PandoraEngine_Release CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj CMakeFiles/PandoraEngine.dir/src/main.cpp.obj CMakeFiles/PandoraEngine.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
   LINK_LIBRARIES = "F:/C++ Engine/Pandora Engine/libs/libSOIL.a"  "F:/C++ Engine/Pandora Engine/libs/libglfw3.a"  "F:/C++ Engine/Pandora Engine/libs/libopengl32.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -L"F:/C++ Engine/Pandora Engine/libs"   -L"F:/C++ Engine/Pandora Engine/dlls"
   OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   RESTAT = 1
-  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\PandoraEngine.dll"
-  TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\lib\libPandoraEngine.dll.a"
+  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\release\PandoraEngine.dll"
+  TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\release\lib\libPandoraEngine.dll.a"
   TARGET_PDB = PandoraEngine.dll.dbg
 
 # =============================================================================
@@ -390,146 +390,146 @@ build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll F$
 
 build cmake_object_order_depends_target_Pandora: phony || CMakeFiles/Pandora.dir
 
-build CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/CONSOLE/fancyLog.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\CONSOLE\fancyLog.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\CONSOLE
 
-build CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/DLL/init.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\DLL\init.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\DLL
 
-build CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj: C_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/ESSENTIALS/glad.c || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\ESSENTIALS\glad.c.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\ESSENTIALS
 
-build CMakeFiles/Pandora.dir/src/IO/files.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/IO/files.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/IO/files.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\IO\files.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\IO
 
-build CMakeFiles/Pandora.dir/src/IO/input.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/IO/input.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/IO/input.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\IO\input.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\IO
 
-build CMakeFiles/Pandora.dir/src/IO/window.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/IO/window.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/IO/window.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\IO\window.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\IO
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/components.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\components.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/image.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\image.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/shader.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\shader.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/COMPONENTS/transform.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS\transform.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA\COMPONENTS
 
-build CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/mainWindow.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\mainWindow.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
 
-build CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/objects.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\objects.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
 
-build CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/scenes.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\scenes.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
 
-build CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/texture.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\PANDORA\texture.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\PANDORA
 
-build CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/UTILS/string.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\UTILS\string.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\UTILS
 
-build CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/UTILS/timer.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\UTILS\timer.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src\UTILS
 
-build CMakeFiles/Pandora.dir/src/main.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/main.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/main.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\main.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src
 
-build CMakeFiles/Pandora.dir/src/test.cpp.obj: CXX_COMPILER__Pandora_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_Pandora
-  DEFINES = -DBUILD_DLL -DDEBUG
+build CMakeFiles/Pandora.dir/src/test.cpp.obj: CXX_COMPILER__Pandora_unscanned_Release F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_Pandora
+  DEFINES = -DBUILD_DLL -DDEBUG -DRELEASE
   DEP_FILE = CMakeFiles\Pandora.dir\src\test.cpp.obj.d
-  FLAGS = -g
+  FLAGS = -O3 -DNDEBUG
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   OBJECT_FILE_DIR = CMakeFiles\Pandora.dir\src
@@ -540,18 +540,18 @@ build CMakeFiles/Pandora.dir/src/test.cpp.obj: CXX_COMPILER__Pandora_unscanned_D
 
 
 #############################################
-# Link the executable F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.exe
+# Link the executable F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\release\Pandora.exe
 
-build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/Pandora.exe: CXX_EXECUTABLE_LINKER__Pandora_Debug CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/Pandora.dir/src/IO/files.cpp.obj CMakeFiles/Pandora.dir/src/IO/input.cpp.obj CMakeFiles/Pandora.dir/src/IO/window.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj CMakeFiles/Pandora.dir/src/main.cpp.obj CMakeFiles/Pandora.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
-  FLAGS = -g
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/Pandora.exe: CXX_EXECUTABLE_LINKER__Pandora_Release CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/Pandora.dir/src/IO/files.cpp.obj CMakeFiles/Pandora.dir/src/IO/input.cpp.obj CMakeFiles/Pandora.dir/src/IO/window.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj CMakeFiles/Pandora.dir/src/main.cpp.obj CMakeFiles/Pandora.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/libs/libSOIL.a F$:/C++$ Engine/Pandora$ Engine/libs/libglfw3.a F$:/C++$ Engine/Pandora$ Engine/libs/libopengl32.a
+  FLAGS = -O3 -DNDEBUG
   LINK_FLAGS = -static-libgcc -static-libstdc++ -static
   LINK_LIBRARIES = "F:/C++ Engine/Pandora Engine/libs/libSOIL.a"  "F:/C++ Engine/Pandora Engine/libs/libglfw3.a"  "F:/C++ Engine/Pandora Engine/libs/libopengl32.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -L"F:/C++ Engine/Pandora Engine/libs"   -L"F:/C++ Engine/Pandora Engine/dlls"
   OBJECT_DIR = CMakeFiles\Pandora.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\Pandora.exe"
-  TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\lib\libPandora.dll.a"
+  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\release\Pandora.exe"
+  TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\release\lib\libPandora.dll.a"
   TARGET_PDB = Pandora.exe.dbg
 
 
@@ -840,13 +840,13 @@ build CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}CMakeFiles/ContinuousS
 # =============================================================================
 # Target aliases.
 
-build Pandora: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/Pandora.exe
+build Pandora: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/Pandora.exe
 
-build Pandora.exe: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/Pandora.exe
+build Pandora.exe: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/Pandora.exe
 
-build PandoraEngine: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll
+build PandoraEngine: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/PandoraEngine.dll
 
-build PandoraEngine.dll: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll
+build PandoraEngine.dll: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/PandoraEngine.dll
 
 # =============================================================================
 # Folder targets.
@@ -856,7 +856,7 @@ build PandoraEngine.dll: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/d
 #############################################
 # Folder: F:/C++ Engine/Pandora Engine/build
 
-build all: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/Pandora.exe
+build all: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/release/Pandora.exe
 
 # =============================================================================
 # Built-in targets

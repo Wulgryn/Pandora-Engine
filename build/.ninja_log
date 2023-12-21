@@ -1,40 +1,23 @@
 # ninja log v5
-80	1053	7248273093136375	CMakeFiles/PandoraEngine.dir/src/test.cpp.obj	9a8e2c128a08d8c6
-76	1384	7248273096893362	CMakeFiles/PandoraEngine.dir/src/main.cpp.obj	62f406801a5146ec
-95	2588	7248273108947958	CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj	ee3ee0c4eb1dc254
-34	984	7248273092635050	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj	2d04fee4e6d453a5
-898	1557	7248273098623207	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj	e6d7ca247266feff
-990	1627	7248273099350419	CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj	e5000fe2850527cf
-3030	3245	7248258790222852	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/lib/libPandoraEngine.dll.a	97180ade4ea09c2f
-26	1080	7248273093528134	CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj	2228dd4f267ca24a
-54	1150	7248273094535277	CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj	7889fe215b6b0c4d
-122	942	7248273092213630	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj	7922f36958f393dc
-12	1072	7248273093034056	CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj	b2dd11de2ed8d02a
-1072	1673	7248273099806349	CMakeFiles/Pandora.dir/src/test.cpp.obj	e85851b91f0a5d8a
-71	1080	7248273093349692	CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj	76b99f172241f4d8
-817	1887	7248273101944981	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj	530581486a3d3606
-2588	2925	7248273112216187	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/Pandora.exe	99ba8784dfb600b3
-2577	2810	7248273111110622	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll	cc0efcf313a940a1
-85	1305	7248273096107704	CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj	e4c5628cb747caf0
-63	1080	7248273092913596	CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj	33721a084b7809d9
-1067	1982	7248273102907011	CMakeFiles/Pandora.dir/src/main.cpp.obj	18edec9248dc70b0
-50	916	7248273092003066	CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj	153c1accb48a2072
-90	1067	7248273093093031	CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj	f25643b41c090cba
-105	1206	7248273095109761	CMakeFiles/Pandora.dir/src/IO/input.cpp.obj	343aa92bb745ea4f
-41	1263	7248273095676576	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj	f2a7b334158a8541
-46	990	7248273092459424	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj	7eaf220dd595b189
-16	898	7248273091812416	CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj	29185edfb7f2f420
-116	1126	7248273094304294	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj	ea3db49053e82a91
-23	1419	7248273097234438	CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj	d7138f74c32f3cba
-100	1532	7248273098367509	CMakeFiles/Pandora.dir/src/IO/files.cpp.obj	b16c2e0821586f14
 19	2577	7248273108832800	CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj	880bbc27ca10bc52
-2577	2810	7248273111110622	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngine.dll.a	cc0efcf313a940a1
-1054	1756	7248273100636730	CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj	e0ee7a0d4a9d56a1
-67	1018	7248273093093031	CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj	5734974e049dcb3d
+100	1532	7248273098367509	CMakeFiles/Pandora.dir/src/IO/files.cpp.obj	b16c2e0821586f14
+23	1419	7248273097234438	CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj	d7138f74c32f3cba
+116	1126	7248273094304294	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj	ea3db49053e82a91
+16	898	7248273091812416	CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj	29185edfb7f2f420
+46	990	7248273092459424	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj	7eaf220dd595b189
+41	1263	7248273095676576	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj	f2a7b334158a8541
+105	1206	7248273095109761	CMakeFiles/Pandora.dir/src/IO/input.cpp.obj	343aa92bb745ea4f
+90	1067	7248273093093031	CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj	f25643b41c090cba
+50	916	7248273092003066	CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj	153c1accb48a2072
+1067	1982	7248273102907011	CMakeFiles/Pandora.dir/src/main.cpp.obj	18edec9248dc70b0
+63	1080	7248273092913596	CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj	33721a084b7809d9
+85	1305	7248273096107704	CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj	e4c5628cb747caf0
 110	1632	7248273099380419	CMakeFiles/Pandora.dir/src/IO/window.cpp.obj	5905ca52ce6e8268
 2	16	0	clean	127299f2b0d8dd65
-58	1400	7248273097008671	CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj	b9dd3715e6bd1216
+67	1018	7248273093093031	CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj	5734974e049dcb3d
+1054	1756	7248273100636730	CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj	e0ee7a0d4a9d56a1
 916	1562	7248273098667881	CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj	6a25ffa1155b5c4d
+58	1400	7248273097008671	CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj	b9dd3715e6bd1216
 30	1686	7248273099926731	CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj	a460f8ffe0c370b3
 3030	3245	7248258790222852	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/PandoraEngine.dll	97180ade4ea09c2f
 3144	3431	7248258792010759	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/Pandora.exe	9f3d87d25773a3b2
@@ -42,3 +25,60 @@
 38	817	7248273091108441	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj	3704ae476f6a7b29
 984	1886	7248273101934907	CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj	df73f0f5c9f2bce4
 942	1856	7248273101639321	CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj	6bb5b9a6e7cf0f20
+2577	2810	7248273111110622	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngine.dll.a	cc0efcf313a940a1
+80	1053	7248273093136375	CMakeFiles/PandoraEngine.dir/src/test.cpp.obj	9a8e2c128a08d8c6
+71	1080	7248273093349692	CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj	76b99f172241f4d8
+817	1887	7248273101944981	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj	530581486a3d3606
+1072	1673	7248273099806349	CMakeFiles/Pandora.dir/src/test.cpp.obj	e85851b91f0a5d8a
+12	1072	7248273093034056	CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj	b2dd11de2ed8d02a
+122	942	7248273092213630	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj	7922f36958f393dc
+54	1150	7248273094535277	CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj	7889fe215b6b0c4d
+26	1080	7248273093528134	CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj	2228dd4f267ca24a
+3030	3245	7248258790222852	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/lib/libPandoraEngine.dll.a	97180ade4ea09c2f
+990	1627	7248273099350419	CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj	e5000fe2850527cf
+898	1557	7248273098623207	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj	e6d7ca247266feff
+34	984	7248273092635050	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj	2d04fee4e6d453a5
+95	2588	7248273108947958	CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj	ee3ee0c4eb1dc254
+76	1384	7248273096893362	CMakeFiles/PandoraEngine.dir/src/main.cpp.obj	62f406801a5146ec
+2577	2810	7248273111110622	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/PandoraEngine.dll	cc0efcf313a940a1
+2588	2925	7248273112216187	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/debug/Pandora.exe	99ba8784dfb600b3
+2	15	0	clean	127299f2b0d8dd65
+45	745	7248286936291415	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/transform.cpp.obj	a80fd87ae5a4635
+122	782	7248286936541423	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/image.cpp.obj	28f82b5be7af1999
+49	788	7248286936831397	CMakeFiles/PandoraEngine.dir/src/PANDORA/mainWindow.cpp.obj	e0be346beecf8bba
+16	792	7248286936841416	CMakeFiles/PandoraEngine.dir/src/DLL/init.cpp.obj	8311edf6f07cacd3
+36	797	7248286936681395	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/image.cpp.obj	d30e7a78f0b4e6af
+62	818	7248286936951503	CMakeFiles/PandoraEngine.dir/src/PANDORA/texture.cpp.obj	9ec1853fbaeadfda
+32	941	7248286938341963	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/components.cpp.obj	b548a1379003723b
+67	948	7248286938381950	CMakeFiles/PandoraEngine.dir/src/UTILS/string.cpp.obj	73690841c597ce39
+90	989	7248286938481981	CMakeFiles/Pandora.dir/src/DLL/init.cpp.obj	1d5420955c699959
+80	997	7248286938551975	CMakeFiles/PandoraEngine.dir/src/test.cpp.obj	9e6c2db561f3e4f9
+54	1061	7248286939527236	CMakeFiles/PandoraEngine.dir/src/PANDORA/objects.cpp.obj	acf3ff0ca9056aef
+58	1167	7248286940442515	CMakeFiles/PandoraEngine.dir/src/PANDORA/scenes.cpp.obj	ed908d660c138d88
+12	1226	7248286941234608	CMakeFiles/PandoraEngine.dir/src/CONSOLE/fancyLog.cpp.obj	bb71b3a7807137db
+116	1304	7248286941944723	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/components.cpp.obj	ba658fee451cdbc4
+85	1307	7248286942079833	CMakeFiles/Pandora.dir/src/CONSOLE/fancyLog.cpp.obj	1d90e2b8959f7ab9
+76	1365	7248286942669949	CMakeFiles/PandoraEngine.dir/src/main.cpp.obj	d67c5e48621da5bb
+25	1384	7248286942879926	CMakeFiles/PandoraEngine.dir/src/IO/input.cpp.obj	d78fd8abe731a37f
+782	1421	7248286943235273	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/transform.cpp.obj	96a104893c9fe601
+788	1429	7248286943325249	CMakeFiles/Pandora.dir/src/PANDORA/mainWindow.cpp.obj	9abf8093b2e6af67
+818	1460	7248286943635228	CMakeFiles/Pandora.dir/src/PANDORA/texture.cpp.obj	5d50b933dfbc1441
+71	1472	7248286943755272	CMakeFiles/PandoraEngine.dir/src/UTILS/timer.cpp.obj	ab8c4bbae59ed0a0
+105	1548	7248286944516396	CMakeFiles/Pandora.dir/src/IO/input.cpp.obj	8109c4a6cc7f355f
+941	1568	7248286944716389	CMakeFiles/Pandora.dir/src/UTILS/string.cpp.obj	1e7c4e0eccc3aa97
+28	1568	7248286944716389	CMakeFiles/PandoraEngine.dir/src/IO/window.cpp.obj	9f6f561a79f0b3b3
+111	1607	7248286945107387	CMakeFiles/Pandora.dir/src/IO/window.cpp.obj	45cb30503852bbec
+998	1609	7248286945137397	CMakeFiles/Pandora.dir/src/test.cpp.obj	ae1d89396ebdad7e
+41	1619	7248286945227404	CMakeFiles/PandoraEngine.dir/src/PANDORA/COMPONENTS/shader.cpp.obj	ab5ad3806211b815
+793	1661	7248286945657411	CMakeFiles/Pandora.dir/src/PANDORA/objects.cpp.obj	22c934313403c73a
+798	1702	7248286946067491	CMakeFiles/Pandora.dir/src/PANDORA/scenes.cpp.obj	cef30060a9eb2b4c
+989	1883	7248286947873604	CMakeFiles/Pandora.dir/src/main.cpp.obj	1172fa6427fff81d
+948	1941	7248286948458879	CMakeFiles/Pandora.dir/src/UTILS/timer.cpp.obj	bc915235b595ee6f
+745	1986	7248286948908862	CMakeFiles/Pandora.dir/src/PANDORA/COMPONENTS/shader.cpp.obj	d2f0decd8cb5ed0b
+21	2046	7248286949504219	CMakeFiles/PandoraEngine.dir/src/IO/files.cpp.obj	cb0447cd949646e4
+100	2104	7248286950089450	CMakeFiles/Pandora.dir/src/IO/files.cpp.obj	2aff4c86c9c31628
+18	2960	7248286958631595	CMakeFiles/PandoraEngine.dir/src/ESSENTIALS/glad.c.obj	a41b0fa686012685
+95	3097	7248286960007021	CMakeFiles/Pandora.dir/src/ESSENTIALS/glad.c.obj	557f7473599e87b7
+2960	3173	7248286960702162	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/PandoraEngine.dll	97180ade4ea09c2f
+2960	3173	7248286960702162	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/lib/libPandoraEngine.dll.a	97180ade4ea09c2f
+3097	3405	7248286962962745	F:/C++ Engine/Pandora Engine/bin/0.0.1-alpha/release/Pandora.exe	9f3d87d25773a3b2
