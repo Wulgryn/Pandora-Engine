@@ -306,7 +306,8 @@ namespace io
     };
     namespace window
     {
-        DLL Window create(int width, int height, std::string title);
+        //creates a window and starts it in a new thread
+        DLL Window* create(int width, int height, std::string title);
         DLL void defaultResizeCallback(GLFWwindow *window, int width, int height);
     }
 }

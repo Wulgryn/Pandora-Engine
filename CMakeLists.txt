@@ -1,6 +1,7 @@
-cmake_minimum_required(VERSION 3.5...3.21)
+cmake_minimum_required(VERSION 3.21)
 project(PandoraEngine VERSION 0.0.1 LANGUAGES C CXX)
 set(PROJECT_VERSION 0.0.1-alpha)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 include(CTest)
 enable_testing()
@@ -17,8 +18,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 file(GLOB_RECURSE HEADERS 
-    src/*.hpp
-    src/*.h
+    src/**.hpp
+    src/**.h
 )
 file(GLOB_RECURSE CS_HEADERS 
     "src/C# DLL/*.h"
@@ -78,6 +79,11 @@ file(GLOB_RECURSE SOURCES
     ${PROJECT_SOURCE_DIR}/src/*.[hc]
 )
 
+foreach(SOURCE ${SOURCES})
+    message(${SOURCE})
+endforeach()
+
+
 file(GLOB_RECURSE CS_SOURCES_ONLY
     "${PROJECT_SOURCE_DIR}/src/C# DLL/*.[hc]pp"
 )
@@ -90,24 +96,40 @@ file(GLOB_RECURSE CS_SOURCES
 )
 
 file(GLOB_RECURSE LIBS
-    ${PROJECT_SOURCE_DIR}/libs/*.a
+    ${CMAKE_SOURCE_DIR}/libs/*.a
+)
+
+file(GLOB_RECURSE DLLS
+    ${CMAKE_SOURCE_DIR}/dlls/*.dll
 )
 
 
 include_directories("src")
 include_directories("include")
 
-link_directories("libs")
-link_directories("dlls")
+#link_directories("libs")
+#link_directories("dlls")
 #link_libraries("libs")
+set(CMAKE_IMPORT_LIBRARY_SUFFIX ".a")
 
+# add_library(PandoraEngine SHARED ${SOURCES} ${DLLS})
+# target_link_libraries(PandoraEngine ${LIBS} SOIL)
+# target_include_directories(PandoraEngine PUBLIC src)
+# target_link_options(PandoraEngine PRIVATE -static-libgcc -static-libstdc++ -static)
+# set_target_properties(PandoraEngine PROPERTIES
+#     OUTPUT_NAME "PandoraEngine"
+#     PREFIX ""
+#     PUBLIC_HEADER "${HEADERS}"
+# )
 
-add_library(PandoraEngine SHARED ${SOURCES})
-set_target_properties(PandoraEngine PROPERTIES PREFIX "")
-target_link_libraries(PandoraEngine ${LIBS})
-
-# add_library(PandoraEngineStatic STATIC ${SOURCES})
-# set_target_properties(PandoraEngineStatic PROPERTIES PREFIX "")
+add_library(PandoraEngineStatic STATIC ${SOURCES} ${LIBS} ${DLLS})
+target_link_libraries(PandoraEngineStatic PUBLIC ${LIBS} SOIL)
+target_include_directories(PandoraEngineStatic PUBLIC src)
+target_link_options(PandoraEngineStatic PRIVATE -static-libgcc -static-libstdc++ -static)
+set_target_properties(PandoraEngineStatic PROPERTIES
+    OUTPUT_NAME "PandoraEngineStatic"
+    PUBLIC_HEADER "${HEADERS}"
+)
 
 
 # add_library(PandoraEngineCS SHARED ${CS_SOURCES})
@@ -115,10 +137,19 @@ target_link_libraries(PandoraEngine ${LIBS})
 # target_link_libraries(PandoraEngineCS ${LIBS})
 
 # if(NOT CMAKE_BUILD_TYPE MATCHES Release)
-add_executable(Pandora ${SOURCES})
-target_link_libraries(Pandora ${LIBS})
-target_link_options(Pandora PRIVATE -static-libgcc -static-libstdc++ -static)
+# add_executable(Pandora ${SOURCES})
+# target_link_libraries(Pandora ${LIBS})
+# target_link_options(Pandora PRIVATE -static-libgcc -static-libstdc++ -static)
 # endif(NOT CMAKE_BUILD_TYPE MATCHES Release)
+
+
+if(NOT CMAKE_BUILD_TYPE MATCHES Release)
+    add_executable(PandoraTest test/src/main.cpp)
+    target_link_directories(PandoraTest PUBLIC ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/lib)
+    target_link_libraries(PandoraTest PandoraEngineStatic)
+    target_link_options(PandoraTest PRIVATE -static-libgcc -static-libstdc++ -static)
+endif(NOT CMAKE_BUILD_TYPE MATCHES Release)
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
