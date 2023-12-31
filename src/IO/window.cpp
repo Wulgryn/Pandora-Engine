@@ -45,6 +45,7 @@ Window::Window(int width, int height, string title)
     logSuccess("GLAD initialized successfully!");
 
     glfwSetFramebufferSizeCallback(window, window::defaultResizeCallback);
+    mainWindow::set(this);
     parameters.setSize(Size(width, height));
     input = new Input(this);
 }
@@ -507,7 +508,7 @@ void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
 
     for (pandora::Object *object : pandora::objects::getObjcectsList())
     {
-        if (!object->Components().isEmpty() && !object->followWindowResize)
+        if (object->Components().has<Transform>() && !object->followWindowResize)
         {
             Size size = object->Components().get<pandora::Transform>()->size.toWindowRate(input->getWindow()->parameters.getSize());
             std::vector<float> vertices = {
@@ -539,4 +540,12 @@ void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
         }
     }
     glViewport(0, 0, width, height);
+}
+
+Window * window::create(int width, int height, string title)
+{
+    Window* window = new Window(width, height, title);
+    thread windowThread(&Window::start, window);
+    windowThread.detach();
+    return window;
 }

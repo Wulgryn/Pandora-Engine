@@ -24,11 +24,19 @@
 	ProcessorClockFrequency="3800"
 	>
 	<Testing>
+<<<<<<< HEAD
 		<StartDateTime>Dec 21 04:45 Central Europe Standard Time</StartDateTime>
 		<StartTestTime>1703130327</StartTestTime>
 		<TestList/>
 		<EndDateTime>Dec 21 04:45 Central Europe Standard Time</EndDateTime>
 		<EndTestTime>1703130327</EndTestTime>
+=======
+		<StartDateTime>Dec 22 00:58 Central Europe Standard Time</StartDateTime>
+		<StartTestTime>1703203124</StartTestTime>
+		<TestList/>
+		<EndDateTime>Dec 22 00:58 Central Europe Standard Time</EndDateTime>
+		<EndTestTime>1703203124</EndTestTime>
+>>>>>>> aaca1e2 (Stuff happened, not working dll)
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

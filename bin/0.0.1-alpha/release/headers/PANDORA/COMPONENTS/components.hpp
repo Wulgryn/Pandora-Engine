@@ -26,5 +26,7 @@ namespace pandora
 
         bool isEmpty();
 
+        template<typename ComponentType>bool has();
+
     };
 }

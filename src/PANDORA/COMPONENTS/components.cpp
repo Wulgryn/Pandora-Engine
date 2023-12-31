@@ -24,6 +24,10 @@ template Shader *Components::get<Shader>();
 template Transform *Components::get<Transform>();
 template Image *Components::get<Image>();
 
+template bool Components::has<Shader>();
+template bool Components::has<Transform>();
+template bool Components::has<Image>();
+
 template<typename ComponentType>
 void Components::add()
 {
@@ -46,4 +50,16 @@ ComponentType *Components::get()
 bool Components::isEmpty()
 {
     return components_list.size() == 0;
+}
+
+template<typename ComponentType>
+bool Components::has()
+{
+    static_assert(is_base_of<Component, ComponentType>::value, "Class must be a Component");
+    for (Component *component : components_list) {
+        if (dynamic_cast<ComponentType *>(component)) {
+            return true;
+        }
+    }
+    return false;
 }
