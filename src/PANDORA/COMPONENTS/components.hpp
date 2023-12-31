@@ -21,7 +21,7 @@ namespace pandora
         Components(){};
         void initComponenets();
 
-        template<typename ComponentType> void add();
+        template<typename ComponentType> ComponentType* add(ComponentType* component = nullptr);
         template<typename ComponentType> ComponentType* get();
 
         bool isEmpty();

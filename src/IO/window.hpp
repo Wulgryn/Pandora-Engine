@@ -7,6 +7,7 @@
 
 #include "UTILS/parameters.hpp"
 #include "input.hpp"
+#include "IO/mouse.hpp"
 
 namespace io
 {
@@ -122,19 +123,6 @@ namespace io
         LAST = GLFW_KEY_LAST
 
     };
-    enum class MouseButton
-    {
-        ANY = -1,
-        LEFT = GLFW_MOUSE_BUTTON_LEFT,
-        RIGHT = GLFW_MOUSE_BUTTON_RIGHT,
-        MIDDLE = GLFW_MOUSE_BUTTON_MIDDLE,
-        BUTTON_4 = GLFW_MOUSE_BUTTON_4,
-        BUTTON_5 = GLFW_MOUSE_BUTTON_5,
-        BUTTON_6 = GLFW_MOUSE_BUTTON_6,
-        BUTTON_7 = GLFW_MOUSE_BUTTON_7,
-        BUTTON_8 = GLFW_MOUSE_BUTTON_8,
-        LAST = GLFW_MOUSE_BUTTON_LAST
-    };
     class DLL Window
     {
     private:
@@ -160,7 +148,6 @@ namespace io
         int result = 0;
     public:
 
-        utils::Color backgroundColor;
 
         Window(int width, int height, std::string title);
         ~Window();
@@ -194,6 +181,7 @@ namespace io
 
         double deltaTime();
 
+        void setBackgroundColor(utils::Color color);
 
 
         class DLL Log
@@ -303,6 +291,21 @@ namespace io
             Keys(Window &window);
         };
         Keys keys{*this};
+
+        class DLL Mouse
+        {
+        private:
+            Window *window;
+        public:
+            Mouse(Window &window);
+
+            utils::Position getPosition();
+            void setPosition(utils::Position position);
+
+            //double getScroll();
+            //void setScroll(double scroll);
+        };
+        Mouse mouse{*this};
     };
     namespace window
     {

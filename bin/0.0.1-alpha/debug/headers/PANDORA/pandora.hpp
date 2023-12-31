@@ -7,4 +7,7 @@
 #include "texture.hpp"
 #include "scenes.hpp"
 
+#include "GAME/UI/ui_elements.hpp"
+#include "GAME/UI/button.hpp"
+
 using namespace pandora;

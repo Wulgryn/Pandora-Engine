@@ -6,7 +6,7 @@
             "type": "cppdbg",
             "request": "launch",
             "windows": {
-                "program": "${command:cmake.launchTargetDirectory}/Pandora.exe",
+                "program": "${command:cmake.launchTargetDirectory}/PandoraTest.exe",
             },
             "linux": {
                 "program": "${command:cmake.launchTargetDirectory}/Pandora",

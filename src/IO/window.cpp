@@ -141,6 +141,11 @@ double Window::deltaTime()
     return _deltaTime;
 }
 
+void Window::setBackgroundColor(Color color)
+{
+    glClearColor(color.getRedF(), color.getGreenF(), color.getBlueF(), color.getAlphaF());
+}
+
 void Window::start()
 {
     double currentTime = glfwGetTime();
@@ -187,9 +192,6 @@ void Window::start()
         timer.start();
         currentTime = glfwGetTime();
 
-        glClearColor(this->backgroundColor.getRedF(), this->backgroundColor.getGreenF(), this->backgroundColor.getBlueF(), this->backgroundColor.getAlphaF());
-        glClear(GL_COLOR_BUFFER_BIT);
-
         if (result == -1)
         {
             // Close the window
@@ -201,13 +203,16 @@ void Window::start()
             fps_currentTime = currentTime;
             FPS_count++;
 
-            // Render here
-            renderFunction();
+            
+            glClear(GL_COLOR_BUFFER_BIT);
 
-            // Swap the buffers
-            glfwSwapBuffers(glfw_window);
             // Poll for events
             glfwPollEvents();
+            // Render here
+            renderFunction();
+            // Swap the buffers
+            glfwSwapBuffers(glfw_window);
+
             if (fixedUpdateFunction)
                 result = fixedUpdateFunction(currentFPS, *this);
         }
@@ -497,10 +502,53 @@ bool Window::Events::getMouseButtonDown(MouseButton button)
 //______________________________________________________________________________________________________________________
 #pragma endregion EVENTS
 
+//______________________________________________________________________________________________________________________
+// KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS
+//______________________________________________________________________________________________________________________
+#pragma region KEYS
+
 Window::Keys::Keys(Window &window)
 {
     this->window = &window;
 }
+    
+//______________________________________________________________________________________________________________________
+// KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS  |  KEYS
+//______________________________________________________________________________________________________________________
+#pragma endregion KEYS
+
+//______________________________________________________________________________________________________________________
+// MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE
+//______________________________________________________________________________________________________________________
+#pragma region MOUSE
+
+Window::Mouse::Mouse(Window &window)
+{
+    this->window = &window;
+}
+
+Position Window::Mouse::getPosition()
+{
+    // Get the mouse position relative to the main window
+    double mouseX, mouseY;
+    glfwGetCursorPos(window->glfw_window, &mouseX, &mouseY);
+
+    // Create a Position object with the mouse position
+    Position windowPos(static_cast<int>(mouseX), static_cast<int>(mouseY));
+
+    return windowPos;
+}
+
+void Window::Mouse::setPosition(Position position)
+{
+    glfwSetCursorPos(window->glfw_window, position.x, position.y);
+}
+    
+//______________________________________________________________________________________________________________________
+// MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE
+//______________________________________________________________________________________________________________________
+#pragma endregion MOUSE
+
 
 void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
 {
@@ -539,6 +587,9 @@ void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
             }
         }
     }
+    logInfo("Window resized to %dx%d", width, height);
+    //glClear(GL_COLOR_BUFFER_BIT);
+    //glfwSwapBuffers(window);
     glViewport(0, 0, width, height);
 }
 

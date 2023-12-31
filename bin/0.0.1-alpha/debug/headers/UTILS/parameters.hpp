@@ -68,6 +68,12 @@ namespace utils
                 return Position((x - windowSize.Width / 2) / (windowSize.Width / 2),
                                 (y - windowSize.Height / 2) / (windowSize.Height / 2));
             }
+
+            Position getRealPosition(struct Size windowSize)
+            {
+                return Position(x, y + windowSize.Height);
+            }
+
             double x;
             double y;
             double z;
