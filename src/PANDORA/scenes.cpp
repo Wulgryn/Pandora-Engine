@@ -117,7 +117,7 @@ void scenes::load(SceneID id)
         logError("Window is null!");
     }
 
-    objects::getObjcectsList().clear();
+    objects::getObjectsList().clear();
 
     for (Object *object : scene->getObjectsList())
     {

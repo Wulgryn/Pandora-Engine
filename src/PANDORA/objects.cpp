@@ -7,7 +7,7 @@
 using namespace std;
 using namespace pandora;
 
-vector<Object *> &objects::getObjcectsList()
+vector<Object *> &objects::getObjectsList()
 {
     static vector<Object *> objects_list;
     return objects_list;
@@ -20,7 +20,7 @@ void objects::render()
         {
             object->Components().initComponenets();
         }
-    for (Object *object : getObjcectsList())
+    for (Object *object : getObjectsList())
     {
         // logInfo("Initializing object: " + object->name);
         object->Components().initComponenets();
@@ -29,7 +29,7 @@ void objects::render()
 
 Object::Object()
 {
-    objects::getObjcectsList().push_back(this);
+    objects::getObjectsList().push_back(this);
 }
 
 Object::Object(SceneID sceneID)
@@ -51,10 +51,10 @@ Object::Object(SceneID sceneID)
 
 Object::~Object()
 {
-    vector<pandora::Object *>::iterator it = find(objects::getObjcectsList().begin(), objects::getObjcectsList().end(), this);
-    if (it != objects::getObjcectsList().end())
+    vector<pandora::Object *>::iterator it = find(objects::getObjectsList().begin(), objects::getObjectsList().end(), this);
+    if (it != objects::getObjectsList().end())
     {
-        objects::getObjcectsList().erase(it);
+        objects::getObjectsList().erase(it);
     }
 }
 

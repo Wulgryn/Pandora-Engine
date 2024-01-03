@@ -69,10 +69,21 @@ namespace utils
                                 (y - windowSize.Height / 2) / (windowSize.Height / 2));
             }
 
+            /**
+             * Calculates the real position of a position relative to the window size.
+             * 
+             * @param windowSize The size of the window.
+             * @return The real position of the position relative to the window size.
+             */
             Position getRealPosition(struct Size windowSize)
             {
-                return Position(x, y + windowSize.Height);
+                return Position(x, windowSize.Height - y);
             }
+
+            //Position getCoordinatePosition(struct Size windowSize)
+            //{
+            //    return Position(x, windowSize.Height - y);
+            //}
 
             double x;
             double y;

@@ -30,13 +30,15 @@ void Input::keyCallback(GLFWwindow *window, int key, int scancode, int action, i
         input->anyKeyPressed--;
         prev = input->keys_list[key][1];
         input->keys_list[key][1] = true;
-        if(!prev)input->anyKeyDown++;
+        if (!prev)
+            input->anyKeyDown++;
         break;
     case GLFW_RELEASE:
         input->keys_list[key][0] = false;
         prev = input->keys_list[key][1];
         input->keys_list[key][1] = false;
-        if(prev)input->anyKeyDown--;
+        if (prev)
+            input->anyKeyDown--;
         input->keys_list[key][2] = true;
         input->anyKeyReleased++;
         break;
@@ -61,19 +63,32 @@ void Input::mouseButtonCallback(GLFWwindow *window, int button, int action, int 
             input->mouse_buttons_list[button][1] = true;
             input->anyMouseButtonDown++;
         }
+        //logInfo("mouse pressed");
         break;
     case GLFW_RELEASE:
-        //prev = input->mouse_buttons_list[button][0];
+        // prev = input->mouse_buttons_list[button][0];
         input->mouse_buttons_list[button][0] = false;
-        //if(prev)input->anyMouseButtonPressed--;
+        // if(prev)input->anyMouseButtonPressed--;
         prev = input->mouse_buttons_list[button][1];
         input->mouse_buttons_list[button][1] = false;
-        if(prev)input->anyMouseButtonDown--;
+        if (prev)
+            input->anyMouseButtonDown--;
         input->mouse_buttons_list[button][2] = true;
+        input->mouse_buttons_list[button][4] = false;
         input->anyMouseButtonReleased++;
         // input->mouse_buttons_list[button][3] = false;
         break;
     }
+}
+
+void Input::mouseScrollCallback(GLFWwindow *window, double xoffset, double yoffset)
+{
+    //logInfo("Scroll: " + to_string(yoffset) + " " + to_string(xoffset));
+    Input *input = static_cast<Input *>(glfwGetWindowUserPointer(window));
+    if (!input)
+        return;
+    input->mouse_scroll = yoffset;
+    //logInfo("Scroll: " + to_string(yoffset) + " " + to_string(xoffset));
 }
 
 Input::Input(Window *window)
@@ -82,6 +97,7 @@ Input::Input(Window *window)
     glfwSetWindowUserPointer(window->getWindow(), this);
     glfwSetKeyCallback(window->getWindow(), keyCallback);
     glfwSetMouseButtonCallback(window->getWindow(), mouseButtonCallback);
+    glfwSetScrollCallback(window->getWindow(), mouseScrollCallback);
     // auto sum = [](int a, int b) {
     //     return a + b;
     // };
@@ -190,9 +206,6 @@ void Input::registerMouseButton(int key)
 //______________________________________________________________________________________________________________________
 #pragma region KEY
 
-    
-
-
 bool Input::getKey(int key)
 {
     if (keys_list.size() <= key && key != -1)
@@ -202,12 +215,14 @@ bool Input::getKey(int key)
         logType();
         return false;
     }
-    if(key == -1) 
+    if (key == -1)
     {
-      return anyKey > 0;
+        return anyKey > 0;
     }
-    if(keys_list[key][0]) keys_list[key][3] = true;
-    if(keys_list[key][2]) keys_list[key][4] = true;
+    if (keys_list[key][0])
+        keys_list[key][3] = true;
+    if (keys_list[key][2])
+        keys_list[key][4] = true;
     return keys_list[key][0] || keys_list[key][1] || keys_list[key][2];
 }
 
@@ -220,14 +235,14 @@ bool Input::getKeyPressed(int key)
         logType();
         return false;
     }
-    //bool keys[] = {keys_list[key][0], keys_list[key][1], keys_list[key][2], keys_list[key][3]};
-    if(key == -1) 
+    // bool keys[] = {keys_list[key][0], keys_list[key][1], keys_list[key][2], keys_list[key][3]};
+    if (key == -1)
     {
-      return anyKeyPressed > 0;
+        return anyKeyPressed > 0;
     }
     keys_list[key][3] = true;
     bool b = keys_list[key][0];
-    //keys_list[key][0] = false;
+    // keys_list[key][0] = false;
     return b;
 }
 
@@ -240,9 +255,9 @@ bool Input::getKeyDown(int key)
         logType();
         return false;
     }
-    if(key == -1) 
+    if (key == -1)
     {
-      return anyKeyDown > 0;
+        return anyKeyDown > 0;
     }
     return keys_list[key][1];
 }
@@ -256,13 +271,13 @@ bool Input::getKeyReleased(int key)
         logType();
         return false;
     }
-    if(key == -1) 
+    if (key == -1)
     {
-      return anyKeyReleased > 0;
+        return anyKeyReleased > 0;
     }
     keys_list[key][4] = true;
     bool b = keys_list[key][2];
-    //keys_list[key][2] = false;
+    // keys_list[key][2] = false;
     return b;
 }
 
@@ -275,9 +290,9 @@ bool Input::getKeyUp(int key)
         logType();
         return false;
     }
-    if(key == -1) 
+    if (key == -1)
     {
-      return anyKeyUp > 0;
+        return anyKeyUp > 0;
     }
     return !keys_list[key][0] && !keys_list[key][1] && !keys_list[key][2];
 }
@@ -292,7 +307,6 @@ bool Input::getKeyUp(int key)
 //______________________________________________________________________________________________________________________
 #pragma region MOUSE
 
-    
 bool Input::getMouseButtonDown(int button)
 {
     if (mouse_buttons_list.size() <= button && button != -1)
@@ -302,11 +316,11 @@ bool Input::getMouseButtonDown(int button)
         logType();
         return false;
     }
-    if(button == -1) 
+    if (button == -1)
     {
-      return anyMouseButtonDown > 0;
+        return anyMouseButtonDown > 0;
     }
-    return mouse_buttons_list[button][1];
+    return mouse_buttons_list[button][0];
 }
 
 bool Input::getMouseButton(int button)
@@ -318,13 +332,14 @@ bool Input::getMouseButton(int button)
         logType();
         return false;
     }
-    if(button == -1) 
+    if (button == -1)
     {
-      return anyMouseButton > 0;
+        return anyMouseButton > 0;
     }
-    //bool btns[5] = {mouse_buttons_list[button][0], mouse_buttons_list[button][1], mouse_buttons_list[button][2], mouse_buttons_list[button][3], mouse_buttons_list[button][4]};
-    //if(mouse_buttons_list[button][0]) mouse_buttons_list[button][3] = true;
-    if(mouse_buttons_list[button][2]) mouse_buttons_list[button][4] = true;
+    // bool btns[5] = {mouse_buttons_list[button][0], mouse_buttons_list[button][1], mouse_buttons_list[button][2], mouse_buttons_list[button][3], mouse_buttons_list[button][4]};
+    // if(mouse_buttons_list[button][0]) mouse_buttons_list[button][3] = true;
+    if (mouse_buttons_list[button][2])
+        mouse_buttons_list[button][4] = true;
     return mouse_buttons_list[button][0] || mouse_buttons_list[button][1] || mouse_buttons_list[button][2];
 }
 
@@ -337,18 +352,21 @@ bool Input::getMouseButtonReleased(int button)
         logType();
         return false;
     }
-    if(button == -1) 
+    if (button == -1)
     {
-      return anyMouseButtonReleased > 0;
+        return anyMouseButtonReleased > 0;
     }
     mouse_buttons_list[button][4] = true;
+    //if(mouse_buttons_list[button][2])
+    //{
+    //    bool btns[5] = {mouse_buttons_list[button][0], mouse_buttons_list[button][1], mouse_buttons_list[button][2], mouse_buttons_list[button][3], mouse_buttons_list[button][4]};
+    //}
     return mouse_buttons_list[button][2];
 }
 //______________________________________________________________________________________________________________________
 // MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE  |  MOUSE
 //______________________________________________________________________________________________________________________
 #pragma endregion MOUSE
-
 
 void Input::resetInputs()
 {
@@ -360,15 +378,18 @@ void Input::resetInputs()
             continue;
         pressed = keys_list[i][0];
         down = keys_list[i][1];
-        if(!pressed && !down) anyKeyUp++;
-        if(keys_list[i][0] && keys_list[i][3]) keys_list[i][0] = false;
-        if(keys_list[i][2] && keys_list[i][4]) keys_list[i][2] = false;
+        if (!pressed && !down)
+            anyKeyUp++;
+        if (keys_list[i][0] && keys_list[i][3])
+            keys_list[i][0] = false;
+        if (keys_list[i][2] && keys_list[i][4])
+            keys_list[i][2] = false;
         keys_list[i][3] = false;
         keys_list[i][4] = false;
     }
-    //anyKey = 0;
+    // anyKey = 0;
     anyKeyPressed = 0;
-    //anyKeyDown = 0;
+    // anyKeyDown = 0;
     anyKeyReleased = 0;
     bool pressedMouse, downMouse;
     for (int i = 0; i < mouse_buttons_list.size(); i++)
@@ -377,11 +398,18 @@ void Input::resetInputs()
             continue;
         pressedMouse = mouse_buttons_list[i][0];
         downMouse = mouse_buttons_list[i][1];
-        if(mouse_buttons_list[i][0] && mouse_buttons_list[i][3]) mouse_buttons_list[i][0] = false;
-        if(mouse_buttons_list[i][2] && mouse_buttons_list[i][4]) mouse_buttons_list[i][2] = false;
-        mouse_buttons_list[i][3] = false;
+
+        if (mouse_buttons_list[i][0] && mouse_buttons_list[i][3]) mouse_buttons_list[i][0] = false;
+        mouse_buttons_list[i][2] = false;
         mouse_buttons_list[i][4] = false;
+        mouse_buttons_list[i][3] = false;
     }
-    //anyMouseButton = 0;
+    // anyMouseButton = 0;
     anyMouseButtonReleased = 0;
+    mouse_scroll = 0;
+}
+
+double Input::getMouseScroll()
+{
+    return mouse_scroll;
 }

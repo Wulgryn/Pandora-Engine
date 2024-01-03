@@ -26,11 +26,11 @@ string shaders::defaultVertexShader2D()
         #version 330 core
         layout (location = 0) in vec3 aPos;
 
-        uniform vec2 position;
+        uniform vec3 position;
 
         void main()
         {
-           gl_Position = vec4(aPos.x + position.x, aPos.y + position.y, aPos.z, 1.0);
+           gl_Position = vec4(aPos.x + position.x, aPos.y + position.y, aPos.z + position.z, 1.0);
         }
     )";
 }
@@ -63,7 +63,7 @@ string shaders::textureVertexShader2D()
 
         void main()
         {
-           gl_Position = vec4(aPos.x + position.x, aPos.y + position.y, aPos.z, 1.0);
+           gl_Position = vec4(aPos.x + position.x, aPos.y + position.y, aPos.z + position.z, 1.0);
            TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
         }
     )";
@@ -137,7 +137,7 @@ Shader::Shader()
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
@@ -192,7 +192,7 @@ Shader::Shader(string vertexShaderSource, string fragmentShaderSource)
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
@@ -231,16 +231,28 @@ static void defaultSettings(Shader *shader, Components *components)
         Position actualPos = Position(pos.x + size.Width / 2, pos.y + size.Height / 2);
         actualPos = actualPos.toWindowRate(winSize);
         shader->setUniform(ShaderUniformType::POSITION, actualPos.x, actualPos.y);
+        size = size.toWindowRate(winSize);
+        std::vector<float> vertices = {
+            // positions                                // texture coords
+            static_cast<float>(-size.Width), static_cast<float>(-size.Height), 0.0f, 0.0f, 0.0f, // bottom left
+            static_cast<float>(size.Width), static_cast<float>(-size.Height), 0.0f, 1.0f, 0.0f,  // bottom right
+            static_cast<float>(size.Width), static_cast<float>(size.Height), 0.0f, 1.0f, 1.0f,   // top right
+            static_cast<float>(-size.Width), static_cast<float>(size.Height), 0.0f, 0.0f, 1.0f   // top left
+        };
+        components->get<Shader>()->setVerticies(vertices);
         //logInfo("Position: " + to_string(actualPos.x) + ", " + to_string(actualPos.y));
     }
     Image *image = components->get<Image>();
+    if(!image->isVisible) return;
     if(image) shader->setUniform(ShaderUniformType::COLOR, image->color.getRedF(), image->color.getGreenF(), image->color.getBlueF());
     if(image && image->texture != -1)
     {
+        glEnable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, image->texture);
         glDisable(GL_BLEND);
+        glDisable(GL_DEPTH_TEST);
     }
 }
 
@@ -291,7 +303,7 @@ void Shader::setUniform(ShaderUniformType type, float f1, float f2, float f3, fl
 {
     switch (type) {
     case ShaderUniformType::POSITION:
-        setUniform2f("position", f1, f2);
+        setUniform3f("position", f1, f2, f3);
         break;
     case ShaderUniformType::COLOR:
         setUniform3f("color", f1, f2, f3);
@@ -359,7 +371,7 @@ void Shader::setVerticies(std::vector<float> vertices)
 {
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertices.size(), vertices.data() ,GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertices.size(), vertices.data() ,GL_DYNAMIC_DRAW);
 
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, (vertices.size()/4) * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);

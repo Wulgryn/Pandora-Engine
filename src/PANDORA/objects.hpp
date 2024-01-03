@@ -28,7 +28,7 @@ namespace pandora
 
     namespace objects
     {
-        DLL std::vector<Object *> &getObjcectsList();
+        DLL std::vector<Object *> &getObjectsList();
         DLL void render();
         DLL void add(Object *object);
     } // namespace objects

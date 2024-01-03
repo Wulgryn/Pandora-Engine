@@ -67,6 +67,24 @@
 },
 {
   "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\label.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\label.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\label.cpp",
+  "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\label.cpp.obj"
+},
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\progress_bar.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\progress_bar.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\progress_bar.cpp",
+  "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\progress_bar.cpp.obj"
+},
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp",
+  "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp.obj"
+},
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
   "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\ui_elements.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\ui_elements.cpp\"",
   "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\ui_elements.cpp",
   "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\ui_elements.cpp.obj"

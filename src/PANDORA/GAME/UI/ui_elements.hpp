@@ -9,8 +9,10 @@ namespace pandora
     {
     private:
     public:
+        UIElement* this_class = this;
         Object ui_object;
         UIElement();
+        virtual Components* getComponents();
     };
 
 } // namespace pandora

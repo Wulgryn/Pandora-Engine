@@ -9,5 +9,7 @@
 
 #include "GAME/UI/ui_elements.hpp"
 #include "GAME/UI/button.hpp"
+#include "GAME/UI/progress_bar.hpp"
+#include "GAME/UI/scrollbar.hpp"
 
 using namespace pandora;

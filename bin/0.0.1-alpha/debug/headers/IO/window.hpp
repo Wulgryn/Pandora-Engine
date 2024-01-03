@@ -279,6 +279,8 @@ namespace io
             bool getMouseButton(MouseButton button);
             bool getMouseButtonReleased(MouseButton button);
             bool getMouseButtonDown(MouseButton button);
+
+            double getMouseScroll();
         };
         Events events{*this};
 

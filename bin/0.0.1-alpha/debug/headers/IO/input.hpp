@@ -18,8 +18,10 @@ namespace io
         Window *window;
         static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
         static void mouseButtonCallback(GLFWwindow *window, int button, int action, int mods);
+        static void mouseScrollCallback(GLFWwindow *window, double xoffset, double yoffset);
         std::vector<bool*> mouse_buttons_list;
     public:
+        double mouse_scroll = 0.0;
         int anyKey = 0;
         int anyKeyPressed = 0;
         int anyKeyDown = 0;
@@ -46,6 +48,8 @@ namespace io
         bool getMouseButtonDown(int button);
         bool getMouseButton(int button);
         bool getMouseButtonReleased(int button);
+
+        double getMouseScroll();
 
         void resetInputs();
     };

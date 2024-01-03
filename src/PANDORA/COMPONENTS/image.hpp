@@ -8,6 +8,7 @@ namespace pandora
     class DLL Image : public Component
     {
     public:
+        bool isVisible = true;
         utils::Color color;
         TextureID texture = -1;
         Image();

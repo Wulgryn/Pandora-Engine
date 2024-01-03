@@ -15,8 +15,6 @@ namespace pandora
     public:
         Button();
 
-        Components* getComponents();
-
         void setOnClick(void (*onClick)());
         void setOnMouseDown(void (*onMouseDown)());
         void setOnHover(void (*onHover)());

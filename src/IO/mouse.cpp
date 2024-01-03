@@ -4,7 +4,7 @@
 using namespace io;
 using namespace utils;
 
-Position mouse::getWindowPos()
+Position mouse::getWindowPosition()
 {
     // Get the mouse position relative to the main window
     double mouseX, mouseY;
@@ -16,7 +16,7 @@ Position mouse::getWindowPos()
     return windowPos;
 }
 
-Position mouse::getScreenPos()
+Position mouse::getScreenPosition()
 {
     // Get the mouse position relative to the screen
     double mouseX, mouseY;
@@ -43,6 +43,11 @@ bool mouse::getMouseButtonReleased(MouseButton button)
 bool mouse::getMouseButtonDown(MouseButton button)
 {
     return pandora::mainWindow::get()->events.getMouseButtonDown(button);
+}
+
+double mouse::getMouseScroll()
+{
+    return pandora::mainWindow::get()->events.getMouseScroll();
 }
 
 void mouse::setScreenPosition(Position pos)

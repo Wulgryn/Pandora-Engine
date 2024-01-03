@@ -225,7 +225,7 @@ void Window::start()
 
             if (updateFunction && !updateThread.joinable())
             {
-                updateThread = thread(updateThreadCallback, updateFunction, currentFPS, ref(*this), ref(result));
+                updateThread = thread(updateThreadCallback, updateFunction, currentTPS, ref(*this), ref(result));
                 updateThread.detach();
             }
         }
@@ -497,6 +497,11 @@ bool Window::Events::getMouseButtonDown(MouseButton button)
     return window->input->getMouseButtonDown(static_cast<int>(button));
 }
 
+double Window::Events::getMouseScroll()
+{
+    return window->input->getMouseScroll();
+}
+
 //______________________________________________________________________________________________________________________
 // EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS  |  EVENTS
 //______________________________________________________________________________________________________________________
@@ -554,7 +559,7 @@ void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
 {
     Input *input = static_cast<Input *>(glfwGetWindowUserPointer(window));
 
-    for (pandora::Object *object : pandora::objects::getObjcectsList())
+    for (pandora::Object *object : pandora::objects::getObjectsList())
     {
         if (object->Components().has<Transform>() && !object->followWindowResize)
         {
@@ -587,7 +592,7 @@ void window::defaultResizeCallback(GLFWwindow *window, int width, int height)
             }
         }
     }
-    logInfo("Window resized to %dx%d", width, height);
+    //logInfo("Window resized to %dx%d", width, height);
     //glClear(GL_COLOR_BUFFER_BIT);
     //glfwSwapBuffers(window);
     glViewport(0, 0, width, height);

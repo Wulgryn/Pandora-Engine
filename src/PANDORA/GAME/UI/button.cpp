@@ -1,9 +1,9 @@
 #include "button.hpp"
-#include "PANDORA/COMPONENTS/image.hpp"
-#include "UTILS/random.hpp"
 #include "IO/mouse.hpp"
+#include "PANDORA/COMPONENTS/image.hpp"
 #include "PANDORA/COMPONENTS/transform.hpp"
 #include "PANDORA/mainWindow.hpp"
+#include "CONSOLE/fancyLog.hpp"
 
 using namespace pandora;
 using namespace utils;
@@ -11,12 +11,7 @@ using namespace io;
 
 Button::Button() : UIElement()
 {
-    ui_object.Components().get<Image>()->color = {random::getByte(0,255),random::getByte(0,255),random::getByte(0,255)};
-}
-
-Components* Button::getComponents()
-{
-    return &ui_object.Components();
+    
 }
 
 void Button::setOnClick(void (*onClick)())
@@ -41,14 +36,15 @@ void Button::setOnHoverExit(void (*onHoverExit)())
 
 void Button::init(Components* components)
 {
-    Position  mousePos = mouse::getWindowPos();
+    Position  mousePos = mouse::getWindowPosition();
     Position pos = components->get<Transform>()->position.getRealPosition(mainWindow::get()->parameters.getSize());
     Size size = components->get<Transform>()->size;
-    if(pos.x < mousePos.x && pos.x + size.Width > mousePos.x && pos.y - size.Height < mousePos.y && pos.y > mousePos.y)
+    if(pos.x < mousePos.x && pos.x + size.Width > mousePos.x && pos.y - size.Height < mousePos.y && pos.y > mousePos.y )
     {
         isOnHover = true;
         if(onMouseDown != nullptr && mouse::getMouseButton(MouseButton::LEFT)) onMouseDown();
-        if(onClick != nullptr && mouse::getMouseButtonReleased(MouseButton::LEFT)) onClick();
+        bool isMouseReleased = mouse::getMouseButtonReleased(MouseButton::LEFT);
+        if(onClick != nullptr && isMouseReleased) onClick();
         if(onHover != nullptr) onHover();
 
     }
@@ -57,4 +53,6 @@ void Button::init(Components* components)
         isOnHover = false;
         onHoverExit();
     }
+    //logInfo("mousePos: " + std::to_string(mousePos.x) + " " + std::to_string(mousePos.y) + " pos: " + std::to_string(pos.x) + " " + std::to_string(pos.y) + " size: " + std::to_string(size.Width) + " " + std::to_string(size.Height));
+    
 }

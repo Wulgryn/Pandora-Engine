@@ -6,7 +6,12 @@
 #include "UTILS/parameters.hpp"
 using namespace io;
 
-ButtonObject btn;
+ProgressBarObject progressBar;
+ButtonObject btn_1;
+ButtonObject btn_2;
+ScrollbarObject scrollbar;
+Object obj;
+
 
 int setup()
 {
@@ -16,11 +21,48 @@ int setup()
 int start(Window& window)
 {
     window.setBackgroundColor(utils::Color(0.2f, 0.2f, 0.2f, 1.0f));
+
+    progressBar = new ProgressBar();
+    progressBar->maximum = 200;
+    progressBar->setPercentage(28.12345);
+    progressBar->setOnProgressChange([](){
+        logInfo("Progress: " + std::to_string(progressBar->value) + " " + std::to_string(progressBar->getPercentage()));
+    });
+    btn_1 = new Button();
+    btn_1->setOnClick([](){
+        progressBar->value += 10;
+    });
+    btn_1->getComponents()->get<Transform>()->position.y = 300;
+    btn_1->getComponents()->get<Transform>()->size = {100, 100};
+    btn_2 = new Button();
+    btn_2->setOnMouseDown([](){
+        progressBar->stepDown(); 
+    });
+    btn_2->getComponents()->get<Transform>()->size = {100, 100};
+
+    obj.Components().add<Transform>()->size = {50, 50};
+    obj.Components().get<Transform>()->position.x = 400;
+    obj.Components().add<Image>();
+    obj.Components().add<Shader>();
+
+
+    scrollbar = new Scrollbar();
+
+    scrollbar->bindObject(&obj);
+
+    scrollbar->maximum = 600;
+    scrollbar->step = 10;
+    scrollbar->scroll_speed = 1;
     return 0;
 }
 
 int update(int fps, Window& window)
 {
+    //logInfo("FPS: " + std::to_string(fps));
+    //if(window.events.getMouseButtonReleased(MouseButton::LEFT))
+    //{
+    //    logInfo("Mouse released");
+    //}
     return 0;
 }
 
@@ -29,9 +71,9 @@ int main(int argc, char const *argv[])
 {
     PandoraEngine::init();
     Window window(800, 600, "Pandora");
-    //window.setBackgroundColor(utils::Color(0.2f, 0.2f, 0.2f, 1.0f));
     window.setSetupFunction(setup);
     window.setStartFunction(start);
+    window.setTargetTPS(30);
     window.setUpdateFunction(update);
 
     window.start();

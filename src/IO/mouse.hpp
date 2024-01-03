@@ -21,12 +21,14 @@ namespace io
     };
     namespace mouse
     {
-        DLL utils::Position getWindowPos();
-        DLL utils::Position getScreenPos();
+        DLL utils::Position getWindowPosition();
+        DLL utils::Position getScreenPosition();
 
-        bool getMouseButton(MouseButton button);
-        bool getMouseButtonReleased(MouseButton button);
-        bool getMouseButtonDown(MouseButton button);
+        DLL bool getMouseButton(MouseButton button);
+        DLL bool getMouseButtonReleased(MouseButton button);
+        DLL bool getMouseButtonDown(MouseButton button);
+
+        DLL double getMouseScroll();
 
         DLL void setScreenPosition(utils::Position pos);
         DLL void setWindowPosition(utils::Position pos);
