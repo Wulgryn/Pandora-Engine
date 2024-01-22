@@ -19,7 +19,7 @@ This is my game engine. <p> It is recommended to check the other branches, becau
 
 <br>
 
-## [how to use](#how-to-use)
+## How to use
 ### *!Experimental!* 
 
 Coming soon...
