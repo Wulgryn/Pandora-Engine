@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.5)
 #
 set(project_name "Project")
 set(project_version "0.0.1")
+set(project_type "APP")
+set(copy_headers "False")
 
 file(GLOB cfg_files "${CMAKE_SOURCE_DIR}/*.cfg")
 
@@ -11,28 +13,43 @@ if(cfg_files)
     list(GET cfg_files 0 cfg_file)
     file(STRINGS ${cfg_file} config_lines)
 
-    list(GET config_lines 0 first_line)
-    # "name=" utáni rész kiolvasása
-    string(REGEX MATCH "name=(.*)" name_match ${first_line})
+	foreach(line IN LISTS config_lines)
+        string(REGEX MATCH "name=(.*)" name_match ${line})
 
-    # A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
-    if(name_match)
-        set(project_name "${CMAKE_MATCH_1}")
-        file(RENAME ${cfg_file} ${project_name}.cfg)
-    endif()
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(name_match)
+			string(REPLACE " " "_" modified_project_name ${CMAKE_MATCH_1})
+			set(project_name ${modified_project_name})
+			file(RENAME ${cfg_file} ${project_name}.cfg)
+		endif()
+		
+		string(REGEX MATCH "version=(.*)" version_match ${line})
 
-    list(GET config_lines 1 first_line)
-    # "name=" utáni rész kiolvasása
-    string(REGEX MATCH "version=(.*)" version_match ${first_line})
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(version_match)
+			set(project_version "${CMAKE_MATCH_1}")
+		endif()
 
-    # A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
-    if(version_match)
-        set(project_version "${CMAKE_MATCH_1}")
-    endif()
+        string(REGEX MATCH "type=(.*)" type_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(type_match)
+			set(project_type "${CMAKE_MATCH_1}")
+		endif()
+		
+		string(REGEX MATCH "copy_headers=(.*)" copy_headers_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(copy_headers_match)
+			set(copy_headers "${CMAKE_MATCH_1}")
+		endif()
+    endforeach()
 
     # Kiírjuk az eredményeket a konzolon
     message(STATUS "Project Name: ${project_name}")
     message(STATUS "Project Version: ${project_version}")
+    message(STATUS "Project Type: ${project_type}")
+	message(STATUS "Copy Headers: ${copy_headers}")
 endif()
 
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/.vscode")
@@ -57,8 +74,20 @@ get_filename_component(current_dir_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
 
 if(NOT EXISTS ${CMAKE_SOURCE_DIR}/${project_name}.cfg)
-    set(project_name ${current_dir_name})
-    file(WRITE ${CMAKE_SOURCE_DIR}/${project_name}.cfg "name=${project_name}\nversion=0.0.1\nauthor=none")
+    string(REPLACE " " "_" modified_project_name ${current_dir_name})
+    set(project_name ${modified_project_name})
+    file(WRITE ${CMAKE_SOURCE_DIR}/${project_name}.cfg 
+    "#Without spaces\n"
+    "name=${project_name}\n"
+    "version=0.0.1\n"
+    "#APP / STATIC_LIB / SHARED_LIB\n"
+	"#APP: .exe\n"
+	"#STATIC_LIB: .a\n"
+	"#SHARED_LIB: .a/.dll for runtime load\n"
+    "type=APP\n"
+	"#True / False\n"
+	"copy_headers=False\n"
+    "author=none")
 endif()
 
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json")
@@ -152,8 +181,23 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/de
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug)
 add_compile_definitions(DEBUG)
 
+file(GLOB_RECURSE HEADERS 
+    ${CMAKE_SOURCE_DIR}/src/**.hpp
+    ${CMAKE_SOURCE_DIR}/src/**.h
+)
+
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     message("Debug build.")
+	
+	if(copy_headers MATCHES "True") 
+		file(REMOVE_RECURSE "${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/headers/${project_name}")
+		foreach(HEADER ${HEADERS})
+			get_filename_component(HEADER_DIR ${HEADER} DIRECTORY)
+			string(REPLACE "${CMAKE_SOURCE_DIR}/src" "" HEADER_DIR ${HEADER_DIR})
+			set(HEADER_DESTINATION "${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/headers/${project_name}/${HEADER_DIR}")
+			file(COPY ${HEADER} DESTINATION ${HEADER_DESTINATION})
+		endforeach()
+	endif()
 elseif(CMAKE_BUILD_TYPE MATCHES Release)
     message("Release build.")
     remove_definitions(DEBUG)
@@ -161,6 +205,16 @@ elseif(CMAKE_BUILD_TYPE MATCHES Release)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release)
+	
+	if(copy_headers MATCHES "True")
+		file(REMOVE_RECURSE "${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/headers/${project_name}")
+		foreach(HEADER ${HEADERS})
+			get_filename_component(HEADER_DIR ${HEADER} DIRECTORY)
+			string(REPLACE "${CMAKE_SOURCE_DIR}/src" "" HEADER_DIR ${HEADER_DIR})
+			set(HEADER_DESTINATION "${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/headers/${project_name}/${HEADER_DIR}")
+			file(COPY ${HEADER} DESTINATION ${HEADER_DESTINATION})
+		endforeach()
+	endif()
 endif(CMAKE_BUILD_TYPE MATCHES Debug)
 
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/launch.json")
@@ -220,8 +274,8 @@ include(CPack)
 
 
 file(GLOB_RECURSE SOURCES 
-    ${CMAKE_SOURCE_DIR}/src/*.[hc]pp
-    ${CMAKE_SOURCE_DIR}/src/*.[hc]
+    ${CMAKE_SOURCE_DIR}/src/**.[hc]pp
+    ${CMAKE_SOURCE_DIR}/src/**.[hc]
 )
 
 
@@ -241,13 +295,57 @@ endforeach()
 
 
 include_directories("externals/headers")
+include_directories("src")
+
+message(STATUS "SOURCES")
+foreach(SOURCE ${SOURCES})
+    message(STATUS "SOURCE: ${SOURCE}")
+    
+endforeach(SOURCE ${SOURCES})
+
+message(STATUS "LIBS")
+foreach(LIB ${LIBS})
+    message(STATUS "LIB: ${LIB}")
+    
+endforeach(LIB ${SOURCES})
+
+message(STATUS "DLLS")
+foreach(DLL ${DLLS})
+    message(STATUS "DLL: ${DLL}")
+endforeach(DLL ${DLLS})
 
 
-# if(SOURCES)
-#     add_executable(${PROJECT_NAME} ${SOURCES} ${DLLS})
-#     target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
-#     target_link_libraries(${PROJECT_NAME} ${LIBS})
-#     target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
-#     set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
-# endif()
 
+if(SOURCES)
+    if(project_type MATCHES "APP")
+        add_executable(${PROJECT_NAME} ${SOURCES} ${DLLS})
+        target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
+        target_link_libraries(${PROJECT_NAME} ${LIBS})
+        target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+        set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            OUTPUT_NAME "${PROJECT_NAME}"
+            PREFIX ""
+        )
+    elseif(project_type MATCHES "SHARED_LIB")
+        add_library(${PROJECT_NAME} SHARED ${SOURCES})
+        target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
+        target_link_libraries(${PROJECT_NAME} ${LIBS})
+        target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+        set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            OUTPUT_NAME "${PROJECT_NAME}"
+            PREFIX ""
+        )
+	elseif(project_type MATCHES "STATIC_LIB")
+        add_library(${PROJECT_NAME} STATIC ${SOURCES})
+        target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
+        target_link_libraries(${PROJECT_NAME} ${LIBS})
+        target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+        set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
+        set_target_properties(${PROJECT_NAME} PROPERTIES
+            OUTPUT_NAME "${PROJECT_NAME}"
+            PREFIX ""
+        )
+    endif()
+endif()

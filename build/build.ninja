@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Pandora Engine
+# Project: Pandora_Engine
 # Configurations: Debug
 # =============================================================================
 
@@ -207,6 +207,47 @@ build ContinuousMemCheck: phony CMakeFiles/ContinuousMemCheck
 # Utility command for ContinuousSubmit
 
 build ContinuousSubmit: phony CMakeFiles/ContinuousSubmit
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target Pandora_Engine
+
+
+#############################################
+# Order-only phony target for Pandora_Engine
+
+build cmake_object_order_depends_target_Pandora_Engine: phony || CMakeFiles/Pandora_Engine.dir
+
+build CMakeFiles/Pandora_Engine.dir/src/Core/PandoraCore.cpp.obj: CXX_COMPILER__Pandora_Engine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/Core/PandoraCore.cpp || cmake_object_order_depends_target_Pandora_Engine
+  DEFINES = -DDEBUG
+  DEP_FILE = CMakeFiles\Pandora_Engine.dir\src\Core\PandoraCore.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
+  OBJECT_DIR = CMakeFiles\Pandora_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pandora_Engine.dir\src\Core
+
+build CMakeFiles/Pandora_Engine.dir/src/Debug/DebugConsole.cpp.obj: CXX_COMPILER__Pandora_Engine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/Debug/DebugConsole.cpp || cmake_object_order_depends_target_Pandora_Engine
+  DEFINES = -DDEBUG
+  DEP_FILE = CMakeFiles\Pandora_Engine.dir\src\Debug\DebugConsole.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
+  OBJECT_DIR = CMakeFiles\Pandora_Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\Pandora_Engine.dir\src\Debug
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target Pandora_Engine
+
+
+#############################################
+# Link the static library F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\lib\Pandora_Engine.a
+
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a: CXX_STATIC_LIBRARY_LINKER__Pandora_Engine_Debug CMakeFiles/Pandora_Engine.dir/src/Core/PandoraCore.cpp.obj CMakeFiles/Pandora_Engine.dir/src/Debug/DebugConsole.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles\Pandora_Engine.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\lib\Pandora_Engine.a"
+  TARGET_PDB = Pandora_Engine.a.dbg
 
 
 #############################################
@@ -494,6 +535,10 @@ build CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}CMakeFiles/ContinuousS
 # =============================================================================
 # Target aliases.
 
+build Pandora_Engine: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a
+
+build Pandora_Engine.a: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a
+
 # =============================================================================
 # Folder targets.
 
@@ -502,7 +547,7 @@ build CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}CMakeFiles/ContinuousS
 #############################################
 # Folder: F:/C++ Engine/Pandora Engine/build
 
-build all: phony
+build all: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a
 
 # =============================================================================
 # Built-in targets

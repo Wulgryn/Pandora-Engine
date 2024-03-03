@@ -1,0 +1,14 @@
+[
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DDEBUG -I\"F:/C++ Engine/Pandora Engine/externals/headers\" -I\"F:/C++ Engine/Pandora Engine/src\" -g -o CMakeFiles\\Pandora_Engine.dir\\src\\Core\\PandoraCore.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\Core\\PandoraCore.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\Core\\PandoraCore.cpp",
+  "output": "CMakeFiles\\Pandora_Engine.dir\\src\\Core\\PandoraCore.cpp.obj"
+},
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DDEBUG -I\"F:/C++ Engine/Pandora Engine/externals/headers\" -I\"F:/C++ Engine/Pandora Engine/src\" -g -o CMakeFiles\\Pandora_Engine.dir\\src\\Debug\\DebugConsole.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\Debug\\DebugConsole.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\Debug\\DebugConsole.cpp",
+  "output": "CMakeFiles\\Pandora_Engine.dir\\src\\Debug\\DebugConsole.cpp.obj"
+}
+]

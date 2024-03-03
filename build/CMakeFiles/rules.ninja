@@ -6,10 +6,29 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: Pandora Engine
+# Project: Pandora_Engine
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__Pandora_Engine_unscanned_Debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = ${LAUNCHER}${CODE_CHECK}G:\msys2\mingw64\bin\g++.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX static library.
+
+rule CXX_STATIC_LIBRARY_LINKER__Pandora_Engine_Debug
+  command = cmd.exe /C "$PRE_LINK && G:\msys2\mingw64\bin\cmake.exe -E rm -f $TARGET_FILE && G:\msys2\mingw64\bin\ar.exe qc $TARGET_FILE $LINK_FLAGS $in && G:\msys2\mingw64\bin\ranlib.exe $TARGET_FILE && $POST_BUILD"
+  description = Linking CXX static library $TARGET_FILE
+  restat = $RESTAT
+
 
 #############################################
 # Rule for running custom commands.

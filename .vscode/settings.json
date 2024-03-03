@@ -10,4 +10,10 @@
     },
     "cmake.configureOnEdit": true,
     "cmake.buildDirectory": "${workspaceFolder}/build",
+    "files.associations": {
+        "*.fragmentShader": "glsl",
+        "*.vertexShader": "glsl",
+        "chrono": "cpp",
+        "iostream": "cpp"
+    },
 }

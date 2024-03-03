@@ -156,16 +156,16 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Pandora Engine
+CMAKE_PROJECT_NAME:STATIC=Pandora_Engine
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION:STATIC=0.0.1
+CMAKE_PROJECT_VERSION:STATIC=0.1.1
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_MAJOR:STATIC=0
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MINOR:STATIC=0
+CMAKE_PROJECT_VERSION_MINOR:STATIC=1
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION_PATCH:STATIC=1
@@ -320,8 +320,35 @@ Pandora Engine_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Pandora Engine_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
 
+//Value Computed by CMake
+Pandora_Engine_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
+
+//Value Computed by CMake
+Pandora_Engine_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Pandora_Engine_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
+
+//Value Computed by CMake
+Project_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
+
+//Value Computed by CMake
+Project_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Project_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
+
 //Name of the computer/site where compile is being run
 SITE:STRING=DESKTOP-5LIDP28
+
+//Value Computed by CMake
+modified_project_name_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
+
+//Value Computed by CMake
+modified_project_name_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+modified_project_name_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
 
 
 ########################

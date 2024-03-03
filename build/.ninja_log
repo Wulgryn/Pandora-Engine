@@ -1,0 +1,7 @@
+# ninja log v5
+8	65	7312066755562415	CMakeFiles/Pandora_Engine.dir/src/Core/PandoraCore.cpp.obj	b618c5cca4cd22f2
+12	418	7312066759080207	CMakeFiles/Pandora_Engine.dir/src/Debug/DebugConsole.cpp.obj	c16f221a8d1fb9e7
+14	350	7312066758407004	CMakeFiles/Pandora_Engine.dir/src/main.cpp.obj	c068964992d71c64
+418	487	7312066759790604	F:/C++ Engine/Pandora Engine/bin/0.1.1/debug/lib/Pandora_Engine.a	8fc3a550ebd3bf85
+9	16	0	clean	127299f2b0d8dd65
+10	284	7312068370923438	build.ninja	756e0b481b22334d
