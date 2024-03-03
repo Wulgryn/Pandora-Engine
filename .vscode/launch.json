@@ -1,20 +1,19 @@
 {
-    
     "configurations": [
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "windows": {
-                "program": "${command:cmake.launchTargetDirectory}/Pandora.exe",
+                "program": "F:/C++ Engine/Pandora Engine/bin/0.0.1/debug/Pandora Engine.exe",
             },
             "linux": {
-                "program": "${command:cmake.launchTargetDirectory}/Pandora",
+                "program": "F:/C++ Engine/Pandora Engine/bin/0.0.1/debug/Pandora Engine",
             },
             "osx": {
-                "program": "${command:cmake.launchTargetDirectory}/Pandora",
+                "program": "F:/C++ Engine/Pandora Engine/bin/0.0.1/debug/Pandora Engine",
             },
-            "program": "${command:cmake.launchTargetDirectory}/Pandora.exe",
+            "program": "F:/C++ Engine/Pandora Engine/bin/0.0.1/debug/Pandora Engine.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -37,4 +36,4 @@
             "preLaunchTask": "cmake"
         }
     ]
-}
+    }

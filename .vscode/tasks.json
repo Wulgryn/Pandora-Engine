@@ -8,7 +8,7 @@
                 "command": "cmake --build \\\"${workspaceFolder}/build\\\" --config Debug --target all -- -j 4",
             },
             "linux": {
-                "command": "cmake --build \"${workspaceFolder}/build\" --config Debug --target all -- -j 4",
+                "command": "cmake --build \\\"${workspaceFolder}/build\\\" --config Debug --target all -- -j 4",
             },
             "command": "cmake --build \\\"${workspaceFolder}/build\\\" --config Debug --target all -- -j 4",
             "options": {
@@ -25,11 +25,11 @@
         {
             "label": "cmake: configure",
             "type": "shell",
-            "command": "cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug",
+            "command": "cmake -S . -B \\\"build\\\" -G Ninja -DCMAKE_BUILD_TYPE=Debug",
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
         }
     ]
-}
+    }

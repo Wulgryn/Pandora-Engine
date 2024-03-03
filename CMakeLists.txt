@@ -1,156 +1,253 @@
-cmake_minimum_required(VERSION 3.21)
-project(PandoraEngine VERSION 0.0.1 LANGUAGES C CXX)
-set(PROJECT_VERSION 0.0.1-alpha)
-set(CMAKE_VERBOSE_MAKEFILE ON)
+cmake_minimum_required(VERSION 3.5)
+#------
+# SETUP
+#
+set(project_name "Project")
+set(project_version "0.0.1")
 
+file(GLOB cfg_files "${CMAKE_SOURCE_DIR}/*.cfg")
+
+if(cfg_files)
+    list(GET cfg_files 0 cfg_file)
+    file(STRINGS ${cfg_file} config_lines)
+
+    list(GET config_lines 0 first_line)
+    # "name=" utáni rész kiolvasása
+    string(REGEX MATCH "name=(.*)" name_match ${first_line})
+
+    # A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+    if(name_match)
+        set(project_name "${CMAKE_MATCH_1}")
+        file(RENAME ${cfg_file} ${project_name}.cfg)
+    endif()
+
+    list(GET config_lines 1 first_line)
+    # "name=" utáni rész kiolvasása
+    string(REGEX MATCH "version=(.*)" version_match ${first_line})
+
+    # A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+    if(version_match)
+        set(project_version "${CMAKE_MATCH_1}")
+    endif()
+
+    # Kiírjuk az eredményeket a konzolon
+    message(STATUS "Project Name: ${project_name}")
+    message(STATUS "Project Version: ${project_version}")
+endif()
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/.vscode")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/assets")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/externals")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/externals/headers")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/externals/libs")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/externals/dlls")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/src")
+
+file(GLOB_RECURSE cpps
+    ${CMAKE_SOURCE_DIR}/src/*.cpp
+)
+if(NOT cpps)
+message(STATUS "Creating main.cpp")
+    file(WRITE ${CMAKE_SOURCE_DIR}/src/main.cpp "#include <iostream>\n\nint main(int argc, char** argv) {\n    std::cout << \"Hello World!\" << std::endl;\n    return 0;\n}\n")
+endif()
+
+get_filename_component(current_dir_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+
+
+
+if(NOT EXISTS ${CMAKE_SOURCE_DIR}/${project_name}.cfg)
+    set(project_name ${current_dir_name})
+    file(WRITE ${CMAKE_SOURCE_DIR}/${project_name}.cfg "name=${project_name}\nversion=0.0.1\nauthor=none")
+endif()
+
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json")
+    file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json" 
+    "{\n"
+    "    \"configurations\": [\n"
+    "        {\n"
+    "            \"name\": \"Windows\",\n"
+    "            \"includePath\": [\n"
+    "                \"\${workspaceFolder}/src/\",\n"
+    "                \"\${workspaceFolder}/externals/headers/\"\n"
+    "            ],\n"
+    "            \"defines\": [],\n"
+    "            \"cStandard\": \"c23\",\n"
+    "            \"cppStandard\": \"c++17\",\n"
+    "            \"intelliSenseMode\": \"\${default}\"\n"
+    "        }\n"
+    "    ],\n"
+    "    \"version\": 4\n"
+    "}\n"
+    )
+endif()
+
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/settings.json")
+    file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/settings.json"
+    "{\n"
+    "    \"files.exclude\": {\n"
+    "        \"**/.git\": true,\n"
+    "        \"**/build\": true,\n"
+    "    },\n"
+    "    \"cmake.configureOnOpen\": true,\n"
+    "    \"cmake.configureOnStart\": true,\n"
+    "    \"cmake.configureSettings\": {\n"
+    "        \"CMAKE_BUILD_TYPE\": \"Debug\"\n"
+    "    },\n"
+    "    \"cmake.configureOnEdit\": true,\n"
+    "    \"cmake.buildDirectory\": \"\${workspaceFolder}/build\",\n"
+    "}\n"
+    )
+endif()
+
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/tasks.json")
+    file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/tasks.json"
+    "{
+    \"version\": \"2.0.0\",
+    \"tasks\": [
+        {
+            \"label\": \"cmake\",
+            \"type\": \"shell\",
+            \"windows\": {
+                \"command\": \"cmake --build \\\\\\\"\${workspaceFolder}/build\\\\\\\" --config Debug --target all -- -j 4\",
+            },
+            \"linux\": {
+                \"command\": \"cmake --build \\\\\\\"\${workspaceFolder}/build\\\\\\\" --config Debug --target all -- -j 4\",
+            },
+            \"command\": \"cmake --build \\\\\\\"\${workspaceFolder}/build\\\\\\\" --config Debug --target all -- -j 4\",
+            \"options\": {
+                \"cwd\": \"build\"
+            },
+            \"group\": {
+                \"kind\": \"build\",
+                \"isDefault\": true
+            },
+            \"dependsOn\": [
+                \"cmake: configure\"
+            ]
+        },
+        {
+            \"label\": \"cmake: configure\",
+            \"type\": \"shell\",
+            \"command\": \"cmake -S . -B \\\\\\\"build\\\\\\\" -G Ninja -DCMAKE_BUILD_TYPE=Debug\",
+            \"group\": {
+                \"kind\": \"build\",
+                \"isDefault\": true
+            }
+        }
+    ]
+    }"
+    )
+endif()
+
+project(${project_name} VERSION ${project_version} LANGUAGES CXX C)
 include(CTest)
 enable_testing()
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug)
+# set(PROJECT_NAME ${project_name})
+# set(PROJECT_VERSION ${project_version})
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug)
 add_compile_definitions(DEBUG)
-add_compile_definitions(BUILD_DLL)
-
-if(NOT CMAKE_BUILD_TYPE)
-    add_compile_definitions(UNKNOWN)
-    message("Unknown build type.")
-endif(NOT CMAKE_BUILD_TYPE)
-
-file(GLOB_RECURSE HEADERS 
-    src/**.hpp
-    src/**.h
-)
-file(GLOB_RECURSE CS_HEADERS 
-    "src/C# DLL/*.h"
-    "src/C# DLL/*.hpp"
-)
-list(REMOVE_ITEM HEADERS ${CS_HEADERS})
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     message("Debug build.")
-
-    foreach(HEADER ${HEADERS})
-        get_filename_component(HEADER_DIR ${HEADER} DIRECTORY)
-        string(REPLACE "${PROJECT_SOURCE_DIR}/src" "" HEADER_DIR ${HEADER_DIR})
-        set(HEADER_DESTINATION "${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/headers${HEADER_DIR}")
-        file(COPY ${HEADER} DESTINATION ${HEADER_DESTINATION})
-    endforeach()
-
-    foreach(CS_HEADER ${CS_HEADERS})
-        get_filename_component(HEADER_DIR ${CS_HEADER} DIRECTORY)
-        string(REPLACE "${PROJECT_SOURCE_DIR}/src/C# DLL" "" HEADER_DIR ${HEADER_DIR})
-        set(HEADER_DESTINATION "${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/C# headers${HEADER_DIR}")
-        file(COPY ${CS_HEADER} DESTINATION ${HEADER_DESTINATION})
-    endforeach()
 elseif(CMAKE_BUILD_TYPE MATCHES Release)
     message("Release build.")
     remove_definitions(DEBUG)
     add_compile_definitions(RELEASE)
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release)
-    
-    file(GLOB_RECURSE OUT_HEADERS 
-        ${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/*.[h]pp
-    )  
-    file(REMOVE ${OUT_HEADERS})
-
-
-
-    foreach(HEADER ${HEADERS})
-        get_filename_component(HEADER_DIR ${HEADER} DIRECTORY)
-        string(REPLACE "${PROJECT_SOURCE_DIR}/src" "" HEADER_DIR ${HEADER_DIR})
-        set(HEADER_DESTINATION "${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/headers${HEADER_DIR}")
-        file(COPY ${HEADER} DESTINATION ${HEADER_DESTINATION})
-    endforeach()
-
-    foreach(CS_HEADER ${CS_HEADERS})
-        get_filename_component(HEADER_DIR ${CS_HEADER} DIRECTORY)
-        string(REPLACE "${PROJECT_SOURCE_DIR}/src/C# DLL" "" HEADER_DIR ${HEADER_DIR})
-        set(HEADER_DESTINATION "${PROJECT_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/C# headers${HEADER_DIR}")
-        file(COPY ${CS_HEADER} DESTINATION ${HEADER_DESTINATION})
-    endforeach()
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release)
 endif(CMAKE_BUILD_TYPE MATCHES Debug)
-    
 
-file(GLOB_RECURSE SOURCES 
-    ${PROJECT_SOURCE_DIR}/src/*.[hc]pp
-    ${PROJECT_SOURCE_DIR}/src/*.[hc]
-)
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/launch.json")
+    file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/launch.json" 
+    "{
+    \"configurations\": [
+        {
+            \"name\": \"(gdb) Launch\",
+            \"type\": \"cppdbg\",
+            \"request\": \"launch\",
+            \"windows\": {
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}.exe\",
+            },
+            \"linux\": {
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}\",
+            },
+            \"osx\": {
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}\",
+            },
+            \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}.exe\",
+            \"args\": [],
+            \"stopAtEntry\": false,
+            \"cwd\": \"\${workspaceFolder}\",
+            \"environment\": [],
+            \"externalConsole\": false,
+            \"MIMode\": \"gdb\",
+            \"miDebuggerPath\": \"gdb\",
+            \"setupCommands\": [
+                {
+                    \"description\": \"Enable pretty-printing for gdb\",
+                    \"text\": \"-enable-pretty-printing\",
+                    \"ignoreFailures\": true
+                },
+                {
+                    \"description\": \"Set Disassembly Flavor to Intel\",
+                    \"text\": \"-gdb-set disassembly-flavor intel\",
+                    \"ignoreFailures\": true
+                }
+            ],
+            \"preLaunchTask\": \"cmake\"
+        }
+    ]
+    }"
+    )
+endif()
 
-foreach(SOURCE ${SOURCES})
-    message(${SOURCE})
-endforeach()
+#
+# SETUP
+#------
 
-
-file(GLOB_RECURSE CS_SOURCES_ONLY
-    "${PROJECT_SOURCE_DIR}/src/C# DLL/*.[hc]pp"
-)
-
-list(REMOVE_ITEM SOURCES ${CS_SOURCES_ONLY})
-
-file(GLOB_RECURSE CS_SOURCES 
-    ${PROJECT_SOURCE_DIR}/src/*.[hc]pp
-    ${PROJECT_SOURCE_DIR}/src/*.[hc]
-)
-
-file(GLOB_RECURSE LIBS
-    ${CMAKE_SOURCE_DIR}/libs/*.a
-)
-
-file(GLOB_RECURSE DLLS
-    ${CMAKE_SOURCE_DIR}/dlls/*.dll
-)
-
-
-include_directories("src")
-include_directories("include")
-
-#link_directories("libs")
-#link_directories("dlls")
-#link_libraries("libs")
-set(CMAKE_IMPORT_LIBRARY_SUFFIX ".a")
-
-# add_library(PandoraEngine SHARED ${SOURCES} ${DLLS})
-# target_link_libraries(PandoraEngine ${LIBS} SOIL)
-# target_include_directories(PandoraEngine PUBLIC src)
-# target_link_options(PandoraEngine PRIVATE -static-libgcc -static-libstdc++ -static)
-# set_target_properties(PandoraEngine PROPERTIES
-#     OUTPUT_NAME "PandoraEngine"
-#     PREFIX ""
-#     PUBLIC_HEADER "${HEADERS}"
-# )
-
-add_library(PandoraEngineStatic STATIC ${SOURCES} ${LIBS} ${DLLS})
-target_link_libraries(PandoraEngineStatic PUBLIC ${LIBS} SOIL)
-target_include_directories(PandoraEngineStatic PUBLIC src)
-target_link_options(PandoraEngineStatic PRIVATE -static-libgcc -static-libstdc++ -static)
-set_target_properties(PandoraEngineStatic PROPERTIES
-    OUTPUT_NAME "PandoraEngineStatic"
-    PUBLIC_HEADER "${HEADERS}"
-)
-
-
-# add_library(PandoraEngineCS SHARED ${CS_SOURCES})
-# set_target_properties(PandoraEngineCS PROPERTIES PREFIX "")
-# target_link_libraries(PandoraEngineCS ${LIBS})
-
-# if(NOT CMAKE_BUILD_TYPE MATCHES Release)
-# add_executable(Pandora ${SOURCES})
-# target_link_libraries(Pandora ${LIBS})
-# target_link_options(Pandora PRIVATE -static-libgcc -static-libstdc++ -static)
-# endif(NOT CMAKE_BUILD_TYPE MATCHES Release)
-
-
-if(NOT CMAKE_BUILD_TYPE MATCHES Release)
-    add_executable(PandoraTest test/src/main.cpp)
-    target_link_directories(PandoraTest PUBLIC ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/lib)
-    target_link_libraries(PandoraTest PandoraEngineStatic)
-    target_link_options(PandoraTest PRIVATE -static-libgcc -static-libstdc++ -static)
-endif(NOT CMAKE_BUILD_TYPE MATCHES Release)
 
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
+
+
+
+file(GLOB_RECURSE SOURCES 
+    ${CMAKE_SOURCE_DIR}/src/*.[hc]pp
+    ${CMAKE_SOURCE_DIR}/src/*.[hc]
+)
+
+
+
+file(GLOB_RECURSE LIBS
+    ${CMAKE_SOURCE_DIR}/externals/libs/*.a
+)
+
+file(GLOB_RECURSE DLLS
+    ${CMAKE_SOURCE_DIR}/externals/dlls/*.dll
+)
+
+foreach(DLL ${DLLS})
+    file(COPY ${DLL} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+endforeach()
+
+
+
+include_directories("externals/headers")
+
+
+# if(SOURCES)
+#     add_executable(${PROJECT_NAME} ${SOURCES} ${DLLS})
+#     target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
+#     target_link_libraries(${PROJECT_NAME} ${LIBS})
+#     target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+#     set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
+# endif()
+

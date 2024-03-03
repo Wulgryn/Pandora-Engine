@@ -1,10 +1,10 @@
 {
     "configurations": [
         {
-            "name": "windows",
+            "name": "Windows",
             "includePath": [
                 "${workspaceFolder}/src/",
-                "${workspaceFolder}/include"
+                "${workspaceFolder}/externals/headers/"
             ],
             "defines": [],
             "cStandard": "c23",
