@@ -11,5 +11,7 @@
 #include "GAME/UI/button.hpp"
 #include "GAME/UI/progress_bar.hpp"
 #include "GAME/UI/scrollbar.hpp"
+#include "GAME/UI/switch.hpp"
+#include "GAME/UI/check_box.hpp"
 
 using namespace pandora;

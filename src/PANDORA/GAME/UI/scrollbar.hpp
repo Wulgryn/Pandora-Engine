@@ -1,6 +1,5 @@
 #include "DLL/dll.hpp"
 #include "ui_elements.hpp"
-#include "UTILS/parameters.hpp"
 #include <vector>
 
 namespace pandora

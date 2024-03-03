@@ -5,6 +5,7 @@
 #include "CONSOLE/fancyLog.hpp"
 #include "UTILS/parameters.hpp"
 using namespace io;
+using namespace std;
 
 ProgressBarObject progressBar;
 ButtonObject btn_1;
@@ -12,6 +13,11 @@ ButtonObject btn_2;
 ScrollbarObject scrollbar;
 Object obj;
 
+SwitchObject switch_1;
+
+CheckBoxObject checkbox;
+
+//pandora::Texture* text_test = new pandora::Texture("assets/textures/test.png");
 
 int setup()
 {
@@ -42,8 +48,8 @@ int start(Window& window)
 
     obj.Components().add<Transform>()->size = {50, 50};
     obj.Components().get<Transform>()->position.x = 400;
-    obj.Components().add<Image>();
-    obj.Components().add<Shader>();
+    //obj.Components().add<Image>()->setTexture(text_test);
+    obj.Components().add<Shader>(new Shader(shaders::textureVertexShader2D(),shaders::textureFragmentShader2D()));
 
 
     scrollbar = new Scrollbar();
@@ -52,7 +58,15 @@ int start(Window& window)
 
     scrollbar->maximum = 600;
     scrollbar->step = 10;
-    scrollbar->scroll_speed = 1;
+    scrollbar->scroll_speed = 0.2;
+
+    switch_1 = new Switch();
+
+    scrollbar->bindObject(switch_1->getBackground());
+    scrollbar->bindObject(switch_1->getForeground());
+
+    checkbox = new CheckBox();
+
     return 0;
 }
 

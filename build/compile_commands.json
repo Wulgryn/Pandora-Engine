@@ -67,6 +67,12 @@
 },
 {
   "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\check_box.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\check_box.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\check_box.cpp",
+  "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\check_box.cpp.obj"
+},
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
   "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\label.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\label.cpp\"",
   "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\label.cpp",
   "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\label.cpp.obj"
@@ -82,6 +88,12 @@
   "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp\"",
   "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp",
   "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\scrollbar.cpp.obj"
+},
+{
+  "directory": "F:/C++ Engine/Pandora Engine/build",
+  "command": "G:\\msys2\\mingw64\\bin\\g++.exe -DBUILD_DLL -DDEBUG -I\"F:/C++ Engine/Pandora Engine/src\" -I\"F:/C++ Engine/Pandora Engine/include\" -g -o CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\switch.cpp.obj -c \"F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\switch.cpp\"",
+  "file": "F:\\C++ Engine\\Pandora Engine\\src\\PANDORA\\GAME\\UI\\switch.cpp",
+  "output": "CMakeFiles\\PandoraEngineStatic.dir\\src\\PANDORA\\GAME\\UI\\switch.cpp.obj"
 },
 {
   "directory": "F:/C++ Engine/Pandora Engine/build",

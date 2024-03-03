@@ -6,7 +6,6 @@
 #include "PANDORA/mainWindow.hpp"
 #include "UTILS/random.hpp"
 #include "IO/mouse.hpp"
-#include <algorithm>
 #include <vector>
 
 #include "CONSOLE/fancyLog.hpp"

@@ -57,7 +57,7 @@ string shaders::textureVertexShader2D()
         layout (location = 0) in vec3 aPos;
         layout (location = 1) in vec2 aTexCoord;
 
-        uniform vec2 position;
+        uniform vec3 position;
 
         out vec2 TexCoord;
 
@@ -221,7 +221,7 @@ void Shader::copy(Shader shader)
 }
 
 
-static void defaultSettings(Shader *shader, Components *components)
+static int defaultSettings(Shader *shader, Components *components)
 {
     if (Transform *transform = components->get<Transform>()) 
     {
@@ -243,17 +243,19 @@ static void defaultSettings(Shader *shader, Components *components)
         //logInfo("Position: " + to_string(actualPos.x) + ", " + to_string(actualPos.y));
     }
     Image *image = components->get<Image>();
-    if(!image->isVisible) return;
+    //logInfo("Image: " + to_string(image->texture));
+    if(!image->isVisible) return -1;
     if(image) shader->setUniform(ShaderUniformType::COLOR, image->color.getRedF(), image->color.getGreenF(), image->color.getBlueF());
-    if(image && image->texture != -1)
+    if(image && image->texture->getID() != -1)
     {
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, image->texture);
+        glBindTexture(GL_TEXTURE_2D, image->texture->getID());
         glDisable(GL_BLEND);
         glDisable(GL_DEPTH_TEST);
     }
+    return 0;
 }
 
 void Shader::init(Components *components)
@@ -269,8 +271,14 @@ void Shader::init(Components *components)
         currentVAO = VAO;
         glBindVertexArray(VAO);
     }
+    int result = 0;
     if(settingsFunction) settingsFunction(this);
-    else defaultSettings(this, components);
+    else result = defaultSettings(this, components);
+    if(result == -1) 
+    {
+        isLoaded = false;
+        return;
+    }
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     
 

@@ -305,6 +305,14 @@ build CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/button.cpp.obj: CXX
   OBJECT_DIR = CMakeFiles\PandoraEngineStatic.dir
   OBJECT_FILE_DIR = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI
 
+build CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/check_box.cpp.obj: CXX_COMPILER__PandoraEngineStatic_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/GAME/UI/check_box.cpp || cmake_object_order_depends_target_PandoraEngineStatic
+  DEFINES = -DBUILD_DLL -DDEBUG
+  DEP_FILE = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI\check_box.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
+  OBJECT_DIR = CMakeFiles\PandoraEngineStatic.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI
+
 build CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/label.cpp.obj: CXX_COMPILER__PandoraEngineStatic_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/GAME/UI/label.cpp || cmake_object_order_depends_target_PandoraEngineStatic
   DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI\label.cpp.obj.d
@@ -324,6 +332,14 @@ build CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/progress_bar.cpp.ob
 build CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/scrollbar.cpp.obj: CXX_COMPILER__PandoraEngineStatic_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/GAME/UI/scrollbar.cpp || cmake_object_order_depends_target_PandoraEngineStatic
   DEFINES = -DBUILD_DLL -DDEBUG
   DEP_FILE = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI\scrollbar.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
+  OBJECT_DIR = CMakeFiles\PandoraEngineStatic.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI
+
+build CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/switch.cpp.obj: CXX_COMPILER__PandoraEngineStatic_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/PANDORA/GAME/UI/switch.cpp || cmake_object_order_depends_target_PandoraEngineStatic
+  DEFINES = -DBUILD_DLL -DDEBUG
+  DEP_FILE = CMakeFiles\PandoraEngineStatic.dir\src\PANDORA\GAME\UI\switch.cpp.obj.d
   FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/src" -I"F:/C++ Engine/Pandora Engine/include"
   OBJECT_DIR = CMakeFiles\PandoraEngineStatic.dir
@@ -409,7 +425,7 @@ build CMakeFiles/PandoraEngineStatic.dir/src/UTILS/timer.cpp.obj: CXX_COMPILER__
 #############################################
 # Link the static library F:\C++ Engine\Pandora Engine\bin\0.0.1-alpha\debug\lib\libPandoraEngineStatic.a
 
-build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngineStatic.a: CXX_STATIC_LIBRARY_LINKER__PandoraEngineStatic_Debug CMakeFiles/PandoraEngineStatic.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/DLL/init.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/files.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/input.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/mouse.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/window.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/button.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/label.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/progress_bar.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/scrollbar.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/ui_elements.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/objects.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/shader.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/texture.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/UTILS/random.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/UTILS/string.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/UTILS/timer.cpp.obj
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.0.1-alpha/debug/lib/libPandoraEngineStatic.a: CXX_STATIC_LIBRARY_LINKER__PandoraEngineStatic_Debug CMakeFiles/PandoraEngineStatic.dir/src/CONSOLE/fancyLog.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/DLL/init.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/ESSENTIALS/glad.c.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/files.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/input.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/mouse.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/IO/window.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/COMPONENTS/components.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/COMPONENTS/image.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/COMPONENTS/transform.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/button.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/check_box.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/label.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/progress_bar.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/scrollbar.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/switch.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/GAME/UI/ui_elements.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/mainWindow.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/objects.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/scenes.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/shader.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/PANDORA/texture.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/UTILS/random.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/UTILS/string.cpp.obj CMakeFiles/PandoraEngineStatic.dir/src/UTILS/timer.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\PandoraEngineStatic.dir
   POST_BUILD = cd .

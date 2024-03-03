@@ -10,9 +10,9 @@ namespace pandora
     public:
         bool isVisible = true;
         utils::Color color;
-        TextureID texture = -1;
+        Texture* texture = nullptr;
         Image();
 
-        void setTexture(TextureID texture);
+        void setTexture(Texture* texture);
     };
 }
