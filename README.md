@@ -1,6 +1,7 @@
 <h1> Pandora Engine </h1>
 
 [![Latest Release](https://img.shields.io/github/v/release/Wulgryn/Pandora-Engine)](https://github.com/Wulgryn/Pandora-Engine/releases/latest)
+[![wakatime](https://wakatime.com/badge/user/38c8044d-05b0-44ea-8e46-881575fa92bb/project/1fb98319-a103-4268-b8c1-6bc48a0928ce.svg)](https://wakatime.com/badge/user/38c8044d-05b0-44ea-8e46-881575fa92bb/project/1fb98319-a103-4268-b8c1-6bc48a0928ce)
 
 ## Latest info
 
@@ -20,7 +21,6 @@ This is my game engine. <p> It is recommended to check the other branches, becau
 <br>
 
 ## How to use
-### *!Experimental!* 
 
 Coming soon...
 
