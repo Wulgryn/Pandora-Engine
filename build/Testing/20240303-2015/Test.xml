@@ -24,11 +24,11 @@
 	ProcessorClockFrequency="3800"
 	>
 	<Testing>
-		<StartDateTime>Mar 03 23:07 Közép-európai téli idő</StartDateTime>
-		<StartTestTime>1709503637</StartTestTime>
+		<StartDateTime>Mar 03 23:56 Közép-európai téli idő</StartDateTime>
+		<StartTestTime>1709506583</StartTestTime>
 		<TestList/>
-		<EndDateTime>Mar 03 23:07 Közép-európai téli idő</EndDateTime>
-		<EndTestTime>1709503637</EndTestTime>
+		<EndDateTime>Mar 03 23:56 Közép-európai téli idő</EndDateTime>
+		<EndTestTime>1709506583</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

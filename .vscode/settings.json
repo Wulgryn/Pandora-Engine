@@ -14,6 +14,7 @@
         "*.fragmentShader": "glsl",
         "*.vertexShader": "glsl",
         "chrono": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "pandoracore.hpp": "c"
     },
 }

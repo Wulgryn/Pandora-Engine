@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: Pandora_Engine
+# Project: PandoraEngine
 # Configurations: Debug
 # =============================================================================
 
@@ -209,45 +209,82 @@ build ContinuousMemCheck: phony CMakeFiles/ContinuousMemCheck
 build ContinuousSubmit: phony CMakeFiles/ContinuousSubmit
 
 # =============================================================================
-# Object build statements for STATIC_LIBRARY target Pandora_Engine
+# Object build statements for SHARED_LIBRARY target PandoraEngine
 
 
 #############################################
-# Order-only phony target for Pandora_Engine
+# Order-only phony target for PandoraEngine
 
-build cmake_object_order_depends_target_Pandora_Engine: phony || CMakeFiles/Pandora_Engine.dir
+build cmake_object_order_depends_target_PandoraEngine: phony || CMakeFiles/PandoraEngine.dir
 
-build CMakeFiles/Pandora_Engine.dir/src/Core/PandoraCore.cpp.obj: CXX_COMPILER__Pandora_Engine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/Core/PandoraCore.cpp || cmake_object_order_depends_target_Pandora_Engine
-  DEFINES = -DDEBUG
-  DEP_FILE = CMakeFiles\Pandora_Engine.dir\src\Core\PandoraCore.cpp.obj.d
+build CMakeFiles/PandoraEngine.dir/src/CS_Compatibility/PandoraCore.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/CS_Compatibility/PandoraCore.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DDEBUG -DPandoraEngine_EXPORTS
+  DEP_FILE = CMakeFiles\PandoraEngine.dir\src\CS_Compatibility\PandoraCore.cpp.obj.d
   FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
-  OBJECT_DIR = CMakeFiles\Pandora_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Pandora_Engine.dir\src\Core
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\CS_Compatibility
 
-build CMakeFiles/Pandora_Engine.dir/src/Debug/DebugConsole.cpp.obj: CXX_COMPILER__Pandora_Engine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/Debug/DebugConsole.cpp || cmake_object_order_depends_target_Pandora_Engine
-  DEFINES = -DDEBUG
-  DEP_FILE = CMakeFiles\Pandora_Engine.dir\src\Debug\DebugConsole.cpp.obj.d
+build CMakeFiles/PandoraEngine.dir/src/Core/PandoraCore.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/Core/PandoraCore.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DDEBUG -DPandoraEngine_EXPORTS
+  DEP_FILE = CMakeFiles\PandoraEngine.dir\src\Core\PandoraCore.cpp.obj.d
   FLAGS = -g
   INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
-  OBJECT_DIR = CMakeFiles\Pandora_Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\Pandora_Engine.dir\src\Debug
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\Core
+
+build CMakeFiles/PandoraEngine.dir/src/Debug/Console.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/Debug/Console.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DDEBUG -DPandoraEngine_EXPORTS
+  DEP_FILE = CMakeFiles\PandoraEngine.dir\src\Debug\Console.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\Debug
+
+build CMakeFiles/PandoraEngine.dir/src/IO/BaseWindow.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/BaseWindow.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DDEBUG -DPandoraEngine_EXPORTS
+  DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\BaseWindow.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
+
+build CMakeFiles/PandoraEngine.dir/src/IO/Monitor.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/IO/Monitor.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DDEBUG -DPandoraEngine_EXPORTS
+  DEP_FILE = CMakeFiles\PandoraEngine.dir\src\IO\Monitor.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src\IO
+
+build CMakeFiles/PandoraEngine.dir/src/test.cpp.obj: CXX_COMPILER__PandoraEngine_unscanned_Debug F$:/C++$ Engine/Pandora$ Engine/src/test.cpp || cmake_object_order_depends_target_PandoraEngine
+  DEFINES = -DDEBUG -DPandoraEngine_EXPORTS
+  DEP_FILE = CMakeFiles\PandoraEngine.dir\src\test.cpp.obj.d
+  FLAGS = -g
+  INCLUDES = -I"F:/C++ Engine/Pandora Engine/externals/headers" -I"F:/C++ Engine/Pandora Engine/src"
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
+  OBJECT_FILE_DIR = CMakeFiles\PandoraEngine.dir\src
 
 
 # =============================================================================
-# Link build statements for STATIC_LIBRARY target Pandora_Engine
+# Link build statements for SHARED_LIBRARY target PandoraEngine
 
 
 #############################################
-# Link the static library F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\lib\Pandora_Engine.a
+# Link the shared library F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\PandoraEngine.dll
 
-build F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a: CXX_STATIC_LIBRARY_LINKER__Pandora_Engine_Debug CMakeFiles/Pandora_Engine.dir/src/Core/PandoraCore.cpp.obj CMakeFiles/Pandora_Engine.dir/src/Debug/DebugConsole.cpp.obj
+build F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/PandoraEngine.dll F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/libPandoraEngine.dll.a: CXX_SHARED_LIBRARY_LINKER__PandoraEngine_Debug CMakeFiles/PandoraEngine.dir/src/CS_Compatibility/PandoraCore.cpp.obj CMakeFiles/PandoraEngine.dir/src/Core/PandoraCore.cpp.obj CMakeFiles/PandoraEngine.dir/src/Debug/Console.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/BaseWindow.cpp.obj CMakeFiles/PandoraEngine.dir/src/IO/Monitor.cpp.obj CMakeFiles/PandoraEngine.dir/src/test.cpp.obj | F$:/C++$ Engine/Pandora$ Engine/externals/libs/libglfw3.a
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles\Pandora_Engine.dir
+  LINK_FLAGS = -static-libgcc -static-libstdc++ -static
+  LINK_LIBRARIES = "F:/C++ Engine/Pandora Engine/externals/libs/libglfw3.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_PATH = -L"F:/C++ Engine/Pandora Engine/externals/libs"
+  OBJECT_DIR = CMakeFiles\PandoraEngine.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\lib\Pandora_Engine.a"
-  TARGET_PDB = Pandora_Engine.a.dbg
+  RESTAT = 1
+  TARGET_FILE = "F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\PandoraEngine.dll"
+  TARGET_IMPLIB = "F:\C++ Engine\Pandora Engine\bin\0.1.1\debug\lib\libPandoraEngine.dll.a"
+  TARGET_PDB = PandoraEngine.dll.dbg
 
 
 #############################################
@@ -535,9 +572,9 @@ build CMakeFiles/ContinuousSubmit | ${cmake_ninja_workdir}CMakeFiles/ContinuousS
 # =============================================================================
 # Target aliases.
 
-build Pandora_Engine: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a
+build PandoraEngine: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/PandoraEngine.dll
 
-build Pandora_Engine.a: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a
+build PandoraEngine.dll: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/PandoraEngine.dll
 
 # =============================================================================
 # Folder targets.
@@ -547,7 +584,7 @@ build Pandora_Engine.a: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/li
 #############################################
 # Folder: F:/C++ Engine/Pandora Engine/build
 
-build all: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/lib/Pandora_Engine.a
+build all: phony F$:/C++$ Engine/Pandora$ Engine/bin/0.1.1/debug/PandoraEngine.dll
 
 # =============================================================================
 # Built-in targets

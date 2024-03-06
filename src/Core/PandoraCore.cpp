@@ -1,5 +1,12 @@
-#include "PandoraCore.hpp"
-#include "Debug/DebugConsole.hpp"
+#include "./PandoraCore.hpp"
+#include "../Debug/Console.hpp"
+#include "../IO/Monitor.hpp"
+
+#define GLFW_INCLUDE_NONE
+#include "GLFW/glfw3.h"
+#include "glad/gl.h"
+
+#include <iostream>
 
 void error_callback(int error, const char* description)
 {
@@ -7,26 +14,24 @@ void error_callback(int error, const char* description)
     DebugConsole::WriteLine("(%d) -> %s",error,description);
 }
 
-void PandoraCore::Initialize(){
-#ifndef DEBUG
-    system("title Pandora Engine");
-#endif
-#ifdef BUILD_DLL
-    logInfo("§YELLOWbuilding DLL");
-#endif
-    logInfo("§YELLOWexperimental version 0.0.1 alpha");
+void PandoraCore::Initialize()
+{
+    system("title Pandora Engine Debug Console");
+    DebugConsole::WriteLine("experimental version 0.1.1 alpha");
     glfwSetErrorCallback(error_callback);
     srand(time(NULL));
-
+    DebugConsole::WriteLine("Random initialized successfully!");
+    MonitorInfo::Initialize();
+    DebugConsole::WriteLine("MonitorInfo initialized successfully!");
     if(!glfwInit())
     {
-        logError("Failed to initialize GLFW!");
+        DebugConsole::WriteLine("[GLFW ERROR] Failed to initialize GLFW!");
         return;
     }
-    logSuccess("GLFW initialized successfully!");
-
-    
+    DebugConsole::WriteLine("GLFW initialized successfully!");
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+
+    DebugConsole::WriteLine("PandoraCore initialized successfully!");
 }

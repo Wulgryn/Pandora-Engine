@@ -18,7 +18,7 @@ if(cfg_files)
 
 		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
 		if(name_match)
-			string(REPLACE " " "_" modified_project_name ${CMAKE_MATCH_1})
+			string(REPLACE " " "" modified_project_name ${CMAKE_MATCH_1})
 			set(project_name ${modified_project_name})
 			file(RENAME ${cfg_file} ${project_name}.cfg)
 		endif()
@@ -74,16 +74,22 @@ get_filename_component(current_dir_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
 
 if(NOT EXISTS ${CMAKE_SOURCE_DIR}/${project_name}.cfg)
-    string(REPLACE " " "_" modified_project_name ${current_dir_name})
+    string(REPLACE " " "" modified_project_name ${current_dir_name})
     set(project_name ${modified_project_name})
     file(WRITE ${CMAKE_SOURCE_DIR}/${project_name}.cfg 
     "#Without spaces\n"
     "name=${project_name}\n"
     "version=0.0.1\n"
     "#APP / STATIC_LIB / SHARED_LIB\n"
+	"#\n"
 	"#APP: .exe\n"
-	"#STATIC_LIB: .a\n"
-	"#SHARED_LIB: .a/.dll for runtime load\n"
+	"#Executeable file.\n"
+	"#\n"
+	"#STATIC_LIB: .a \n"
+	"#Stand alone lib file. Other libs used in this project won't be included in final file.\n"
+	"#\n"
+	"#SHARED_LIB: .a/.dll\n"
+	"#Creates 2 file. But other libs included this project will be included in final files.\n"
     "type=APP\n"
 	"#True / False\n"
 	"copy_headers=False\n"
@@ -190,7 +196,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
     message("Debug build.")
 	
 	if(copy_headers MATCHES "True") 
-		file(REMOVE_RECURSE "${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/headers/${project_name}")
+		file(REMOVE_RECURSE "${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/headers")
 		foreach(HEADER ${HEADERS})
 			get_filename_component(HEADER_DIR ${HEADER} DIRECTORY)
 			string(REPLACE "${CMAKE_SOURCE_DIR}/src" "" HEADER_DIR ${HEADER_DIR})
@@ -207,7 +213,7 @@ elseif(CMAKE_BUILD_TYPE MATCHES Release)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release)
 	
 	if(copy_headers MATCHES "True")
-		file(REMOVE_RECURSE "${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/headers/${project_name}")
+		file(REMOVE_RECURSE "${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/headers")
 		foreach(HEADER ${HEADERS})
 			get_filename_component(HEADER_DIR ${HEADER} DIRECTORY)
 			string(REPLACE "${CMAKE_SOURCE_DIR}/src" "" HEADER_DIR ${HEADER_DIR})
@@ -345,7 +351,6 @@ if(SOURCES)
         set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
         set_target_properties(${PROJECT_NAME} PROPERTIES
             OUTPUT_NAME "${PROJECT_NAME}"
-            PREFIX ""
         )
     endif()
 endif()

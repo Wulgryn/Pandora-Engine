@@ -26,7 +26,7 @@ F:/C++ Engine/Pandora Engine/build/CMakeFiles/ContinuousTest.dir
 F:/C++ Engine/Pandora Engine/build/CMakeFiles/ContinuousCoverage.dir
 F:/C++ Engine/Pandora Engine/build/CMakeFiles/ContinuousMemCheck.dir
 F:/C++ Engine/Pandora Engine/build/CMakeFiles/ContinuousSubmit.dir
-F:/C++ Engine/Pandora Engine/build/CMakeFiles/Pandora_Engine.dir
+F:/C++ Engine/Pandora Engine/build/CMakeFiles/PandoraEngine.dir
 F:/C++ Engine/Pandora Engine/build/CMakeFiles/package.dir
 F:/C++ Engine/Pandora Engine/build/CMakeFiles/package_source.dir
 F:/C++ Engine/Pandora Engine/build/CMakeFiles/test.dir
