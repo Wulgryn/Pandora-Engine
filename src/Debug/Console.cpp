@@ -43,11 +43,12 @@ void DebugConsole::WriteTime()
 void DebugConsole::WriteLine(const char* message, ...)
 {
     if(DebugConsole::EnableTimePrefix) WriteTime();
+    string formattedMessage = (string)message + "\n";
     va_list args;
     va_start(args, message);
-    vprintf(message, args);
+    vprintf(formattedMessage.c_str(), args);
     va_end(args);
-    cout << endl;
+    //cout << endl;
 }
 
 void DebugConsole::Write(const char* message, ...)

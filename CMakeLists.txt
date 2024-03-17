@@ -6,6 +6,13 @@ set(project_name "Project")
 set(project_version "0.0.1")
 set(project_type "APP")
 set(copy_headers "False")
+set(lib_collection "externals/libs")
+set(dll_collection "externals/dlls")
+set(header_collection "externals/headers")
+set(use_default_linkers "True")
+set(custom_linkers "")
+
+set(default_linkers "-static-libgcc;-static-libstdc++;-static;-Wl,--allow-multiple-definition")
 
 file(GLOB cfg_files "${CMAKE_SOURCE_DIR}/*.cfg")
 
@@ -43,13 +50,64 @@ if(cfg_files)
 		if(copy_headers_match)
 			set(copy_headers "${CMAKE_MATCH_1}")
 		endif()
+
+        string(REGEX MATCH "lib_paths=(.*)" lib_paths_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(lib_paths_match)
+            string(REPLACE "\\" "/" output "${CMAKE_MATCH_1}")
+            string(REPLACE "|" ";" output_list "${output}")
+			set(lib_collection "${output_list}")
+		endif()
+
+        string(REGEX MATCH "dll_paths=(.*)" dll_paths_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(dll_paths_match)
+            string(REPLACE "\\" "/" output "${CMAKE_MATCH_1}")
+            string(REPLACE "|" ";" output_list "${output}")
+			set(dll_collection "${output_list}")
+		endif()
+
+        string(REGEX MATCH "include_headers=(.*)" include_headers_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(include_headers_match)
+        string(REPLACE "|" ";" output_list "${CMAKE_MATCH_1}")
+			set(header_collection "${output_list}")
+		endif()
+
+        string(REGEX MATCH "use_default_linkers=(.*)" use_default_linkers_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(use_default_linkers_match)
+			set(use_default_linkers "${CMAKE_MATCH_1}")
+		endif()
+
+        string(REGEX MATCH "custom_linkers=(.*)" custom_linkers_match ${line})
+
+		# A nevet kinyerjük a ${CMAKE_MATCH_1} segítségével
+		if(custom_linkers_match)
+            string(REPLACE "\"" "" custom_linkers "${CMAKE_MATCH_1}")
+            string(REPLACE " " ";" custom_linkers "${custom_linkers}")
+			set(custom_linkers "${custom_linkers}")
+		endif()
+
     endforeach()
 
     # Kiírjuk az eredményeket a konzolon
-    message(STATUS "Project Name: ${project_name}")
-    message(STATUS "Project Version: ${project_version}")
-    message(STATUS "Project Type: ${project_type}")
-	message(STATUS "Copy Headers: ${copy_headers}")
+    message("-- Project Name: ${project_name}")
+    message("-- Project Version: ${project_version}")
+    message("-- Project Type: ${project_type}")
+	message("-- Copy Headers: ${copy_headers}")
+    message("-- LIB COLLECTION: ${lib_collection}")
+    message("-- DLL COLLECTION: ${dll_collection}")
+    message("-- HEADER COLLECTION: ${header_collection}")
+    if(use_default_linkers MATCHES "True")
+        message("-- Linkers: ${default_linkers}")
+    else()
+        message("-- Custom linkers: ${custom_linkers}")
+    endif()
 endif()
 
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/.vscode")
@@ -77,24 +135,57 @@ if(NOT EXISTS ${CMAKE_SOURCE_DIR}/${project_name}.cfg)
     string(REPLACE " " "" modified_project_name ${current_dir_name})
     set(project_name ${modified_project_name})
     file(WRITE ${CMAKE_SOURCE_DIR}/${project_name}.cfg 
-    "#Without spaces\n"
-    "name=${project_name}\n"
-    "version=0.0.1\n"
-    "#APP / STATIC_LIB / SHARED_LIB\n"
-	"#\n"
-	"#APP: .exe\n"
-	"#Executeable file.\n"
-	"#\n"
-	"#STATIC_LIB: .a \n"
-	"#Stand alone lib file. Other libs used in this project won't be included in final file.\n"
-	"#\n"
-	"#SHARED_LIB: .a/.dll\n"
-	"#Creates 2 file. But other libs included this project will be included in final files.\n"
-    "type=APP\n"
-	"#True / False\n"
-	"copy_headers=False\n"
-    "author=none")
+"#Without spaces
+name=${project_name}
+version=0.0.1
+author=none
+#APP / STATIC_LIB / SHARED_LIB
+#
+#APP: .exe
+#Executeable file.
+#
+#STATIC_LIB: .a 
+#Stand alone lib file. Other libs used in this project won't be included in final file.
+#
+#SHARED_LIB: .a/.dll
+#Creates 2 file. But other libs included this project will be included in final files.
+type=APP
+#True / False
+copy_headers=False
+#Path of containing folders of libraries.
+#To include multiple: libs1|libs2
+lib_paths=externals/libs
+#Path of containing folders of dlls.
+#To include multiple: dlls1|dlls2
+dll_paths=externals/dlls
+#Path of containing folders of headers.
+#To include multiple: headers1|headers2
+include_headers=externals/headers
+#Default linker flags
+#-static-libgcc;-static-libstdc++;-static;-Wl,--allow-multiple-definition
+use_default_linkers=True
+#Custom linker flags
+#You can use spaces in between flags.
+custom_linkers=\"\""
+    )
 endif()
+
+set(headers_ "")
+foreach(header ${header_collection})
+    string(REPLACE "\\" "/" header "${header}")
+    if("${header}" MATCHES ":")
+        # Perform actions when the string contains ":"
+        # ...
+        string(REPLACE "${header}" "\t\t\t\t\"${header}\",\n" str_ "${header}")
+    else()
+        # Perform actions when the string does not contain ":"
+        # ...
+        string(REPLACE "${header}" "\t\t\t\t\"\${workspaceFolder}/${header}\",\n" str_ "${header}")
+    endif()
+    list(APPEND headers_ "${str_}")
+endforeach()
+
+string(REPLACE ";" "" headers_ "${headers_}")
 
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json")
     file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json" 
@@ -104,7 +195,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json")
     "            \"name\": \"Windows\",\n"
     "            \"includePath\": [\n"
     "                \"\${workspaceFolder}/src/\",\n"
-    "                \"\${workspaceFolder}/externals/headers/\"\n"
+    "                \"\${workspaceFolder}/externals/headers/\",\n${headers_}"
     "            ],\n"
     "            \"defines\": [],\n"
     "            \"cStandard\": \"c23\",\n"
@@ -131,6 +222,9 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/settings.json")
     "    },\n"
     "    \"cmake.configureOnEdit\": true,\n"
     "    \"cmake.buildDirectory\": \"\${workspaceFolder}/build\",\n"
+    "    \"cmake.debugConfig\": {\n"
+    "        \"externalConsole\": true\n"
+    "    }\n"
     "}\n"
     )
 endif()
@@ -278,47 +372,63 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
 
 
+include_directories("src")
+
+message("HEADERS")
+message("-- MAIN HEADERS: src")
+
+foreach(header ${header_collection})
+    message("-- HEADER: ${header}")
+    include_directories("${header}")
+endforeach(header ${header_collection})
+
+message("SOURCES")
 
 file(GLOB_RECURSE SOURCES 
     ${CMAKE_SOURCE_DIR}/src/**.[hc]pp
     ${CMAKE_SOURCE_DIR}/src/**.[hc]
 )
 
+foreach(SOURCE ${SOURCES})
+    message("-- SOURCE: ${SOURCE}")
+endforeach(SOURCE ${SOURCES})
 
 
-file(GLOB_RECURSE LIBS
-    ${CMAKE_SOURCE_DIR}/externals/libs/*.a
-)
 
-file(GLOB_RECURSE DLLS
-    ${CMAKE_SOURCE_DIR}/externals/dlls/*.dll
-)
+message("LIBS")
+
+set(LIBS)
+
+foreach(lib_path ${lib_collection})
+    file(GLOB_RECURSE LIBS
+        ${lib_path}/*.a
+        ${lib_path}/*.lib
+    )
+endforeach(lib_path ${lib_collection})
+foreach(LIB ${LIBS})
+    message("-- LIB: ${LIB}")
+    
+endforeach(LIB ${SOURCES})
+
+
+message("DLLS")
+
+set(DLLS)
+
+foreach(dll_path ${dll_collection})
+    file(GLOB_RECURSE DLLS
+        ${dll_path}/*.dll
+    )
+endforeach(dll_path ${dll_collection})
+
+foreach(DLL ${DLLS})
+    message("-- DLL: ${DLL}")
+endforeach(DLL ${DLLS})
 
 foreach(DLL ${DLLS})
     file(COPY ${DLL} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endforeach()
 
-
-
-include_directories("externals/headers")
-include_directories("src")
-
-message(STATUS "SOURCES")
-foreach(SOURCE ${SOURCES})
-    message(STATUS "SOURCE: ${SOURCE}")
-    
-endforeach(SOURCE ${SOURCES})
-
-message(STATUS "LIBS")
-foreach(LIB ${LIBS})
-    message(STATUS "LIB: ${LIB}")
-    
-endforeach(LIB ${SOURCES})
-
-message(STATUS "DLLS")
-foreach(DLL ${DLLS})
-    message(STATUS "DLL: ${DLL}")
-endforeach(DLL ${DLLS})
 
 
 
@@ -327,7 +437,11 @@ if(SOURCES)
         add_executable(${PROJECT_NAME} ${SOURCES} ${DLLS})
         target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
         target_link_libraries(${PROJECT_NAME} ${LIBS})
-        target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+        if(use_default_linkers MATCHES "True")
+            target_link_options(${PROJECT_NAME} PRIVATE ${default_linkers})
+        else()
+            target_link_options(${PROJECT_NAME} PRIVATE ${custom_linkers})
+        endif()
         set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
         set_target_properties(${PROJECT_NAME} PROPERTIES
             OUTPUT_NAME "${PROJECT_NAME}"
@@ -337,7 +451,11 @@ if(SOURCES)
         add_library(${PROJECT_NAME} SHARED ${SOURCES})
         target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
         target_link_libraries(${PROJECT_NAME} ${LIBS})
-        target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+        if(use_default_linkers MATCHES "True")
+            target_link_options(${PROJECT_NAME} PRIVATE ${default_linkers})
+        else()
+            target_link_options(${PROJECT_NAME} PRIVATE ${custom_linkers})
+        endif()
         set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
         set_target_properties(${PROJECT_NAME} PROPERTIES
             OUTPUT_NAME "${PROJECT_NAME}"
@@ -347,7 +465,11 @@ if(SOURCES)
         add_library(${PROJECT_NAME} STATIC ${SOURCES})
         target_link_directories(${PROJECT_NAME} PUBLIC externals/libs)
         target_link_libraries(${PROJECT_NAME} ${LIBS})
-        target_link_options(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++ -static)
+        if(use_default_linkers MATCHES "True")
+            target_link_options(${PROJECT_NAME} PRIVATE ${default_linkers})
+        else()
+            target_link_options(${PROJECT_NAME} PRIVATE ${custom_linkers})
+        endif()
         set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
         set_target_properties(${PROJECT_NAME} PROPERTIES
             OUTPUT_NAME "${PROJECT_NAME}"

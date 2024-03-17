@@ -1,5 +1,5 @@
 #pragma once
 namespace PandoraCore
 {
-    void Initialize();
+    void Initialize(bool printMonitorInfos = false);
 }

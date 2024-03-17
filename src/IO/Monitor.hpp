@@ -1,5 +1,5 @@
 #pragma once
-#include "../Core/Parameters.hpp"
+#include "Core/Parameters.hpp"
 
 namespace MonitorInfo
 {
@@ -47,9 +47,8 @@ namespace MonitorInfo
         }
     };
 
-    void Initialize();
+    void Initialize(bool printMonitorInfos = false);
     int GetMonitorCount();
-    int GetPrimaryMonitorIndex();
     MonitorParameters GetMonitorParameters(int index);
     MonitorParameters GetPrimaryMonitorParameters();
 }

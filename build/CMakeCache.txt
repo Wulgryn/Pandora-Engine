@@ -112,7 +112,7 @@ CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=F:/C++ Engine/Pandora Engine/build/CMake
 CMAKE_GNUtoMS:BOOL=OFF
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Pandora Engine
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/PandoraEngine
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=G:/msys2/mingw64/bin/ld.exe
@@ -312,15 +312,6 @@ MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
 MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
 //Value Computed by CMake
-Pandora Engine_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
-
-//Value Computed by CMake
-Pandora Engine_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Pandora Engine_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
-
-//Value Computed by CMake
 PandoraEngine_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
 
 //Value Computed by CMake
@@ -332,35 +323,8 @@ PandoraEngine_LIB_DEPENDS:STATIC=general;F:/C++ Engine/Pandora Engine/externals/
 //Value Computed by CMake
 PandoraEngine_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
 
-//Value Computed by CMake
-Pandora_Engine_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
-
-//Value Computed by CMake
-Pandora_Engine_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Pandora_Engine_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
-
-//Value Computed by CMake
-Project_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
-
-//Value Computed by CMake
-Project_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-Project_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
-
 //Name of the computer/site where compile is being run
 SITE:STRING=DESKTOP-5LIDP28
-
-//Value Computed by CMake
-modified_project_name_BINARY_DIR:STATIC=F:/C++ Engine/Pandora Engine/build
-
-//Value Computed by CMake
-modified_project_name_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-modified_project_name_SOURCE_DIR:STATIC=F:/C++ Engine/Pandora Engine
 
 
 ########################

@@ -1,0 +1,4 @@
+namespace Thread
+{
+    int GetCurrentThreadID();
+}
