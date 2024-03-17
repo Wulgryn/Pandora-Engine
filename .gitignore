@@ -1,2 +1,4 @@
 build/**
 bin/**
+.vscode/**
+bin/0.1.1/debug/PandoraEngine.dll
