@@ -16,7 +16,9 @@ namespace Application
     /**
      * @brief Same as Start() but with a step-by-step approach.
      * 
-     * @return The exit code of the application or 0 by default. 
+     * @return The exit code of the application or 0 by default.
+     * 
+     * @note If you have windows open, you MUST call this from the main thread. 
      */
     int Step(bool pollEvents = true);
 
