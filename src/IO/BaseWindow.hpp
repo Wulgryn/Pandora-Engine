@@ -1,7 +1,8 @@
 #pragma once
 #include "../Core/Parameters.hpp"
-
+#include "Image.hpp"
 #include <thread>
+
 
 class GLFWwindow;
 
@@ -15,7 +16,6 @@ private:
     std::thread mainThread;
     int windowID;
 
-    void WindowMain();
     bool ThreadCheck();
 public:
     BaseWindow();
@@ -29,6 +29,7 @@ public:
 
     GLFWwindow* GetGLFWWindow() { return glfw_window; }
     int GetWindowID() { return windowID; }
+    Image GetCurrentPicture();
 };
 
 BaseWindow* createBaseWindow();

@@ -13,6 +13,7 @@ namespace Application
     bool exit = false;
     int exitCode = 0;
     int mainThreadID = 0;
+    void (*updateFunction)() = nullptr;
 
     bool exitOnLastWindowClosed = false;
 
@@ -31,8 +32,27 @@ namespace Application
                 WindowHandlers::RemoveWindowsEvent();
             }
             else if (exitOnLastWindowClosed) exit = true;
+            if (updateFunction != nullptr) updateFunction();
         }
         return exitCode;
+    }
+
+    int Step(bool pollEvents)
+    {
+        mainThreadID = std::hash<std::thread::id>{}(std::this_thread::get_id());
+        if(WindowHandlers::liveWindows > 0) 
+        {   
+            for (BaseWindow* window : WindowHandlers::BaseWindowsList())
+            {
+                window->Render();
+            }
+            if (pollEvents)glfwPollEvents();
+            WindowHandlers::RemoveWindowsEvent();
+        }
+        else if (exitOnLastWindowClosed) exit = true;
+        if (updateFunction != nullptr) updateFunction();
+        if (exit) return exitCode;
+        return 0;
     }
 
     void Exit(int exitCode)
@@ -44,5 +64,10 @@ namespace Application
     int GetMainThreadID()
     {
         return mainThreadID;
+    }
+
+    void SetUpdateFunction(void (*updateFunction)())
+    {
+        Application::updateFunction = updateFunction;
     }
 }

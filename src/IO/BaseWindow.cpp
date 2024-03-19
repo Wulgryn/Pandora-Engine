@@ -37,8 +37,10 @@ void BaseWindow::Initialize()
     glfw_window = glfwCreateWindow(windowSize.i_width, windowSize.i_height, windowTitle, NULL, NULL);
     if (!glfw_window)
     {
+        std::runtime_error("[RTE][" + string(to_string(windowID) + "") + "] Failed to create GLFW window");
         glfwTerminate();
-        throw std::runtime_error("[RTE][" + string(to_string(windowID) + "") + "] Failed to create GLFW window");
+        system("pause");
+        throw std::runtime_error("");
     }
     DebugConsole::WriteLine("[%d] Window created successfully",windowID);
     glfwMakeContextCurrent(glfw_window);
@@ -52,8 +54,7 @@ void BaseWindow::Initialize()
     DebugConsole::WriteLine("[%d] GLAD initialized successfully",windowID);
     glfwSetWindowPos(glfw_window, windowPosition.i_x, windowPosition.i_y);
     WindowHandlers::AddWindow(this);
-    mainThread = std::thread(&BaseWindow::WindowMain, this);
-    mainThread.detach();
+    glViewport(0, 0, windowSize.i_width, windowSize.i_height);
 }
 
 bool BaseWindow::ThreadCheck()
@@ -84,13 +85,14 @@ void BaseWindow::Destroy()
     glfwDestroyWindow(glfw_window);
 }
 
-void BaseWindow::WindowMain()
+Image BaseWindow::GetCurrentPicture()
 {
-    while (!glfwWindowShouldClose(glfw_window))
-    {
-       
-    }
-    WindowHandlers::RemoveWindow(this);
+    if(!ThreadCheck()) return Image(nullptr, windowSize.i_width * windowSize.i_height * 3, windowSize);
+    static unsigned char* pixels = new unsigned char[windowSize.i_width * windowSize.i_height * 3];
+    glReadPixels(0, 0, windowSize.i_width, windowSize.i_height, GL_BGR, GL_UNSIGNED_BYTE, pixels);
+    static Image img = Image(pixels, windowSize.i_width * windowSize.i_height * 3, windowSize);
+    
+    return img;
 }
 
 void BaseWindow::Render()
@@ -99,6 +101,6 @@ void BaseWindow::Render()
     if (glfwWindowShouldClose(glfw_window)) WindowHandlers::RemoveWindow(this);
     if(glfwGetCurrentContext() != glfw_window) glfwMakeContextCurrent(glfw_window);
     glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(sin(glfwGetTime()), cos(glfwGetTime()), sin(glfwGetTime()), 1 ); // BG COLOR
+    glClearColor(sin(glfwGetTime()), cos(glfwGetTime()), sin(tan(glfwGetTime())), 1 ); // BG COLOR
     glfwSwapBuffers(glfw_window);
 }
