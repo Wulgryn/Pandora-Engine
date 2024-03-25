@@ -6,10 +6,10 @@ class Image
     typedef unsigned char byte;
     byte* data;
     int data_length;
-    Size size;
+    ParametersApp::Size size;
 public:
-    Image(byte* data, int data_length, Size size);
+    Image(byte* data, int data_length, ParametersApp::Size size);
     byte* GetData();
     int GetDataLength();
-    Size GetSize();
+    ParametersApp::Size GetSize();
 };

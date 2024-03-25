@@ -4,11 +4,14 @@
 #include <iostream>
 #include <Windows.h>
 
+using namespace std;
+using namespace ParametersApp;
+
 bool _printMonitorInfos = false;
 
-std::vector<MonitorInfo::MonitorParameters>& GetMonitorParametersList()
+vector<MonitorInfo::MonitorParameters>& GetMonitorParametersList()
 {
-    static std::vector<MonitorInfo::MonitorParameters> monitorParametersList;
+    static vector<MonitorInfo::MonitorParameters> monitorParametersList;
     return monitorParametersList;
 }
 
@@ -23,15 +26,15 @@ BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC hdcMonitor, LPRECT lprcMoni
         // Kiírjuk a monitor paramétereit
         if(_printMonitorInfos)
         {
-        std::cout << "Monitor parameters:" << std::endl;
-        std::cout << "  Device Name: " << monitorInfo.szDevice << std::endl;
-        std::cout << "  Size: " << monitorInfo.rcMonitor.right - monitorInfo.rcMonitor.left
-                  << " x " << monitorInfo.rcMonitor.bottom - monitorInfo.rcMonitor.top << std::endl;
-        std::cout << "  Position: " << monitorInfo.rcMonitor.left << ", " << monitorInfo.rcMonitor.top << std::endl;
-        std::cout << "  Work area size: " << monitorInfo.rcWork.right - monitorInfo.rcWork.left
-                  << " x " << monitorInfo.rcWork.bottom - monitorInfo.rcWork.top << std::endl;
-        std::cout << "  Work area position: " << monitorInfo.rcWork.left << ", " << monitorInfo.rcWork.top << std::endl;
-        std::cout << "----------------------" << std::endl;
+        cout << "Monitor parameters:" << endl;
+        cout << "  Device Name: " << monitorInfo.szDevice << endl;
+        cout << "  Size: " << monitorInfo.rcMonitor.right - monitorInfo.rcMonitor.left
+                  << " x " << monitorInfo.rcMonitor.bottom - monitorInfo.rcMonitor.top << endl;
+        cout << "  Position: " << monitorInfo.rcMonitor.left << ", " << monitorInfo.rcMonitor.top << endl;
+        cout << "  Work area size: " << monitorInfo.rcWork.right - monitorInfo.rcWork.left
+                  << " x " << monitorInfo.rcWork.bottom - monitorInfo.rcWork.top << endl;
+        cout << "  Work area position: " << monitorInfo.rcWork.left << ", " << monitorInfo.rcWork.top << endl;
+        cout << "----------------------" << endl;
         }
         MonitorInfo::MonitorParameters monitorParameters(monitorInfo.szDevice, 
                                                         Position(monitorInfo.rcMonitor.left, monitorInfo.rcMonitor.top), 

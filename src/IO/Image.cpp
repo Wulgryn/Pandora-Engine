@@ -1,4 +1,5 @@
 #include "Image.hpp"
+using namespace ParametersApp;
 
 Image::Image(byte* data, int data_length, Size size)
 {

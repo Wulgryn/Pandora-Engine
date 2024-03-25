@@ -7,12 +7,12 @@ namespace MonitorInfo
     {
     private:
         char* _deviceName;
-        Position _position;
-        Size _size;
-        Position _workPosition;
-        Size _workSize;
+        ParametersApp::Position _position;
+        ParametersApp::Size _size;
+        ParametersApp::Position _workPosition;
+        ParametersApp::Size _workSize;
     public:
-        MonitorParameters(char* deviceName, Position position, Size size, Position workPosition, Size workSize)
+        MonitorParameters(char* deviceName, ParametersApp::Position position, ParametersApp::Size size, ParametersApp::Position workPosition, ParametersApp::Size workSize)
         {
             _deviceName = deviceName;
             _position = position;
@@ -26,22 +26,22 @@ namespace MonitorInfo
             return _deviceName;
         }
 
-        Position position()
+        ParametersApp::Position position()
         {
             return _position;
         }
 
-        Size size()
+        ParametersApp::Size size()
         {
             return _size;
         }
 
-        Position workPosition()
+        ParametersApp::Position workPosition()
         {
             return _workPosition;
         }
 
-        Size workSize()
+        ParametersApp::Size workSize()
         {
             return _workSize;
         }

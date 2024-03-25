@@ -1,7 +1,8 @@
 #include "Application.hpp"
 
-#include "IO/WindowHandler.hpp"
+#include "IO/WindowsHandler.hpp"
 #include "IO/BaseWindow.hpp"
+#include "IO/Window.hpp"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
@@ -17,37 +18,39 @@ namespace Application
 
     bool exitOnLastWindowClosed = false;
 
-    int Start()
+    int Start(bool stopOnExit)
     {
         mainThreadID = std::hash<std::thread::id>{}(std::this_thread::get_id());
+        
         while (!exit)
         {
-            if(WindowHandlers::liveWindows > 0) 
+            if(WindowsHandler::LiveWindowsCount() > 0) 
             {   
-                for (BaseWindow* window : WindowHandlers::BaseWindowsList())
+                for (Window* window : WindowsHandler::WindowsList())
                 {
                     window->Render();
                 }
                 glfwPollEvents();
-                WindowHandlers::RemoveWindowsEvent();
+                BaseWindowsHandler::RemoveWindowsEvent();
             }
             else if (exitOnLastWindowClosed) exit = true;
             if (updateFunction != nullptr) updateFunction();
         }
+        if(stopOnExit)system("pause");
         return exitCode;
     }
 
     int Step(bool pollEvents)
     {
         mainThreadID = std::hash<std::thread::id>{}(std::this_thread::get_id());
-        if(WindowHandlers::liveWindows > 0) 
+        if(WindowsHandler::LiveWindowsCount() > 0) 
         {   
-            for (BaseWindow* window : WindowHandlers::BaseWindowsList())
+            for (Window* window : WindowsHandler::WindowsList())
             {
                 window->Render();
             }
             if (pollEvents)glfwPollEvents();
-            WindowHandlers::RemoveWindowsEvent();
+            BaseWindowsHandler::RemoveWindowsEvent();
         }
         else if (exitOnLastWindowClosed) exit = true;
         if (updateFunction != nullptr) updateFunction();

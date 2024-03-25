@@ -6,12 +6,12 @@ namespace Application
 
     /** 
     *  @brief The main entry point for the application.
-    * 
+    *  @param stopOnExit If true, the application will wait for and extra input after stopping.
     *  @note This function starts the main thread.
-    * 
+    *  
     *  @return The exit code of the application.
     */
-    int Start();
+    int Start(bool stopOnExit = true);
 
     /**
      * @brief Same as Start() but with a step-by-step approach.
