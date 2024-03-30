@@ -2,7 +2,7 @@
 #include "WindowsHandler.hpp"
 #include "Core/Rendering/Object.hpp"
 #include "Debug/Console.hpp"
-#include "Core/Components/ShaderComponent.hpp"
+#include "Core/Components/ShaderComponent2D.hpp"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
@@ -20,43 +20,107 @@ Window* createWindow()
     return window;
 }
 
-Window::Window()
+Window::Window() : ObjectsHandler(this)
 {
-    
 }
 
 void Window::Initialize()
 {
     BaseWindow::Initialize();
+    // TODO Set background color
     WindowsHandler::AddWindow(this);
-    //thread update_thread([](Window* window){
-    //    while (true)
-    //    {
-    //        window->Update();
-    //    }
-    //},this, this);
+}
+
+void Window::Start()
+{
+    thread update_thread([=](){
+
+        // FIXME: InitCheck() error
+        /**
+         *& *===============================FIXIT===================================
+         *& * DESCRIPTION: Throws an error when the window is closed.
+         *& * HINT: optional bool for write it or not, default true.
+         *& *=======================================================================
+        **/
+        while (InitCheck())
+        {
+            Update();
+        }
+    });
+    update_thread.detach();
+    isRunning = true;
 }
 
 void Window::Update()
 {
+    double currentTime = glfwGetTime();
+    if((UPS_LIMIT != -1 && (currentTime - lastUpdateTime) < 1.0/UPS_LIMIT) || !isRunning) return;
+
+    UpdateCount++;
+    if(lastUPSUpdateTime + 1 < currentTime)
+    {
+        currentUPS = UpdateCount;
+        UpdateCount = 0;
+        lastUPSUpdateTime = currentTime;
+        DebugConsole::WriteLine("[UPS] %d",currentUPS);
+    }
+
+
+    OnUpdate.Invoke(this);
     for (int  i = 0; i < objects.size(); i++)
     {
         objects[i]->Update();
+        if(objects[i]->HasComponenet<ShaderComponent2D>() && !(objects[i]->tag & ObjectTags::Renderable)) 
+        {
+            objects[i]->tag |= ObjectTags::Renderable;
+            renderable_objects.push_back(objects[i]);
+
+        }
     }
+    OnLateUpdate.Invoke(this);
 }
 
 void Window::Render()
 {
-    if(!ThreadCheck() || !InitCheck()) return;
+    // TODO Add fps limiter
+    if(!ThreadCheck() || !InitCheck() || !isRunning) return;
     if (glfwWindowShouldClose(glfw_window)) BaseWindowsHandler::RemoveWindow(this);
     if(glfwGetCurrentContext() != glfw_window) glfwMakeContextCurrent(glfw_window);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(sin(glfwGetTime()), cos(glfwGetTime()), sin(tan(glfwGetTime())), 1 ); // BG COLOR
-    for(int i = 0; i < renderable_objects.size(); i++)
+    double currentTime = glfwGetTime();
+    if(FPS_LIMIT != -1 && (currentTime - lastFrameTime) < 1.0/FPS_LIMIT) return;
+
+    FrameCount++;
+    if(lastFPSUpdateTime + 1 < currentTime)
     {
-        if(!renderable_objects[i]->HasComponenet<ShaderComponent>())
-        renderable_objects[i]->UpdateComponenets();
+        currentFPS = FrameCount;
+        FrameCount = 0;
+        lastFPSUpdateTime = currentTime;
+        DebugConsole::WriteLine("[FPS] %d",currentFPS);
     }
+    OnWindowClear.Invoke(this);
+
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // BUG DEPRECATED: glClearColor(1, cos(glfwGetTime()), sin(glfwGetTime()), 1 );
+    /**
+     *~  *=======================================================================
+     *~  * DESCRIPTION: Need to remove, only for testing purposes.
+     *~  * REASON: Let user decide the background color.
+     *~  * ALTERNATIVE: none
+     *~  * EXPARATION: near future
+     *~  *=======================================================================
+    **/
+    glClearColor(sin(glfwGetTime()), cos(glfwGetTime()), sin(glfwGetTime()), 1 );
+    OnRender.Invoke(this);
+
+    for(int i = 0; i < objects.size(); i++)
+    {
+        if(objects[i]->HasComponenet<ShaderComponent2D>() && objects[i]->tag & ObjectTags::Renderable)
+        {
+            objects[i]->GetComponenet<ShaderComponent2D>()->Render();
+        } 
+    }
+    OnLateRender.Invoke(this);
     glfwSwapBuffers(glfw_window);
 }
 

@@ -2,9 +2,10 @@
 #include "../Core/Parameters.hpp"
 #include "../Core/Event.hpp"
 #include "Image.hpp"
-#include <thread>
 #include <vector>
+#include <map>
 
+#include <string>
 
 class GLFWwindow;
 
@@ -13,16 +14,21 @@ class BaseWindow
 private:
     ParametersApp::Position windowPosition;
     ParametersApp::Size windowSize;
-    const char* windowTitle;
+    std::string windowTitle;
     int windowID;
-    std::thread mainThread;
     int BaseWindowHandlerIndex;
     bool isCreated = false;
+
+    std::map<char*, void*> pointers;
 protected:
     GLFWwindow* glfw_window;
 public:
     BaseWindow();
     virtual void Initialize();
+
+    virtual void ResizeCallback(ParametersApp::Size size);
+
+
     void Show();
 
     void Close();
@@ -36,6 +42,12 @@ public:
     int GetWindowID() { return windowID; }
     Image GetCurrentPicture();
 
+    void BindPointer(char* name, void* pointer);
+    void* GetPointer(char* name);
+
+    void SetSize(ParametersApp::Size size);
+    ParametersApp::Size GetSize() { return windowSize; }
+
     /// @brief Invoked before the window is closed.
     /// @param BaseWindow* The window that is being closed.
     Event<BaseWindow*> OnClose;
@@ -46,6 +58,11 @@ public:
     /// @param BaseWindow* The window that is being shown.
     /// @param Image* The image that is being returned.
     Event<BaseWindow*, Image*> OnGetCurrentPicture;
+
+    /// @brief Invoked when the window is resized.
+    /// @param BaseWindow* The window that is being resized.
+    /// @param ParametersApp::Size The new size of the window.
+    Event<BaseWindow*, ParametersApp::Size> OnResize;
 };
 
 /// @brief Creates and Initializes a new BaseWindow.

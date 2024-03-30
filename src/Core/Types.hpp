@@ -1,3 +1,3 @@
-
-typedef unsigned char byte;
-using byte = unsigned char;
+#pragma once
+typedef unsigned int ID;
+typedef unsigned char Tag;

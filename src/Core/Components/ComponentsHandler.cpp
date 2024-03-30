@@ -2,6 +2,11 @@
 #include "ComponenetTypenames.hpp"
 #include "BaseComponent.hpp"
 
+ComponentsHandler::ComponentsHandler(BaseObject* object)
+{
+    this->object = object;
+}
+
 template <typename ComponentType> ComponentType* Components::Get(ComponentsHandler* handler)
 {
     return handler->GetComponenet<ComponentType>();
@@ -17,15 +22,20 @@ bool Components::isEmpty(ComponentsHandler* handler)
     return handler->IsEmpty();
 }
 
-
-ComponentsHandler::ComponentsHandler()
-{
-    
-}
-
 template <typename ComponentType> ComponentType* ComponentsHandler::AddComponenet()
 {
     BaseComponent* component = new ComponentType();
+    component->SetHandler(this);
+    
+    components.push_back(component);
+    return dynamic_cast<ComponentType*>(component);
+}
+
+template <typename ComponentType, typename Object> ComponentType* ComponentsHandler::AddComponenet(ClassObject* object)
+{
+    BaseComponent* component = new ComponentType(static_cast<Object*>(object));
+    component->SetHandler(this);
+    
     components.push_back(component);
     return dynamic_cast<ComponentType*>(component);
 }
@@ -63,6 +73,14 @@ template <typename ComponentType> bool ComponentsHandler::HasComponenet()
 bool ComponentsHandler::IsEmpty()
 {
     return components.empty();
+}
+
+void ComponentsHandler::InitializeComponenets()
+{
+    for (BaseComponent* component : components)
+    {
+        component->Initialize();
+    }
 }
 
 void ComponentsHandler::UpdateComponenets()

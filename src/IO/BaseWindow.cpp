@@ -12,7 +12,6 @@
 #include <stdexcept>
 #include <thread>
 #include <iostream>
-#include <string>
 
 using namespace std;
 using namespace ParametersApp;
@@ -27,17 +26,25 @@ BaseWindow* createBaseWindow()
     return window;
 }
 
+void glfwWindowSizeCallback(GLFWwindow* window, int width, int height)
+{
+    BaseWindow* baseWindow = (BaseWindow*)glfwGetWindowUserPointer(window);
+    baseWindow->ResizeCallback(Size(width, height));
+}
+
+
+
 BaseWindow::BaseWindow()
 {
     windowSize = Size(800, 600);
     windowPosition = Position(MonitorInfo::GetPrimaryMonitorParameters().size().i_width / 2 - 400, MonitorInfo::GetPrimaryMonitorParameters().size().i_height / 2 - 300);
     windowID = windowCount++;
-    windowTitle = string("Base Window - " + to_string(windowID)).c_str();
+    windowTitle = "Base Window - " + to_string(windowID);
 }
 
 void BaseWindow::Initialize()
 {
-    glfw_window = glfwCreateWindow(windowSize.i_width, windowSize.i_height, windowTitle, NULL, NULL);
+    glfw_window = glfwCreateWindow(windowSize.i_width, windowSize.i_height, windowTitle.c_str(), NULL, NULL);
     if (!glfw_window)
     {
         std::runtime_error("[RTE][" + string(to_string(windowID) + "") + "] Failed to create GLFW window");
@@ -45,7 +52,7 @@ void BaseWindow::Initialize()
         system("pause");
         throw std::runtime_error("");
     }
-    DebugConsole::WriteLine("[%d] Window created successfully",windowID);
+    DebugConsole::WriteLine("[%d] Window created successfully with name: %s",windowID, windowTitle.c_str());
     glfwMakeContextCurrent(glfw_window);
 
     if (!gladLoadGL(glfwGetProcAddress))
@@ -55,10 +62,26 @@ void BaseWindow::Initialize()
         throw std::runtime_error("");
     }
     DebugConsole::WriteLine("[%d] GLAD initialized successfully",windowID);
+
+    glfwSetWindowUserPointer(glfw_window, this);
+
+    glfwSetWindowSizeCallback(glfw_window, glfwWindowSizeCallback);
+
     glfwSetWindowPos(glfw_window, windowPosition.i_x, windowPosition.i_y);
     BaseWindowHandlerIndex = BaseWindowsHandler::AddWindow(this);
+
     glViewport(0, 0, windowSize.i_width, windowSize.i_height);
     isCreated = true;
+
+    DebugConsole::WriteLine("[%d] Window initialized successfully",windowID);
+}
+
+void BaseWindow::ResizeCallback(Size size)
+{
+    if(!InitCheck("ResizeCallback")) return;
+    windowSize = size;
+    glViewport(0, 0, windowSize.i_width, windowSize.i_height);
+    OnResize.Invoke(this, windowSize);
 }
 
 void BaseWindow::Show()
@@ -113,9 +136,32 @@ bool BaseWindow::InitCheck(const char* function)
 {
     if(!isCreated)
     {
-        if(function == "") DebugConsole::WriteLine("[INIT_ERROR/%d] Window not initialized.",windowID);
+        if(function == "" || function == nullptr) DebugConsole::WriteLine("[INIT_ERROR/%d] Window not initialized.",windowID);
+        // FIXME: funtction name <>
+        /**
+         *& *===============================FIXIT===================================
+         *& * DESCRIPTION: if function is null it still writes else.
+         *& * HINT: idk, also try write the name even if not set.
+         *& *=======================================================================
+        **/
         else DebugConsole::WriteLine("[INIT_ERROR/%d] Window not initialized. Cannot call function <%s>.",windowID,function);
         return false;
     }
     return true;
+}
+
+void BaseWindow::BindPointer(char* name, void* pointer)
+{
+    pointers[name] = pointer;
+}
+
+void* BaseWindow::GetPointer(char* name)
+{
+    return pointers[name];
+}
+
+void BaseWindow::SetSize(Size size)
+{
+    if(!InitCheck("SetSize")) return;
+    glfwSetWindowSize(glfw_window, size.i_width, size.i_height);
 }

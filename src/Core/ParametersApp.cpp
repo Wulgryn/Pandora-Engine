@@ -1,10 +1,5 @@
 #include "Parameters.hpp"
 
-//______________________________________________________________________________________________________________________
-// PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP
-//______________________________________________________________________________________________________________________
-#pragma region PARAMETERSAPP
-
 namespace ParametersApp
 {
     //______________________________________________________________________________________________________________________
@@ -142,72 +137,21 @@ namespace ParametersApp
         l_height = height;
     }
 
+    Size* Size::operator=(Size size)
+    {
+        i_width = size.i_width;
+        i_height = size.i_height;
+        f_width = size.f_width;
+        f_height = size.f_height;
+        d_width = size.d_width;
+        d_height = size.d_height;
+        l_width = size.l_width;
+        l_height = size.l_height;
+        return this;
+    }
+
 //______________________________________________________________________________________________________________________
 // SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE  |  SIZE
 //______________________________________________________________________________________________________________________
 #pragma endregion SIZE
 }
-
-//______________________________________________________________________________________________________________________
-// PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP  |  PARAMETERSAPP
-//______________________________________________________________________________________________________________________
-#pragma endregion PARAMETERSAPP
-
-//______________________________________________________________________________________________________________________
-// PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D
-//______________________________________________________________________________________________________________________
-#pragma region PARAMETERS2D
-
-namespace Parameters2D
-{
-    Position::Position()
-    {
-        x = 0;
-        y = 0;
-    }
-
-    Position::Position(double x, double y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-
-    Size::Size()
-    {
-        width = 0;
-        height = 0;
-    }
-
-    Size::Size(double width, double height)
-    {
-        this->width = width;
-        this->height = height;
-    }
-
-    Rotation::Rotation()
-    {
-        z = 0;
-    }
-
-    Rotation::Rotation(double z)
-    {
-        this->z = z;
-    }
-
-    Scale::Scale()
-    {
-        x = 0;
-        y = 0;
-    }
-
-    Scale::Scale(double x, double y)
-    {
-        this->x = x;
-        this->y = y;
-    }
-}
-
-//______________________________________________________________________________________________________________________
-// PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D  |  PARAMETERS2D
-//______________________________________________________________________________________________________________________
-#pragma endregion PARAMETERS2D

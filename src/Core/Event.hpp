@@ -88,6 +88,13 @@ public:
         return this;
     }
 
+    Event* operator=(Method<void,Args...> method)
+    {
+        methods.clear();
+        methods.push_back(method);
+        return this;
+    }
+
     // HACK CAUTION: Comment finis.
     /**
      *^  *=======================================================================
