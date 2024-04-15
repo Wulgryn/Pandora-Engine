@@ -13,6 +13,8 @@ using namespace std;
 
 namespace Shaders
 {
+    ID currentShaderID = -1;
+
     const char* DefaultVertexShader2D()
     {
         return R"(
@@ -51,7 +53,7 @@ namespace Shaders
             layout (location = 1) in vec2 aTexCoord;
 
             out vec2 TexCoord;
-
+            
             uniform vec2 position;
 
             void main()
@@ -71,10 +73,17 @@ namespace Shaders
             in vec2 TexCoord;
 
             uniform sampler2D Texture;
+            uniform vec4 color;
+            uniform bool hasTexture;
 
             void main()
             {
-               FragColor = texture(Texture, TexCoord);
+                FragColor = color;
+                if(hasTexture) 
+                {
+                    vec4 texColor = texture(Texture, TexCoord);
+                    FragColor = vec4(texColor.rgb, texColor.a);
+                }
             }
         )";
     }
@@ -140,30 +149,17 @@ namespace Shaders
  *========================================================================================================================*/
 #pragma endregion SHADERS
 
-ID currentShader = -1;
 ID shaderCount = 0;
 
-Shader::Shader(ID id)
+void Shader::createShader(const char* vertexShaderCode, const char* fragmentShaderCode)
 {
-    if(id == -1) 
-    {
-        this->id = shaderCount++;
-        Shaders::Container::AddShader(this);
-    }
-    else 
-    {
-        this->id = id;
-        Shader* shader = Shaders::Container::GetShader(id);
-        PositionID = shader->PositionID;
-        ColorID = shader->ColorID;
-        return;
-    }
+    isCreated = false;
     shaderProgram = glCreateProgram();
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-    if (!Shaders::CompileShader(vertexShader, Shaders::DefaultVertexShader2D(), "VERTEX_SHADER") || 
-        !Shaders::CompileShader(fragmentShader, Shaders::DefaultFragmentShader2D(), "FRAGMENT_SHADER"))
+    if (!Shaders::CompileShader(vertexShader, vertexShaderCode, "VERTEX_SHADER") || 
+        !Shaders::CompileShader(fragmentShader, fragmentShaderCode, "FRAGMENT_SHADER"))
     {
         DebugConsole::WriteLine("[SHADER_ERROR] Failed to compile shader");
         return;
@@ -176,10 +172,10 @@ Shader::Shader(ID id)
     glUseProgram(shaderProgram);
 
     double vertices[] = {
-        -0.5, -0.5, // bottom left
-         0.5, -0.5, // bottom right
-         0.5,  0.5, // top right
-        -0.5,  0.5  // top left
+        -0.5, -0.5,     1.0, 1.0, // bottom left
+         0.5, -0.5,     1.0, 0.0, // bottom right
+         0.5,  0.5,     0.0, 0.0, // top right
+        -0.5,  0.5,     0.0, 1.0 // top left
     };
 
     unsigned int indices[] = {
@@ -199,52 +195,117 @@ Shader::Shader(ID id)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, 2 * sizeof(double), (void*)0);
+    glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, 4 * sizeof(double), (void*)0);
     glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, 2, GL_DOUBLE, GL_FALSE, 2 * sizeof(double), (void*)(2 * sizeof(double)));
+    glVertexAttribPointer(1, 2, GL_DOUBLE, GL_FALSE, 4 * sizeof(double), (void*)(2 * sizeof(double)));
     glEnableVertexAttribArray(1);
 
     BindUniform(Shaders::UniformType::POSITION);
     BindUniform(Shaders::UniformType::COLOR);
+    BindUniform(Shaders::UniformType::TEXTURE);
+    BindUniform("hasTexture");
+    glUniform1i(GetUniform("hasTexture"), false);
+    glUniform1i(GetUniform(Shaders::UniformType::TEXTURE), 0);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     OnSetUniforms += +[](Shader* shader)
     {
-        glUniform2f(shader->GetUniform(Shaders::UniformType::POSITION), 0.5f, 0.0f);
-        glUniform3f(shader->GetUniform(Shaders::UniformType::COLOR), 1.0f, 0.0f, 0.0f);
+        glUniform2f(shader->GetUniform(Shaders::UniformType::POSITION), 0.0f, 0.0f);
+        glUniform4f(shader->GetUniform(Shaders::UniformType::COLOR), 1.0f, 0.0f, 0.0f, 1.0f);
     };
+    isCreated = true;
+}
 
+Shader::Shader(ID id)
+{
+    if(id == -1) 
+    {
+        this->ShaderID = shaderCount++;
+        isLink = false;
+        Shaders::Container::AddShader(this);
+        createShader(Shaders::DefaultVertexTextureShader2D(), Shaders::DefaultFragmentTextureShader2D());
+    }
+    else 
+    {
+        this->ShaderID = id;
+        Shader* shader = Shaders::Container::GetShader(id);
+        PositionID = shader->PositionID;
+        ColorID = shader->ColorID;
+        TextureID = shader->TextureID;
+        isLink = true;
+        isCreated = true;
+        // TODO Make the shader copy by reference
+        return;
+    }
+    
+}
+
+void Shader::CreateNew()
+{
+    if(!isLink) return;
+    isCreated = false;
+    this->ShaderID = shaderCount++;
+    isLink = false;
+    Shaders::Container::AddShader(this);
+    createShader(Shaders::DefaultVertexTextureShader2D(), Shaders::DefaultFragmentTextureShader2D());
 }
 
 void Shader::Use()
 {
-    if(currentShader != id)
+    if(!isCreated) return;
+    if(Shaders::currentShaderID != ShaderID)
     {
-        currentShader = id;
-        glUseProgram(Shaders::Container::GetShader(id)->shaderProgram);
-        glBindVertexArray(Shaders::Container::GetShader(id)->VAO);
+        Shaders::currentShaderID = ShaderID;
+        glUseProgram(Shaders::Container::GetShader(ShaderID)->shaderProgram);
+        glBindVertexArray(Shaders::Container::GetShader(ShaderID)->VAO);
     }
     OnUse.Invoke(this);
-
+    // FIXME: Invoke!!! WRONG
+    /**
+     *& *===============================FIXIT===================================
+     *& * DESCRIPTION: The Uniforms only need to be set once or on change, not every Render.
+     *& * HINT: Make other methods in like Transform2D -> for example: OnChange, OnSizeChange and set the uniform on that event
+     *& *=======================================================================
+    **/
     OnSetUniforms.Invoke(this);
-
-    glDrawElements(GL_TRIANGLE_STRIP, 6, GL_UNSIGNED_INT, 0);
+    
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    //glDisable(GL_BLEND);
     OnUsed.Invoke(this);
 }
 
 void Shader::SetVertices(std::vector<double> vertices)
 {
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, Shaders::Container::GetShader(ShaderID)->VBO);
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(double), vertices.data(), GL_STATIC_DRAW);
 }
 
-
-void Shader::BindUniform(const char* name)
+void Shader::SetPrimitiveVertices(Primiteve2DShapes primitive_shape, std::vector<double> primitive_vertices)
 {
-    if(uniforms.find(name) == uniforms.end())
+    vector<double> vertices;
+    switch (primitive_shape)
     {
-        uniforms[name] = glGetUniformLocation(shaderProgram, name);
+    case Primiteve2DShapes::RECTANGLE:
+        vertices = {
+            primitive_vertices[0], primitive_vertices[1],     0.0, 0.0,     // bottom left
+            primitive_vertices[2], primitive_vertices[3],     1.0, 0.0,     // bottom right
+            primitive_vertices[4], primitive_vertices[5],     1.0, 1.0,     // top right
+            primitive_vertices[6], primitive_vertices[7],     0.0, 1.0      // top left
+        };
+        glBindBuffer(GL_ARRAY_BUFFER, Shaders::Container::GetShader(ShaderID)->VBO);
+        glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(double), vertices.data(), GL_STATIC_DRAW);
+        break;
+    default:
+        break;
     }
+}
+
+void Shader::BindUniform(string name)
+{
+    ID id = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, name.c_str());
+    DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", name.c_str(), id);
 }
 
 void Shader::BindUniform(Shaders::UniformType type)
@@ -252,19 +313,32 @@ void Shader::BindUniform(Shaders::UniformType type)
     switch (type)
     {
     case Shaders::UniformType::COLOR:
-        ColorID = glGetUniformLocation(shaderProgram, "color");
+        // FIXME: Shaders::Container::GetShader(ShaderID) is too slow
+        /**
+         *& *===============================FIXIT===================================
+         *& * DESCRIPTION: Always searching in the list for the shader is slow.
+         *& * HINT: make a copy by reference int the constructor, REPLACE ALL THE Shaders::Container::GetShader(ShaderID) with the the right thing.
+         *& *=======================================================================
+        **/
+        ColorID = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, "color");
+        DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", "color", ColorID);
         break;
     case Shaders::UniformType::POSITION:
-        PositionID = glGetUniformLocation(shaderProgram, "position");
+        PositionID = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, "position");
+        DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", "position", PositionID);
+        break;
+    case Shaders::UniformType::TEXTURE:
+        TextureID = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, "Texture");
+        DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", "Texture", TextureID);
         break;
     default:
         break;
     }
 }
 
-ID Shader::GetUniform(const char* name)
+ID Shader::GetUniform(string name)
 {
-    return uniforms[name];
+    return glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, name.c_str());;
 }
 
 ID Shader::GetUniform(Shaders::UniformType type)
@@ -275,6 +349,8 @@ ID Shader::GetUniform(Shaders::UniformType type)
         return ColorID;
     case Shaders::UniformType::POSITION:
         return PositionID;
+    case Shaders::UniformType::TEXTURE:
+        return TextureID;
     default:
         return -1;
     }

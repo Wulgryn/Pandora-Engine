@@ -1,4 +1,5 @@
 #pragma once
+#include "Event.hpp"
 
 class Transform2D;
 
@@ -108,6 +109,8 @@ namespace Parameters2D
 
         Size* operator+=(Size size);
         Size* operator+=(double size);
+
+        Event<Size*> OnChange;
     };
 
     struct Rotation
@@ -122,5 +125,7 @@ namespace Parameters2D
         double x, y;
         Scale();
         Scale(double x, double y);
+
+        Scale* operator=(double scale);
     };
 }

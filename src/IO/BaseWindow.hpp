@@ -8,10 +8,12 @@
 #include <string>
 
 class GLFWwindow;
-
+class Window;
 class BaseWindow
 {
 private:
+    friend Window;
+
     ParametersApp::Position windowPosition;
     ParametersApp::Size windowSize;
     std::string windowTitle;
@@ -20,7 +22,6 @@ private:
     bool isCreated = false;
 
     std::map<char*, void*> pointers;
-protected:
     GLFWwindow* glfw_window;
 public:
     BaseWindow();
@@ -47,6 +48,8 @@ public:
 
     void SetSize(ParametersApp::Size size);
     ParametersApp::Size GetSize() { return windowSize; }
+
+    double GetGLFWTime();
 
     /// @brief Invoked before the window is closed.
     /// @param BaseWindow* The window that is being closed.

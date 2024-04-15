@@ -194,6 +194,7 @@ namespace Parameters2D
     {
         width = size.d_width / width;
         height = size.d_height / height;
+        OnChange.Invoke(this);
     }
 
     Size Size::Denormalize(ParametersApp::Size size)
@@ -205,12 +206,14 @@ namespace Parameters2D
     {
         width = size.d_width * width;
         height = size.d_height * height;
+        OnChange.Invoke(this);
     }
 
     Size* Size::operator=(ParametersApp::Size size)
     {
         width = size.d_width;
         height = size.d_height;
+        OnChange.Invoke(this);
         return this;
     }
 
@@ -218,6 +221,7 @@ namespace Parameters2D
     {
         width = size.width;
         height = size.height;
+        OnChange.Invoke(this);
         return this;
     }
 
@@ -225,6 +229,7 @@ namespace Parameters2D
     {
         width = size;
         height = size;
+        OnChange.Invoke(this);
         return this;
     }
 
@@ -232,6 +237,7 @@ namespace Parameters2D
     {
         width += size.width;
         height += size.height;
+        OnChange.Invoke(this);
         return this;
     }
 
@@ -239,6 +245,7 @@ namespace Parameters2D
     {
         width += size;
         height += size;
+        OnChange.Invoke(this);
         return this;
     }
     
@@ -268,5 +275,12 @@ namespace Parameters2D
     {
         this->x = x;
         this->y = y;
+    }
+
+    Scale* Scale::operator=(double scale)
+    {
+        x = scale;
+        y = scale;
+        return this;
     }
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "../../Core/Components/ComponentsHandler.hpp"
-#include "../../Core/Rendering/ObjectsHandler.hpp"
+#include "ObjectsHandler.hpp"
 #include "../../IO/Window.hpp"
 #include "../Event.hpp"
 #include "../Types.hpp"

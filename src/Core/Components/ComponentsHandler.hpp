@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "../ClassObject.hpp"
-#include "../Rendering/ObjectsHandler.hpp"
+#include "../Elements/ObjectsHandler.hpp"
 
 class BaseComponent;
 class BaseObject;

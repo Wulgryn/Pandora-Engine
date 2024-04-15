@@ -1,15 +1,20 @@
 #include "Window.hpp"
 #include "WindowsHandler.hpp"
-#include "Core/Rendering/Object.hpp"
+#include "Core/Elements/Object.hpp"
 #include "Debug/Console.hpp"
 #include "Core/Components/ShaderComponent2D.hpp"
+#include "Core/Components/TextComponenet2D.hpp"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
 #include "glad/gl.h"
 
+#define GLT_IMPLEMENTATION
+#include "Core/External/gltext.h"
+
 #include <math.h>
 #include <thread>
+#include <stdexcept>
 
 using namespace std;
 
@@ -45,6 +50,7 @@ void Window::Start()
         while (InitCheck())
         {
             Update();
+            //if(UPS_LIMIT != -1)std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     });
     update_thread.detach();
@@ -55,48 +61,57 @@ void Window::Update()
 {
     double currentTime = glfwGetTime();
     if((UPS_LIMIT != -1 && (currentTime - lastUpdateTime) < 1.0/UPS_LIMIT) || !isRunning) return;
-
     UpdateCount++;
     if(lastUPSUpdateTime + 1 < currentTime)
     {
         currentUPS = UpdateCount;
         UpdateCount = 0;
         lastUPSUpdateTime = currentTime;
-        DebugConsole::WriteLine("[UPS] %d",currentUPS);
+        currentUPSByFrameTime = 1.0/(currentTime - lastUpdateTime);
+        DebugConsole::WriteLine("[UPS] %d : %.2f",currentUPS, 1.0/(currentTime - lastUpdateTime));
     }
+    lastUpdateTime = currentTime;
 
 
     OnUpdate.Invoke(this);
     for (int  i = 0; i < objects.size(); i++)
     {
         objects[i]->Update();
-        if(objects[i]->HasComponenet<ShaderComponent2D>() && !(objects[i]->tag & ObjectTags::Renderable)) 
-        {
-            objects[i]->tag |= ObjectTags::Renderable;
-            renderable_objects.push_back(objects[i]);
-
-        }
+        // FIXME: Renderable objects segmention fault
+        /**
+         *& *===============================FIXIT===================================
+         *& * DESCRIPTION: when this ads object the render loop gets an error(segmention fault).
+         *& * HINT: idk
+         *& *=======================================================================
+        **/
+        //// if(objects[i]->HasComponenet<ShaderComponent2D>() && !(objects[i]->tag & ObjectTags::Renderable)) 
+        //// {
+        ////     objects[i]->tag |= ObjectTags::Renderable;
+        ////     renderable_objects.push_back(objects[i]);
+        //// }
     }
     OnLateUpdate.Invoke(this);
 }
 
+
+
 void Window::Render()
 {
-    // TODO Add fps limiter
     if(!ThreadCheck() || !InitCheck() || !isRunning) return;
     if (glfwWindowShouldClose(glfw_window)) BaseWindowsHandler::RemoveWindow(this);
     if(glfwGetCurrentContext() != glfw_window) glfwMakeContextCurrent(glfw_window);
     double currentTime = glfwGetTime();
     if(FPS_LIMIT != -1 && (currentTime - lastFrameTime) < 1.0/FPS_LIMIT) return;
-
     FrameCount++;
     if(lastFPSUpdateTime + 1 < currentTime)
     {
         currentFPS = FrameCount;
         FrameCount = 0;
         lastFPSUpdateTime = currentTime;
-        DebugConsole::WriteLine("[FPS] %d",currentFPS);
+        currentFPSByFrameTime = 1.0/(currentTime - lastFrameTime);
+        DebugConsole::WriteLine("[FPS] %d : %.2f",currentFPS, 1.0/(currentTime - lastFrameTime));
     }
+    lastFrameTime = currentTime;
     OnWindowClear.Invoke(this);
 
     glClear(GL_COLOR_BUFFER_BIT);
@@ -110,15 +125,43 @@ void Window::Render()
      *~  * EXPARATION: near future
      *~  *=======================================================================
     **/
-    glClearColor(sin(glfwGetTime()), cos(glfwGetTime()), sin(glfwGetTime()), 1 );
+    glClearColor(cosf(glfwGetTime()) * 0.5f + 0.5f,sinf(glfwGetTime()) * 0.5f + 0.5f, 1.0f, 1 );
+    //glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    
     OnRender.Invoke(this);
 
+    // FIXME: Renderable objects segmention fault
+    /**
+     *& *===============================FIXIT===================================
+     *& * DESCRIPTION: If this loop changet to renderable_objects.size() it throws a segmention fault. on the IF statement.
+     *& * HINT: When update loop ads objects to renderable_objects the render loop still uses it, so segmention fault.
+     *& *=======================================================================
+    **/
+    //// for(int i = 0; i < renderable_objects.size(); i++)
+    //// {
+    ////     if(renderable_objects[i]->HasComponenet<ShaderComponent2D>() && renderable_objects[i]->tag & ObjectTags::Renderable)
+    ////     {
+    ////         renderable_objects[i]->GetComponenet<ShaderComponent2D>()->Render();
+    ////     } 
+    //// }
     for(int i = 0; i < objects.size(); i++)
     {
-        if(objects[i]->HasComponenet<ShaderComponent2D>() && objects[i]->tag & ObjectTags::Renderable)
+        if(objects[i]->HasComponenet<ShaderComponent2D>()) //// .&& objects[i]->tag & ObjectTags::Renderable)
         {
             objects[i]->GetComponenet<ShaderComponent2D>()->Render();
-        } 
+        }
+
+        // HACK CAUTION: TextComponent2D render
+        /**
+         *^  *=======================================================================
+         *^  * DESCRIPTION: Maybe make it so all rednerable stuff is inside the Texture2D / ShaderComponent2D. And the overrinde render will determine tho többi
+         *^  *=======================================================================
+        **/
+        if(objects[i]->HasComponenet<TextComponent2D>())
+        {
+            objects[i]->GetComponenet<TextComponent2D>()->Render();
+        }
+        
     }
     OnLateRender.Invoke(this);
     glfwSwapBuffers(glfw_window);

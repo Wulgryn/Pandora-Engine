@@ -165,3 +165,9 @@ void BaseWindow::SetSize(Size size)
     if(!InitCheck("SetSize")) return;
     glfwSetWindowSize(glfw_window, size.i_width, size.i_height);
 }
+
+double BaseWindow::GetGLFWTime()
+{
+    if(!InitCheck("GetGLFWTime")) return -1;
+    return glfwGetTime();
+}

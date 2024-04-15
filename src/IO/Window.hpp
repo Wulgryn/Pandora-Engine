@@ -1,8 +1,10 @@
 #pragma once
 #include "BaseWindow.hpp"
-#include "../Core/Rendering/ObjectsHandler.hpp"
+#include "../Core/Elements/ObjectsHandler.hpp"
 #include "../Core/Event.hpp"
 
+
+struct GLTtext;
 class Window : public BaseWindow, public ObjectsHandler
 {
 private:
@@ -13,7 +15,11 @@ private:
     int UpdateCount = 0;
 
     int currentFPS = 0;
+    double currentFPSByFrameTime = 0;
+
     int currentUPS = 0;
+    double currentUPSByFrameTime = 0;
+
 
     double lastFPSUpdateTime = 0;
     double lastUPSUpdateTime = 0;
@@ -44,12 +50,14 @@ public:
     void SetFPSLimit(int fps);
 
     int GetFPS() { return currentFPS; }
+    double GetFPSByFrameTime() { return currentFPSByFrameTime; }
 
     /// @brief Sets the Object Update Per Second Limit of the Window.
     /// @param ups The UPS Limit.
     void SetUPSLimit(int ups);
 
     int GetUPS() { return currentUPS; }
+    double GetUPSByFrameTime() { return currentUPSByFrameTime; }
     
 
     /// @brief Invoked every frame berfore the Window is rendered.

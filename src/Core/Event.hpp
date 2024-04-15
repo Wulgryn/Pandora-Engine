@@ -81,6 +81,26 @@ public:
     <br/>`Called test(2024).`
     <br/>`Called lambda(2025).`
     <br/>`Called lambda(2024).`<p/>
+
+    - With reference/capture lambda:
+    @code{.cpp}
+    #include <iostream>
+
+    int main()
+    {
+        Event<int> event;
+
+        int a = 2024;
+        std::cout << "Called test("<< a << ")." << std::endl;
+        event += Method<void, int>([&](){std::cout << "Called lambda("<< a << ")." << std::endl;});
+        Method<void, int> method([=](){std::cout << "Called lambda("<< a << ")." << std::endl;});
+        event.Invoke(2024);
+        return 0;
+    }
+    @endcode
+    Output:
+    <br/>`Called test(2024).`
+    <br/>`Called lambda(2024).`<p/>
     */
     Event* operator+=(Method<void,Args...> method)
     {

@@ -3,11 +3,20 @@
 #include "IO/WindowsHandler.hpp"
 #include "IO/BaseWindow.hpp"
 #include "IO/Window.hpp"
+#include "Debug/Console.hpp"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
 
 #include <thread>
+
+using namespace std;
+
+vector<Method<void>>& GetInvokeQueue()
+{
+    static vector<Method<void>> invokeQueue;
+    return invokeQueue;
+}
 
 namespace Application
 {
@@ -35,6 +44,11 @@ namespace Application
             }
             else if (exitOnLastWindowClosed) exit = true;
             if (updateFunction != nullptr) updateFunction();
+            while (GetInvokeQueue().size() > 0)
+            {
+                GetInvokeQueue()[0]();
+                GetInvokeQueue().erase(GetInvokeQueue().begin());
+            }
         }
         if(stopOnExit)system("pause");
         return exitCode;
@@ -73,4 +87,9 @@ namespace Application
     {
         Application::updateFunction = updateFunction;
     }
+}
+
+void Application::EnqueueInvoke(Method<void> method)
+{
+    GetInvokeQueue().push_back(method);
 }

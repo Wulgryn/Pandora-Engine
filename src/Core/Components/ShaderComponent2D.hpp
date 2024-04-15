@@ -1,12 +1,7 @@
 #pragma once
 #include "BaseComponent.hpp"
 #include "../Rendering/Shader.hpp"
-
-enum class Primiteve2DShapes
-{
-    RECTANGLE
-    // TODO https://docs.unity3d.com/Manual/2DPrimitiveObjects.html
-};
+#include "../Rendering/PrimitiveShapes2D.hpp"
 
 class ShaderComponent2D : public BaseComponent
 {
@@ -19,6 +14,8 @@ public:
     ShaderComponent2D();
     ShaderComponent2D(Shader* shader);
     ShaderComponent2D(Primiteve2DShapes shape);
+
+    Shader* GetShader() { return shader; }
 
     virtual void Initialize() override;
     virtual void Render();

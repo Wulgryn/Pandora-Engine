@@ -1,4 +1,5 @@
-
+#pragma once
+#include "Method.hpp"
 namespace Application
 {
     extern bool exitOnLastWindowClosed;
@@ -27,6 +28,8 @@ namespace Application
     int GetMainThreadID();
 
     void SetUpdateFunction(void (*updateFunction)());
+
+    void EnqueueInvoke(Method<void> method);
 
     class ExitCodes
     {
