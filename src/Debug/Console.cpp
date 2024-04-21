@@ -4,6 +4,8 @@
 #include <chrono>
 #include <cstdarg>
 #include <stdarg.h>
+#include <iomanip>
+
 using namespace std;
 using namespace std::chrono;
 
@@ -26,16 +28,16 @@ void DebugConsole::WriteTime()
         cout << buffer << "]";
         break;
     case MILLISECONDS:
-        cout << buffer << "s." << duration_cast<milliseconds>(duration).count() % 1000 << "ms]";
+        cout << buffer << "s." << std::setw(3) << std::setfill('0') << duration_cast<milliseconds>(duration).count() % 1000 << "ms]";
         break;
     case MICROSECONDS:
-        cout << buffer << "s." << duration_cast<milliseconds>(duration).count() % 1000 << "ms.";
-        cout << duration_cast<microseconds>(duration).count() % 1000 << "us]";
+        cout << buffer << "s." << std::setw(3) << std::setfill('0') << duration_cast<milliseconds>(duration).count() % 1000 << "ms.";
+        cout << std::setw(3) << std::setfill('0') << duration_cast<microseconds>(duration).count() % 1000 << "us]";
         break;
     case NANOSECOND:
-        cout << buffer << "s." << duration_cast<milliseconds>(duration).count() % 1000 << "ms.";
-        cout << duration_cast<microseconds>(duration).count() % 1000 << "us.";
-        cout << duration_cast<nanoseconds>(duration).count() % 1000 << "ns]";
+        cout << buffer << "s." << std::setw(3) << std::setfill('0') << duration_cast<milliseconds>(duration).count() % 1000 << "ms.";
+        cout << std::setw(3) << std::setfill('0') << duration_cast<microseconds>(duration).count() % 1000 << "us.";
+        cout << std::setw(3) << std::setfill('0') << duration_cast<nanoseconds>(duration).count() % 1000 << "ns]";
         break;
     }
 }

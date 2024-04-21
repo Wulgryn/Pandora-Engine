@@ -36,7 +36,12 @@ public:
     int Destroy();
     
     bool ThreadCheck(const char* function = "");
-    bool InitCheck(const char* function = "");
+    // @brief Checks if the window is initialized.
+    // @param function The function that is calling this function.
+    // @param throwRTE If true, it will throw a runtime error if the check is false.
+    // @return bool True if the window is initialized.
+    // @note if the window is not initialized, it will print an error message.
+    bool InitCheck(const char* function = "", bool throwRTE = false);
     bool IsCreated() { return isCreated; }
 
     GLFWwindow* GetGLFWWindow() { return glfw_window; }

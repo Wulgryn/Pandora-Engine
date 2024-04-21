@@ -47,26 +47,25 @@ void BaseWindow::Initialize()
     glfw_window = glfwCreateWindow(windowSize.i_width, windowSize.i_height, windowTitle.c_str(), NULL, NULL);
     if (!glfw_window)
     {
-        std::runtime_error("[RTE][" + string(to_string(windowID) + "") + "] Failed to create GLFW window");
         glfwTerminate();
+        cerr << "[RTE][" << windowID << "] Failed to create GLFW window" << endl;
         system("pause");
-        throw std::runtime_error("");
+        Application::Exit(-1);
     }
     DebugConsole::WriteLine("[%d] Window created successfully with name: %s",windowID, windowTitle.c_str());
     glfwMakeContextCurrent(glfw_window);
 
     if (!gladLoadGL(glfwGetProcAddress))
     {
-        std::runtime_error("[RTE][" + string(to_string(windowID) + "") + "] Failed to initialize GLAD");
+        glfwTerminate();
+        cerr << "[RTE][" << windowID << "] Failed to initialize GLAD" << endl;
         system("pause");
-        throw std::runtime_error("");
+        Application::Exit(-1);
     }
     DebugConsole::WriteLine("[%d] GLAD initialized successfully",windowID);
 
     glfwSetWindowUserPointer(glfw_window, this);
-
     glfwSetWindowSizeCallback(glfw_window, glfwWindowSizeCallback);
-
     glfwSetWindowPos(glfw_window, windowPosition.i_x, windowPosition.i_y);
     BaseWindowHandlerIndex = BaseWindowsHandler::AddWindow(this);
 
@@ -132,7 +131,7 @@ bool BaseWindow::ThreadCheck(const char* funtion)
     return true;
 }
 
-bool BaseWindow::InitCheck(const char* function)
+bool BaseWindow::InitCheck(const char* function, bool throwRTE)
 {
     if(!isCreated)
     {
@@ -145,6 +144,12 @@ bool BaseWindow::InitCheck(const char* function)
          *& *=======================================================================
         **/
         else DebugConsole::WriteLine("[INIT_ERROR/%d] Window not initialized. Cannot call function <%s>.",windowID,function);
+        if(throwRTE) 
+        {
+            cerr << "[RTE][" << windowID << "] Window not initialized. Cannot call function <" << function << ">." << endl;
+            system("pause");
+            Application::Exit(-1);
+        }
         return false;
     }
     return true;

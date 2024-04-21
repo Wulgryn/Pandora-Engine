@@ -21,11 +21,17 @@ void PandoraCore::Initialize(bool printMonitorInfos)
     DebugConsole::WriteLine("Debug mode enabled");
 #endif
     DebugConsole::WriteLine("experimental version 0.1.1 alpha");
-    glfwSetErrorCallback(error_callback);
+
+    setlocale(LC_ALL, "");
+
     srand(time(NULL));
     DebugConsole::WriteLine("Random initialized successfully!");
+
     MonitorInfo::Initialize(printMonitorInfos);
     DebugConsole::WriteLine("MonitorInfo initialized successfully!");
+
+    glfwSetErrorCallback(error_callback);
+
     if (!glfwInit())
     {
         DebugConsole::WriteLine("[GLFW ERROR] Failed to initialize GLFW!");

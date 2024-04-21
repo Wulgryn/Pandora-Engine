@@ -353,6 +353,7 @@ GLT_API const char* gltGetText(GLTtext *text)
 
 GLT_API void gltViewport(GLsizei width, GLsizei height)
 {
+	if(width <= 0 || height <= 0) return;
 	_GLT_ASSERT(width > 0);
 	_GLT_ASSERT(height > 0);
 

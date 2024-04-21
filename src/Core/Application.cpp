@@ -9,10 +9,13 @@
 #include "GLFW/glfw3.h"
 
 #include <thread>
+#include <iostream>
+#include <vector>
+#include <stdexcept>
 
 using namespace std;
 
-vector<Method<void>>& GetInvokeQueue()
+vector<Method<void>> &GetInvokeQueue()
 {
     static vector<Method<void>> invokeQueue;
     return invokeQueue;
@@ -20,7 +23,7 @@ vector<Method<void>>& GetInvokeQueue()
 
 namespace Application
 {
-    bool exit = false;
+    bool app_exit = false;
     int exitCode = 0;
     int mainThreadID = 0;
     void (*updateFunction)() = nullptr;
@@ -30,52 +33,74 @@ namespace Application
     int Start(bool stopOnExit)
     {
         mainThreadID = std::hash<std::thread::id>{}(std::this_thread::get_id());
-        
-        while (!exit)
+        try
         {
-            if(WindowsHandler::LiveWindowsCount() > 0) 
-            {   
-                for (Window* window : WindowsHandler::WindowsList())
-                {
-                    window->Render();
-                }
-                glfwPollEvents();
-                BaseWindowsHandler::RemoveWindowsEvent();
-            }
-            else if (exitOnLastWindowClosed) exit = true;
-            if (updateFunction != nullptr) updateFunction();
-            while (GetInvokeQueue().size() > 0)
+            while (!app_exit)
             {
-                GetInvokeQueue()[0]();
-                GetInvokeQueue().erase(GetInvokeQueue().begin());
+                if (WindowsHandler::LiveWindowsCount() > 0)
+                {
+                    glfwPollEvents();
+                    for (Window *window : WindowsHandler::WindowsList())
+                    {
+                        window->Render();
+                        window->GetInput()->ResetInputs();
+                    }
+                    // glfwPollEvents();
+                    BaseWindowsHandler::RemoveWindowsEvent();
+                }
+                else if (exitOnLastWindowClosed) app_exit = true;
+                if (updateFunction != nullptr) updateFunction();
+                // HACK CAUTION: InvokeQueue
+                /**
+                 *^  *=======================================================================
+                 *^  * DESCRIPTION: Make thet only a certain amount of methods can be invoked per frame. Maybe make it so the user can set it.
+                 *^  *=======================================================================
+                 **/
+                while (GetInvokeQueue().size() > 0)
+                {
+                    GetInvokeQueue()[0]();
+                    GetInvokeQueue().erase(GetInvokeQueue().begin());
+                }
             }
         }
-        if(stopOnExit)system("pause");
+        catch (const std::exception &e)
+        {
+            cerr << "\n" << e.what() << '\n';
+            system("pause");
+            return exitCode;
+        }
+
+        if (stopOnExit) system("pause");
         return exitCode;
     }
 
     int Step(bool pollEvents)
     {
         mainThreadID = std::hash<std::thread::id>{}(std::this_thread::get_id());
-        if(WindowsHandler::LiveWindowsCount() > 0) 
-        {   
-            for (Window* window : WindowsHandler::WindowsList())
+        if (WindowsHandler::LiveWindowsCount() > 0)
+        {
+            for (Window *window : WindowsHandler::WindowsList())
             {
                 window->Render();
             }
-            if (pollEvents)glfwPollEvents();
+            if (pollEvents)
+                glfwPollEvents();
             BaseWindowsHandler::RemoveWindowsEvent();
         }
-        else if (exitOnLastWindowClosed) exit = true;
-        if (updateFunction != nullptr) updateFunction();
-        if (exit) return exitCode;
+        else if (exitOnLastWindowClosed)
+            app_exit = true;
+        if (updateFunction != nullptr)
+            updateFunction();
+        if (app_exit)
+            return exitCode;
         return 0;
     }
 
     void Exit(int exitCode)
     {
         Application::exitCode = exitCode;
-        exit = true;
+        app_exit = true;
+        exit(exitCode);
     }
 
     int GetMainThreadID()

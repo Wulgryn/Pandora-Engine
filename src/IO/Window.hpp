@@ -2,12 +2,20 @@
 #include "BaseWindow.hpp"
 #include "../Core/Elements/ObjectsHandler.hpp"
 #include "../Core/Event.hpp"
+#include "InputHandler.hpp"
 
 
 struct GLTtext;
 class Window : public BaseWindow, public ObjectsHandler
 {
 private:
+    int FPS_LIMIT = 60;
+    //Object update limit per second
+    int UPS_LIMIT = 60;
+
+    InputHandler* inputHandler;
+
+
     double lastFrameTime = 0;
     double lastUpdateTime = 0;
 
@@ -26,9 +34,8 @@ private:
 
     bool isRunning = false;
 public:
-    int FPS_LIMIT = 60;
-    //Object update limit per second
-    int UPS_LIMIT = 60;
+    bool IsPrintFPSEnabled = false;
+    bool IsPrintUPSEnabled = false;
 
     Window();
 
@@ -58,6 +65,12 @@ public:
 
     int GetUPS() { return currentUPS; }
     double GetUPSByFrameTime() { return currentUPSByFrameTime; }
+
+    InputHandler* GetInput() 
+    {
+        if(!InitCheck("GetInput",true)) return nullptr;
+        return inputHandler; 
+    }
     
 
     /// @brief Invoked every frame berfore the Window is rendered.
