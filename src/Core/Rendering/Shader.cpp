@@ -53,12 +53,31 @@ namespace Shaders
             layout (location = 1) in vec2 aTexCoord;
 
             out vec2 TexCoord;
-            
             uniform vec2 position;
+
+            uniform float angle;
+            uniform vec2 rotationCenter;
+
+            uniform float aspectRatio;
 
             void main()
             {
-                gl_Position = vec4(aPos.x + position.x, aPos.y + position.y, aPos.z, 1.0);
+                vec2 plainTranslatedPosition = vec2(aPos.x + position.x, aPos.y + position.y);
+
+                vec2 distance = (plainTranslatedPosition - rotationCenter) * vec2(aspectRatio, 1.0f);
+            
+                // Forgatási mátrix
+                mat2 rotationMatrix = mat2(
+                    cos(angle), -sin(angle),
+                    sin(angle), cos(angle)
+                );
+            
+                // Forgatás alkalmazása a pontokra
+                vec2 rotatedPosition = rotationMatrix * distance;
+            
+                // Végül beállítjuk a végleges pozíciót
+                gl_Position = vec4(rotatedPosition / vec2(aspectRatio, 1.0f) + rotationCenter, aPos.z, 1.0);
+
                 TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
             }
         )";
@@ -204,7 +223,12 @@ void Shader::createShader(const char* vertexShaderCode, const char* fragmentShad
     BindUniform(Shaders::UniformType::POSITION);
     BindUniform(Shaders::UniformType::COLOR);
     BindUniform(Shaders::UniformType::TEXTURE);
+    BindUniform(Shaders::UniformType::ANGLE);
+    BindUniform(Shaders::UniformType::ROTATION_CENTER);
     BindUniform("hasTexture");
+    BindUniform("aspectRatio");
+
+
     glUniform1i(GetUniform("hasTexture"), false);
     glUniform1i(GetUniform(Shaders::UniformType::TEXTURE), 0);
 
@@ -214,6 +238,9 @@ void Shader::createShader(const char* vertexShaderCode, const char* fragmentShad
     {
         glUniform2f(shader->GetUniform(Shaders::UniformType::POSITION), 0.0f, 0.0f);
         glUniform4f(shader->GetUniform(Shaders::UniformType::COLOR), 1.0f, 0.0f, 0.0f, 1.0f);
+        glUniform1f(shader->GetUniform(Shaders::UniformType::ANGLE), 0.0f);
+        glUniform2f(shader->GetUniform(Shaders::UniformType::ROTATION_CENTER), 0.0f, 0.0f);
+        glUniform1f(shader->GetUniform("aspectRatio"), 1.33f);
     };
     isCreated = true;
 }
@@ -331,6 +358,14 @@ void Shader::BindUniform(Shaders::UniformType type)
         TextureID = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, "Texture");
         DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", "Texture", TextureID);
         break;
+    case Shaders::UniformType::ANGLE:
+        AngleID = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, "angle");
+        DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", "rotationMatrix", AngleID);
+        break;
+    case Shaders::UniformType::ROTATION_CENTER:
+        RotationCenterID = glGetUniformLocation(Shaders::Container::GetShader(ShaderID)->shaderProgram, "rotationCenter");
+        DebugConsole::WriteLine("[SHADER] Bound uniform: %s with id: %d", "rotationCenter", RotationCenterID);
+        break;
     default:
         break;
     }
@@ -351,6 +386,10 @@ ID Shader::GetUniform(Shaders::UniformType type)
         return PositionID;
     case Shaders::UniformType::TEXTURE:
         return TextureID;
+    case Shaders::UniformType::ANGLE:
+        return AngleID;
+    case Shaders::UniformType::ROTATION_CENTER:
+        return RotationCenterID;
     default:
         return -1;
     }

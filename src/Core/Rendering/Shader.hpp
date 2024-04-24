@@ -23,7 +23,9 @@ namespace Shaders
     {
         POSITION,
         COLOR,
-        TEXTURE
+        TEXTURE,
+        ANGLE,
+        ROTATION_CENTER,
     };
 
     bool CompileShader(ID shaderID, const char* shaderCode, const char* shaderType = "SHADER");
@@ -50,6 +52,8 @@ private:
     ID PositionID;
     ID ColorID;
     ID TextureID;
+    ID AngleID;
+    ID RotationCenterID;
 
     ID ShaderID;
     //if its a real shader or just imitating one by the id

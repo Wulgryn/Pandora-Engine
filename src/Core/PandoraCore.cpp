@@ -46,8 +46,6 @@ void PandoraCore::Initialize(bool printMonitorInfos)
     GLFWmonitor *monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode *mode = glfwGetVideoMode(monitor);
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
 	glfwWindowHint(GLFW_RED_BITS, mode->redBits);
 	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);

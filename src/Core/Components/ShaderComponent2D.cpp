@@ -14,8 +14,12 @@ void ShaderComponent2D::SetUniforms(Shader* shader)
 {
     if(Transform2D* transform = componenetHandler->GetComponenet<Transform2D>())
     {
-        Parameters2D::Position norm_pos = transform->Position()->Normalize(componenetHandler->GetParentObject()->GetParentWindow()->GetSize());
-        glUniform2f(shader->GetUniform(Shaders::UniformType::POSITION),norm_pos.x, norm_pos.y);
+        ParametersApp::Size size = componenetHandler->GetParentObject()->GetParentWindow()->GetSize();
+        Parameters2D::Position norm_pos = transform->Position()->Normalize(size);
+        glUniform2f(shader->GetUniform(Shaders::UniformType::POSITION), norm_pos.x, norm_pos.y);
+        glUniform1f(shader->GetUniform(Shaders::UniformType::ANGLE), transform->Rotation()->z);
+        glUniform2f(shader->GetUniform(Shaders::UniformType::ROTATION_CENTER), (float)norm_pos.x, (float)norm_pos.y);
+        glUniform1f(shader->GetUniform("aspectRatio"), size.f_width / size.f_height);
     }
     if(Texture2D* texture2D = componenetHandler->GetComponenet<Texture2D>()) 
     {
