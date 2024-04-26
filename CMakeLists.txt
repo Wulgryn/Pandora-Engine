@@ -124,7 +124,7 @@ file(GLOB_RECURSE cpps
 )
 if(NOT cpps)
 message(STATUS "Creating main.cpp")
-    file(WRITE ${CMAKE_SOURCE_DIR}/src/main.cpp "#include <iostream>\n\nint main(int argc, char** argv) {\n    std::cout << \"Hello World!\" << std::endl;\n    return 0;\n}\n")
+    file(WRITE ${CMAKE_SOURCE_DIR}/src/main.cpp "#include <iostream>\n\nint main(int argc, char** argv) {\n\tstd::cout << \"Hello World!\" << std::endl;\n\tsystem(\"pause\");\n\treturn 0;\n}\n")
 endif()
 
 get_filename_component(current_dir_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
@@ -208,7 +208,15 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/c_cpp_properties.json")
     )
 endif()
 
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/settings.json")
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.gitignore")
+    file(WRITE "${CMAKE_SOURCE_DIR}/.gitignore" 
+    "build/**\n"
+	"bin/**\n"
+	".vscode/**"
+    )
+endif()
+
+#if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/settings.json")
     file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/settings.json"
     "{\n"
     "    \"files.exclude\": {\n"
@@ -223,11 +231,12 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/settings.json")
     "    \"cmake.configureOnEdit\": true,\n"
     "    \"cmake.buildDirectory\": \"\${workspaceFolder}/build\",\n"
     "    \"cmake.debugConfig\": {\n"
-    "        \"externalConsole\": true\n"
+    "        \"externalConsole\": true,\n"
+	"	 	 \"console\": \"externalTerminal\""
     "    }\n"
     "}\n"
     )
-endif()
+#endif()
 
 if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/tasks.json")
     file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/tasks.json"
@@ -251,19 +260,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/tasks.json")
                 \"kind\": \"build\",
                 \"isDefault\": true
             },
-            \"dependsOn\": [
-                \"cmake: configure\"
-            ]
         },
-        {
-            \"label\": \"cmake: configure\",
-            \"type\": \"shell\",
-            \"command\": \"cmake -S . -B \\\\\\\"build\\\\\\\" -G Ninja -DCMAKE_BUILD_TYPE=Debug\",
-            \"group\": {
-                \"kind\": \"build\",
-                \"isDefault\": true
-            }
-        }
     ]
     }"
     )
@@ -276,7 +273,7 @@ enable_testing()
 # set(PROJECT_NAME ${project_name})
 # set(PROJECT_VERSION ${project_version})
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib-arch)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/debug)
 add_compile_definitions(DEBUG)
@@ -302,7 +299,7 @@ elseif(CMAKE_BUILD_TYPE MATCHES Release)
     message("Release build.")
     remove_definitions(DEBUG)
     add_compile_definitions(RELEASE)
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib-arch)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release/lib)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/${PROJECT_VERSION}/release)
 	
@@ -315,26 +312,49 @@ elseif(CMAKE_BUILD_TYPE MATCHES Release)
 			file(COPY ${HEADER} DESTINATION ${HEADER_DESTINATION})
 		endforeach()
 	endif()
+	
+	file(COPY ${CMAKE_SOURCE_DIR}/assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endif(CMAKE_BUILD_TYPE MATCHES Debug)
 
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/launch.json")
+#if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/launch.json")
     file(WRITE "${CMAKE_SOURCE_DIR}/.vscode/launch.json" 
     "{
     \"configurations\": [
+		{
+            \"name\": \"(Windows) Launch\",
+            \"type\": \"cppvsdbg\",
+            \"request\": \"launch\",
+            \"args\": [],
+            \"stopAtEntry\": false,
+            \"cwd\": \"${workspaceFolder}\",
+            \"environment\": [],
+            \"console\": \"externalTerminal\",
+            \"windows\": {
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}.exe\",
+            },
+            \"linux\": {
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}\",
+            },
+            \"osx\": {
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}\",
+            },
+            \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}.exe\",
+            \"preLaunchTask\": \"cmake\"
+        },
         {
             \"name\": \"(gdb) Launch\",
             \"type\": \"cppdbg\",
             \"request\": \"launch\",
             \"windows\": {
-                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}.exe\",
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}.exe\",
             },
             \"linux\": {
-                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}\",
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}\",
             },
             \"osx\": {
-                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}\",
+                \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}\",
             },
-            \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${current_dir_name}.exe\",
+            \"program\": \"${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${project_name}.exe\",
             \"args\": [],
             \"stopAtEntry\": false,
             \"cwd\": \"\${workspaceFolder}\",
@@ -359,7 +379,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/.vscode/launch.json")
     ]
     }"
     )
-endif()
+#endif()
 
 #
 # SETUP
@@ -428,9 +448,6 @@ endforeach(DLL ${DLLS})
 foreach(DLL ${DLLS})
     file(COPY ${DLL} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endforeach()
-
-
-
 
 if(SOURCES)
     if(project_type MATCHES "APP")
