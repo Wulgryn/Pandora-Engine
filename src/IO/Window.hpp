@@ -3,6 +3,7 @@
 #include "../Core/Elements/ObjectsHandler.hpp"
 #include "../Core/Event.hpp"
 #include "InputHandler.hpp"
+#include "../Core/Rendering/Color.hpp"
 
 
 struct GLTtext;
