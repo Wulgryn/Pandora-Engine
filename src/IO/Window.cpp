@@ -121,6 +121,13 @@ void Window::Render()
     FrameCount++;
     if (lastFPSUpdateTime + 1 < currentTime)
     {
+        // FIXME: FPS not printing properly
+        /**
+         *& *===============================FIXIT===================================
+         *& * DESCRIPTION: Not printing, just once.
+         *& * HINT: glfwTime() refresh or idk
+         *& *=======================================================================
+        **/
         currentFPS = FrameCount;
         FrameCount = 0;
         lastFPSUpdateTime = currentTime;
