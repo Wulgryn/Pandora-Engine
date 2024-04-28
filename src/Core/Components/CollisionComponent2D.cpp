@@ -34,6 +34,7 @@ void CollisionComponent2D::Initialize()
     CollisionHandler2D::GetGameObjects().push_back(componenetHandler->GetParentObject());
 
     hitbos_visibility_obj = new BaseObject();
+    //BUG Not working properly, because its literally by reference, and even if the main obj is rotates, the hitbox shouldn't be rotated
     hitbos_visibility_obj->AddComponenetByReference(componenetHandler->GetParentObject()->GetComponent<Transform2D>());
     Texture2D* tex = hitbos_visibility_obj->AddComponent<Texture2D>();
     tex->SetColor(new Color(Colors::RED));
