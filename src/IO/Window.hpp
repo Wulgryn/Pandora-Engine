@@ -33,9 +33,12 @@ private:
     double lastUPSUpdateTime = 0;
 
     bool isRunning = false;
+
+    Color BackgroundColor = Colors::BLACK;
 public:
     bool IsPrintFPSEnabled = false;
     bool IsPrintUPSEnabled = false;
+
 
     Window();
 
@@ -71,6 +74,8 @@ public:
         if(!InitCheck("GetInput",true)) return nullptr;
         return inputHandler; 
     }
+
+    void SetBackgroundColor(Color color);
     
 
     /// @brief Invoked every frame berfore the Window is rendered.

@@ -312,7 +312,7 @@ void Shader::SetVertices(std::vector<double> vertices)
     // HACK CAUTION: Maybe preventing linking
     /**
      *^  *=======================================================================
-     *^  * DESCRIPTION: Because of the constant changing of the VBO because of the window size change, implement the size change in the shader.
+     *^  * DESCRIPTION: READ SetPrimitiveVertices -> BUG
      *^  *=======================================================================
     **/
     CreateNew();
@@ -322,10 +322,11 @@ void Shader::SetVertices(std::vector<double> vertices)
 
 void Shader::SetPrimitiveVertices(Primiteve2DShapes primitive_shape, std::vector<double> primitive_vertices)
 {
-    // HACK CAUTION: Maybe preventing linking
+    // BUG: Maybe preventing linking
     /**
      *^  *=======================================================================
      *^  * DESCRIPTION: Because of the constant changing of the VBO because of the window size change, implement the size change in the shader.
+     *^  * HINT: Make that shader controls most size changes, and vertices is only the shape. Also this method called every window size change, os yeah, do your work slave
      *^  *=======================================================================
     **/
     CreateNew();

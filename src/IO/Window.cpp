@@ -132,17 +132,17 @@ void Window::Render()
 
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // BUG DEPRECATED: glClearColor();
-    /**
-     *~  *=======================================================================
-     *~  * DESCRIPTION: Need to remove, only for testing purposes.
-     *~  * REASON: Let user decide the background color.
-     *~  * ALTERNATIVE: none
-     *~  * EXPARATION: near future
-     *~  *=======================================================================
-     **/
-    glClearColor(cosf(glfwGetTime()) * 0.5f + 0.5f, sinf(glfwGetTime()) * 0.5f + 0.5f, 1.0f, 1);
-    // glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    //// // BUG DEPRECATED: glClearColor();
+    //// /**
+    ////  -*~  *=======================================================================
+    ////  -*~  * DESCRIPTION: Need to remove, only for testing purposes.
+    ////  -*~  * REASON: Let user decide the background color.
+    ////  -*~  * ALTERNATIVE: none
+    ////  -*~  * EXPARATION: near future
+    ////  -*~  *=======================================================================
+    ////  -**/
+    //// //glClearColor(cosf(glfwGetTime()) * 0.5f + 0.5f, sinf(glfwGetTime()) * 0.5f + 0.5f, 1.0f, 1);
+    //// // glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
     OnRender.Invoke(this);
 
@@ -200,4 +200,11 @@ void Window::SetUPSLimit(int ups)
         return;
     }
     UPS_LIMIT = ups;
+}
+
+void Window::SetBackgroundColor(Color color)
+{
+    BackgroundColor = color;
+    color.Normalize();
+    glClearColor(color.Fr, color.Fg, color.Fb, color.Fa);
 }
