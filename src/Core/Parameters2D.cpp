@@ -63,10 +63,6 @@ namespace Parameters2D
         }
     }
 
-
-
-
-
 /**=======================================================================================================================*
  **                                                  REGION POSITION
  *========================================================================================================================*/
@@ -93,15 +89,22 @@ namespace Parameters2D
 
     Position Position::Normalize(ParametersApp::Size size)
     {
-        return Position((x + orentation.x_offset) / size.d_width - 1, 1 - ((y + orentation.y_offset) / size.d_height));
+        return Position((x + orentation.x_offset) / (size.d_width / 2) - 1, 1 - ((y + orentation.y_offset) / (size.d_height / 2)));
     }
 
     void Position::NormalizeThis(ParametersApp::Size size)
     {
-        x = x / size.d_width - 1;
-        y = 1 - (y / size.d_height);
+        x = (x + orentation.x_offset ) / size.d_width - 1;
+        y = 1 - ((y + orentation.y_offset ) / size.d_height);
     }
 
+    // FIXME: Denormalize with orentation
+    /**
+     *& *===============================FIXIT===================================
+     *& * DESCRIPTION: Denormalize the position with orientation calculated in
+     *& * HINT: do the math
+     *& *=======================================================================
+    **/
     Position Position::Denormalize(ParametersApp::Size size)
     {
         return Position((x + 1) * size.d_width, (y + 1) * size.d_height);
@@ -156,6 +159,13 @@ namespace Parameters2D
         return this;
     }
 
+    Position* Position::operator+=(Vector2 vector)
+    {
+        x += vector.x;
+        y += vector.y;
+        return this;
+    }
+
 /**=======================================================================================================================*
  **                                           END OF REGION POSITION
  *========================================================================================================================*/
@@ -187,7 +197,7 @@ namespace Parameters2D
 
     Size Size::Normalize(ParametersApp::Size size)
     {
-        return Size(width / size.d_width, height / size.d_height);
+        return Size(width / (size.d_width / 2), height / (size.d_height / 2));
     }
 
     void Size::NormalizeThis(ParametersApp::Size size)
@@ -207,6 +217,34 @@ namespace Parameters2D
         width = size.d_width * width;
         height = size.d_height * height;
         OnChange.Invoke(this);
+    }
+
+    Size* Size::SetWidth(double width)
+    {
+        this->width = width;
+        OnChange.Invoke(this);
+        return this;
+    }
+
+    Size* Size::SetHeight(double height)
+    {
+        this->height = height;
+        OnChange.Invoke(this);
+        return this;
+    }
+
+    Size* Size::AddWidth(double width)
+    {
+        this->width += width;
+        OnChange.Invoke(this);
+        return this;
+    }
+
+    Size* Size::AddHeight(double height)
+    {
+        this->height += height;
+        OnChange.Invoke(this);
+        return this;
     }
 
     Size* Size::operator=(ParametersApp::Size size)
@@ -248,12 +286,30 @@ namespace Parameters2D
         OnChange.Invoke(this);
         return this;
     }
+
+    double& Size::operator[](int index)
+    {
+        switch (index)
+        {
+        case 0:
+            return width;
+        case 1:
+            return height;
+        default:
+            return width;
+        }
+        
+    }
     
 /**=======================================================================================================================*
  **                                           END OF REGION SIZE
  *========================================================================================================================*/
 #pragma endregion SIZE
 
+/**=======================================================================================================================*
+ **                                                  REGION ROTATION
+ *========================================================================================================================*/
+#pragma region ROTATION
 
     Rotation::Rotation()
     {
@@ -264,6 +320,16 @@ namespace Parameters2D
     {
         this->z = z;
     }
+
+/**=======================================================================================================================*
+ **                                           END OF REGION ROTATION
+ *========================================================================================================================*/
+#pragma endregion ROTATION
+
+/**=======================================================================================================================*
+ **                                                  REGION SCALE
+ *========================================================================================================================*/
+#pragma region SCALE
 
     Scale::Scale()
     {
@@ -283,4 +349,60 @@ namespace Parameters2D
         y = scale;
         return this;
     }
+
+/**=======================================================================================================================*
+ **                                           END OF REGION SCALE
+ *========================================================================================================================*/
+#pragma endregion SCALE
+
+/**=======================================================================================================================*
+ **                                                  REGION VECTOR2
+ *========================================================================================================================*/
+#pragma region VECTOR2
+
+    Vector2::Vector2()
+    {
+        x = 0;
+        y = 0;
+    }
+
+    Vector2::Vector2(double x, double y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+
+    Vector2* Vector2::operator=(double value)
+    {
+        x = value;
+        y = value;
+        return this;
+    }
+
+    Vector2* Vector2::operator=(Vector2 vector)
+    {
+        x = vector.x;
+        y = vector.y;
+        return this;
+    }
+
+    Vector2* Vector2::operator+=(Vector2 vector)
+    {
+        x += vector.x;
+        y += vector.y;
+        return this;
+    }
+
+    Vector2* Vector2::operator+=(double value)
+    {
+        x += value;
+        y += value;
+        return this;
+    }
+
+/**=======================================================================================================================*
+ **                                           END OF REGION VECTOR2
+ *========================================================================================================================*/
+#pragma endregion VECTOR2
+ 
 }

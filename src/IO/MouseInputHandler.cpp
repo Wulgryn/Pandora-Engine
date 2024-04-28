@@ -43,7 +43,6 @@ void InputHandler::ScrollCallBack(GLFWwindow* window, double xoffset, double yof
     InputHandler* inputHandler = static_cast<Window*>(glfwGetWindowUserPointer(window))->GetInput();
     inputHandler->mouse_scroll_x = xoffset;
     inputHandler->mouse_scroll_y = yoffset;
-    DebugConsole::WriteLine("Mouse scroll: %f, %f", xoffset, yoffset);
 }
 
 void InputHandler::RegisterButton(int button, bool* button_states, int state_count)

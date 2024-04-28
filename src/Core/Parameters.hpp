@@ -42,6 +42,7 @@ namespace Parameters2D
 {
 
     struct Size;
+    struct Vector2;
 
     enum class OrentationType
     {
@@ -87,6 +88,7 @@ namespace Parameters2D
 
         Position* operator+=(Position position);
         Position* operator+=(double position);
+        Position* operator+=(Vector2 vector);
     private:
         Orentation orentation;
     };
@@ -103,12 +105,20 @@ namespace Parameters2D
         Size Denormalize(ParametersApp::Size size);
         void DenormalizeThis(ParametersApp::Size size);
 
+        Size* SetWidth(double width);
+        Size* SetHeight(double height);
+
+        Size* AddWidth(double width);
+        Size* AddHeight(double height);
+
         Size* operator=(ParametersApp::Size size);
         Size* operator=(Size size);
         Size* operator=(double size);
 
         Size* operator+=(Size size);
         Size* operator+=(double size);
+
+        double& operator[](int index);
 
         Event<Size*> OnChange;
     };
@@ -128,4 +138,17 @@ namespace Parameters2D
 
         Scale* operator=(double scale);
     };
+
+    struct Vector2
+    {
+        double x, y;
+        Vector2();
+        Vector2(double x, double y);
+
+        Vector2* operator=(double value);
+        Vector2* operator=(Vector2 vector);
+        Vector2* operator+=(Vector2 vector);
+        Vector2* operator+=(double value);
+    };
+    
 }

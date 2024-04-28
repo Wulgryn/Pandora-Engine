@@ -1,4 +1,4 @@
-#pragma on
+#pragma once
 #include "BaseComponent.hpp"
 #include "../Parameters.hpp"
 
@@ -32,6 +32,10 @@ public:
     Parameters2D::Rotation* Rotation();
     Parameters2D::Scale* Scale();
     Parameters2D::Size* Size();
+
+    Parameters2D::Vector2 Move(Parameters2D::Vector2 vec);
+
+    void Update() override;
 
     void Destroy();
 };

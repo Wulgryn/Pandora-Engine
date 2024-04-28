@@ -13,13 +13,23 @@ private:
     BaseObject* object = nullptr;
 public:
     ComponentsHandler(BaseObject* object);
-    template <typename ComponentType> ComponentType* AddComponenet();
-    template <typename ComponentType, typename Object = ClassObject*> ComponentType* AddComponenet(ClassObject* object);
-    void AddComponenet(BaseComponent* component);
 
-    template <typename ComponentType> ComponentType* GetComponenet();
+    // HACK CAUTION: Maybe merge the 2 AddComponent functions into one
+    /**
+     *^  *=======================================================================
+     *^  * DESCRIPTION: the normal addcomponent and the addcomponentbyreference, merge into one like AddCOmponent<ComponenetType>(BaseComponent* component = nullptr)
+     *^  *=======================================================================
+    **/
 
-    template <typename ComponentType> bool HasComponenet();
+    template <typename ComponentType>
+    ComponentType* AddComponent();
+    template <typename ComponentType, typename Object = ClassObject*>
+    ComponentType* AddComponent(ClassObject* object);
+    void AddComponenetByReference(BaseComponent* component);
+
+    template <typename ComponentType> ComponentType* GetComponent();
+
+    template <typename ComponentType> bool HasComponent();
 
     bool IsEmpty();
 
@@ -27,10 +37,10 @@ public:
 
 
     /// @brief Initializes all components
-    void InitializeComponenets();
+    void InitializeComponents();
 
     /// @brief Updates all components
-    void UpdateComponenets();
+    void UpdateComponents();
 
     BaseObject* GetParentObject() { return object; }
 };

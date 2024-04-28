@@ -9,12 +9,12 @@ ComponentsHandler::ComponentsHandler(BaseObject* object)
 
 template <typename ComponentType> ComponentType* Components::Get(ComponentsHandler* handler)
 {
-    return handler->GetComponenet<ComponentType>();
+    return handler->GetComponent<ComponentType>();
 }
 
 template <typename ComponentType> bool Components::Has(ComponentsHandler* handler)
 {
-    return handler->HasComponenet<ComponentType>();
+    return handler->HasComponent<ComponentType>();
 }
 
 bool Components::isEmpty(ComponentsHandler* handler)
@@ -22,7 +22,7 @@ bool Components::isEmpty(ComponentsHandler* handler)
     return handler->IsEmpty();
 }
 
-template <typename ComponentType> ComponentType* ComponentsHandler::AddComponenet()
+template <typename ComponentType> ComponentType* ComponentsHandler::AddComponent()
 {
     BaseComponent* component = new ComponentType();
     component->SetHandler(this);
@@ -31,7 +31,7 @@ template <typename ComponentType> ComponentType* ComponentsHandler::AddComponene
     return dynamic_cast<ComponentType*>(component);
 }
 
-template <typename ComponentType, typename Object> ComponentType* ComponentsHandler::AddComponenet(ClassObject* object)
+template <typename ComponentType, typename Object> ComponentType* ComponentsHandler::AddComponent(ClassObject* object)
 {
     BaseComponent* component = new ComponentType(static_cast<Object*>(object));
     component->SetHandler(this);
@@ -40,12 +40,12 @@ template <typename ComponentType, typename Object> ComponentType* ComponentsHand
     return dynamic_cast<ComponentType*>(component);
 }
 
-void ComponentsHandler::AddComponenet(BaseComponent* component)
+void ComponentsHandler::AddComponenetByReference(BaseComponent* component)
 {
     components.push_back(component);
 }
 
-template <typename ComponentType> ComponentType* ComponentsHandler::GetComponenet()
+template <typename ComponentType> ComponentType* ComponentsHandler::GetComponent()
 {
     for (BaseComponent* component : components)
     {
@@ -58,7 +58,7 @@ template <typename ComponentType> ComponentType* ComponentsHandler::GetComponene
     return nullptr;
 }
 
-template <typename ComponentType> bool ComponentsHandler::HasComponenet()
+template <typename ComponentType> bool ComponentsHandler::HasComponent()
 {
     for (BaseComponent* component : components)
     {
@@ -75,7 +75,7 @@ bool ComponentsHandler::IsEmpty()
     return components.empty();
 }
 
-void ComponentsHandler::InitializeComponenets()
+void ComponentsHandler::InitializeComponents()
 {
     for (BaseComponent* component : components)
     {
@@ -83,7 +83,7 @@ void ComponentsHandler::InitializeComponenets()
     }
 }
 
-void ComponentsHandler::UpdateComponenets()
+void ComponentsHandler::UpdateComponents()
 {
     for (BaseComponent* component : components)
     {

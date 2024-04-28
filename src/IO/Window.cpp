@@ -162,9 +162,9 @@ void Window::Render()
     //// }
     for (int i = 0; i < objects.size(); i++)
     {
-        if (objects[i]->HasComponenet<ShaderComponent2D>()) //// .&& objects[i]->tag & ObjectTags::Renderable)
+        if (objects[i]->HasComponent<ShaderComponent2D>()) //// .&& objects[i]->tag & ObjectTags::Renderable)
         {
-            objects[i]->GetComponenet<ShaderComponent2D>()->Render();
+            objects[i]->GetComponent<ShaderComponent2D>()->Render();
         }
 
         // HACK CAUTION: TextComponent2D render
@@ -173,9 +173,9 @@ void Window::Render()
          *^  * DESCRIPTION: Maybe make it so all rednerable stuff is inside the Texture2D / ShaderComponent2D. And the overrinde render will determine tho többi
          *^  *=======================================================================
          **/
-        if (objects[i]->HasComponenet<TextComponent2D>())
+        if (objects[i]->HasComponent<TextComponent2D>())
         {
-            objects[i]->GetComponenet<TextComponent2D>()->Render();
+            objects[i]->GetComponent<TextComponent2D>()->Render();
         }
     }
     OnLateRender.Invoke(this);

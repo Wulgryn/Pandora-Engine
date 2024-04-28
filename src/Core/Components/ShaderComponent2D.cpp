@@ -12,7 +12,7 @@ ID primitiveID = -1;
 
 void ShaderComponent2D::SetUniforms(Shader* shader)
 {
-    if(Transform2D* transform = componenetHandler->GetComponenet<Transform2D>())
+    if(Transform2D* transform = componenetHandler->GetComponent<Transform2D>())
     {
         ParametersApp::Size size = componenetHandler->GetParentObject()->GetParentWindow()->GetSize();
         Parameters2D::Position norm_pos = transform->Position()->Normalize(size);
@@ -21,9 +21,10 @@ void ShaderComponent2D::SetUniforms(Shader* shader)
         glUniform2f(shader->GetUniform(Shaders::UniformType::ROTATION_CENTER), (float)norm_pos.x, (float)norm_pos.y);
         glUniform1f(shader->GetUniform("aspectRatio"), size.f_width / size.f_height);
     }
-    if(Texture2D* texture2D = componenetHandler->GetComponenet<Texture2D>()) 
+    if(Texture2D* texture2D = componenetHandler->GetComponent<Texture2D>()) 
     {
-        if(texture2D->HasTexture())
+        if(texture2D->drawType == DrawType::NONE) return;
+        if(texture2D->HasTexture() && !texture2D->isForceColorEnabled)
         {
             Texture* texture = texture2D->GetTexture();
             glUniform1i(shader->GetUniform("hasTexture"), true);
@@ -35,7 +36,8 @@ void ShaderComponent2D::SetUniforms(Shader* shader)
             glUniform1i(shader->GetUniform("hasTexture"), false);
             
             Color* color = texture2D->GetColor();
-            //color->Normalize();
+            // ^ CAUTION: maybe the NORMALIZE is not working and breaks the color IDK why
+            color->Normalize();
             //color->Denormalize();
             glUniform4f(shader->GetUniform(Shaders::UniformType::COLOR),color->Fr,color->Fg,color->Fb, color->Fa);
         }
@@ -74,7 +76,7 @@ ShaderComponent2D::ShaderComponent2D(Primiteve2DShapes shape)
 
 void ShaderComponent2D::Initialize()
 {
-    if(Transform2D* transform = componenetHandler->GetComponenet<Transform2D>())
+    if(Transform2D* transform = componenetHandler->GetComponent<Transform2D>())
     {
         Parameters2D::Size norm_size = transform->Size()->Normalize(componenetHandler->GetParentObject()->GetParentWindow()->GetSize());
         shader->SetPrimitiveVertices(Primiteve2DShapes::RECTANGLE,{
@@ -103,7 +105,7 @@ void ShaderComponent2D::Initialize()
     shader->OnSetUniforms = Method(SetUniforms,this);
 
     componenetHandler->GetParentObject()->GetParentWindow()->OnResize += Method<void,BaseWindow*,ParametersApp::Size>([=](BaseWindow* window, ParametersApp::Size size){
-        if(Transform2D* transform = componenetHandler->GetComponenet<Transform2D>())
+        if(Transform2D* transform = componenetHandler->GetComponent<Transform2D>())
         {
             Parameters2D::Size norm_size = transform->Size()->Normalize(size);
             shader->SetPrimitiveVertices(Primiteve2DShapes::RECTANGLE,{
@@ -116,7 +118,7 @@ void ShaderComponent2D::Initialize()
     });
 
 
-    if(Transform2D* transform = componenetHandler->GetComponenet<Transform2D>())
+    if(Transform2D* transform = componenetHandler->GetComponent<Transform2D>())
     {
         transform->Size()->OnChange += Method<void, Parameters2D::Size*>([=](Parameters2D::Size* size)
         {
@@ -136,6 +138,24 @@ void ShaderComponent2D::Initialize()
                     -norm_size.width / 2,norm_size.height / 2
                 });
             }));
+        });
+    }
+
+    if(Texture2D* texture2D = componenetHandler->GetComponent<Texture2D>())
+    {
+        shader->Draw = Method<void,Shader*>([=](Shader* shader){
+            switch (texture2D->drawType)
+            {
+            case DrawType::FILL:
+                glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+                break;
+            case DrawType::OUTLINE:
+                glDrawElements(GL_LINE_LOOP, 6, GL_UNSIGNED_INT, 0);
+                break;
+            default:
+                glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+                break;
+            }
         });
     }
 }

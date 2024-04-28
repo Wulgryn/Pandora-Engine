@@ -71,12 +71,14 @@ namespace Shaders
                     cos(angle), -sin(angle),
                     sin(angle), cos(angle)
                 );
-            
-                // Forgatás alkalmazása a pontokra
+
+                //Forgatás alkalmazása a pontokra
                 vec2 rotatedPosition = rotationMatrix * distance;
             
                 // Végül beállítjuk a végleges pozíciót
                 gl_Position = vec4(rotatedPosition / vec2(aspectRatio, 1.0f) + rotationCenter, aPos.z, 1.0);
+
+                //gl_Position = vec4(aPos.x + position.x, aPos.y + position.y, aPos.z, 1.0);
 
                 TexCoord = vec2(aTexCoord.x, 1.0 - aTexCoord.y);
             }
@@ -264,9 +266,11 @@ Shader::Shader(ID id)
         isLink = true;
         isCreated = true;
         // TODO Make the shader copy by reference
-        return;
     }
-    
+    Draw = +[](Shader* shader)
+    {
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    };
 }
 
 void Shader::CreateNew()
@@ -298,19 +302,33 @@ void Shader::Use()
     **/
     OnSetUniforms.Invoke(this);
     
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    //glDisable(GL_BLEND);
+    Draw.Invoke(this);
+
     OnUsed.Invoke(this);
 }
 
 void Shader::SetVertices(std::vector<double> vertices)
 {
+    // HACK CAUTION: Maybe preventing linking
+    /**
+     *^  *=======================================================================
+     *^  * DESCRIPTION: Because of the constant changing of the VBO because of the window size change, implement the size change in the shader.
+     *^  *=======================================================================
+    **/
+    CreateNew();
     glBindBuffer(GL_ARRAY_BUFFER, Shaders::Container::GetShader(ShaderID)->VBO);
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(double), vertices.data(), GL_STATIC_DRAW);
 }
 
 void Shader::SetPrimitiveVertices(Primiteve2DShapes primitive_shape, std::vector<double> primitive_vertices)
 {
+    // HACK CAUTION: Maybe preventing linking
+    /**
+     *^  *=======================================================================
+     *^  * DESCRIPTION: Because of the constant changing of the VBO because of the window size change, implement the size change in the shader.
+     *^  *=======================================================================
+    **/
+    CreateNew();
     vector<double> vertices;
     switch (primitive_shape)
     {

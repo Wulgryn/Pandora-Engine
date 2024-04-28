@@ -1,5 +1,6 @@
 #include "Transform2D.hpp"
 #include "ComponentsHandler.hpp"
+#include "CollisionComponent2D.hpp"
 
 using namespace Parameters2D;
 
@@ -10,6 +11,7 @@ Transform2D::Transform2D()
     scale = Parameters2D::Scale();
     size = Parameters2D::Size(100,100);
     position.CalcOrientation(this);
+    Parameters2D::Vector2 vec;
 }
 
 void Transform2D::SetPosition(double x, double y)
@@ -89,4 +91,19 @@ void Transform2D::Destroy()
     delete this;
 }
 
+Vector2 Transform2D::Move(Vector2 vec)
+{
+    if(CollisionComponent2D* coll = componenetHandler->GetComponent<CollisionComponent2D>())
+    {
+        vec = coll->CalcPos(vec);
+        position += vec;
+        return vec;
+    }
+    position += vec;
+    return vec;
+}
 
+void Transform2D::Update()
+{
+    position.CalcOrientation(this);
+}

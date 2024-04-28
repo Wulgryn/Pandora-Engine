@@ -131,4 +131,8 @@ public:
     /// @param Shader* The shader that is being used.
     Event<Shader*> OnSetUniforms;
 
+    /// @brief Invoked every time the shader attempts to draw.
+    /// @param Shader* The shader that is being used.
+    Method<void,Shader*> Draw;
+
 };

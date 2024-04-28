@@ -7,7 +7,7 @@ BaseObject::BaseObject() : ComponentsHandler(this)
 
 void BaseObject::Initialize()
 {
-    InitializeComponenets();
+    InitializeComponents();
 }
 
 void BaseObject::Start()
@@ -17,7 +17,7 @@ void BaseObject::Start()
 
 void BaseObject::Update()
 {
-    UpdateComponenets();
+    UpdateComponents();
 }
 
 void BaseObject::Destroy()
