@@ -1,3 +1,4 @@
+#pragma once
 #include "BaseComponent.hpp"
 #include "../Rendering/Texture.hpp"
 #include "../Rendering/Color.hpp"

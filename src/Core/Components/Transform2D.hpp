@@ -9,7 +9,7 @@ private:
     Parameters2D::Rotation rotation;
     Parameters2D::Scale scale;
     Parameters2D::Size size;
-    Parameters2D::OrentationType orentationType = Parameters2D::OrentationType::TOP_LEFT;
+    Parameters2D::OrientationType orientationType = Parameters2D::OrientationType::TOP_LEFT;
 public:
     Transform2D();
 
@@ -25,8 +25,8 @@ public:
     void SetSize(double width, double height);
     void SetSize(Parameters2D::Size size);
 
-    void SetOrentationType(Parameters2D::OrentationType type);
-    Parameters2D::OrentationType GetOrentationType();
+    void SetOrientationType(Parameters2D::OrientationType type);
+    Parameters2D::OrientationType GetOrientationType();
 
     Parameters2D::Position* Position();
     Parameters2D::Rotation* Rotation();

@@ -54,15 +54,15 @@ void Transform2D::SetSize(Parameters2D::Size size)
     this->size = size;
 }
 
-void Transform2D::SetOrentationType(Parameters2D::OrentationType type)
+void Transform2D::SetOrientationType(Parameters2D::OrientationType type)
 {
-    orentationType = type;
+    orientationType = type;
     position.CalcOrientation(this);
 }
 
-Parameters2D::OrentationType Transform2D::GetOrentationType()
+Parameters2D::OrientationType Transform2D::GetOrientationType()
 {
-    return orentationType;
+    return orientationType;
 }
 
 Parameters2D::Position* Transform2D::Position()

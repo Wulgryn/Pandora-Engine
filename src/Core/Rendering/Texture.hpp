@@ -1,3 +1,4 @@
+#pragma once
 #include "../Types.hpp"
 #include "../ClassObject.hpp"
 

@@ -1,3 +1,4 @@
+#pragma once
 #include "BaseComponent.hpp"
 #include "../Rendering/UI/Text2D.hpp"
 

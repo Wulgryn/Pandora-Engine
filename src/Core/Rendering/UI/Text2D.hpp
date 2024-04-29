@@ -1,3 +1,4 @@
+#pragma once
 #include "UIElement.hpp"
 #include "../Color.hpp"
 #include "../../Parameters.hpp"
@@ -22,4 +23,6 @@ public:
 
     void SetText(std::string text);
     std::string GetText() { return text;}
+
+    Parameters2D::Size GetSize();
 };

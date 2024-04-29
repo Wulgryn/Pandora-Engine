@@ -5,54 +5,54 @@
 namespace Parameters2D
 {
 
-    Orentation::Orentation()
+    Orientation::Orientation()
     {
         x_offset = 0;
         y_offset = 0;
     }
 
-    Orentation::Orentation(OrentationType type)
+    Orientation::Orientation(OrientationType type)
     {
         this->type = type;
     }
 
-    void Orentation::CalculateOffset(Size size)
+    void Orientation::CalculateOffset(Size size)
     {
         switch (type)
         {
-        case OrentationType::TOP_LEFT:
+        case OrientationType::TOP_LEFT:
             x_offset = size.width / 2;
             y_offset = size.height / 2;
             break;
-        case OrentationType::TOP_RIGHT:
+        case OrientationType::TOP_RIGHT:
             x_offset = -size.width / 2;
             y_offset = size.height / 2;
             break;
-        case OrentationType::BOTTOM_LEFT:
+        case OrientationType::BOTTOM_LEFT:
             x_offset = size.width / 2;
             y_offset = -size.height / 2;
             break;
-        case OrentationType::BOTTOM_RIGHT:
+        case OrientationType::BOTTOM_RIGHT:
             x_offset = -size.width / 2;
             y_offset = -size.height / 2;
             break;
-        case OrentationType::CENTER:
+        case OrientationType::CENTER:
             x_offset = 0;
             y_offset = 0;
             break;
-        case OrentationType::TOP_CENTER:
+        case OrientationType::TOP_CENTER:
             x_offset = 0;
             y_offset = size.height / 2;
             break;
-        case OrentationType::BOTTOM_CENTER:
+        case OrientationType::BOTTOM_CENTER:
             x_offset = 0;
             y_offset = -size.height / 2;
             break;
-        case OrentationType::LEFT_CENTER:
+        case OrientationType::LEFT_CENTER:
             x_offset = size.width / 2;
             y_offset = 0;
             break;
-        case OrentationType::RIGHT_CENTER:
+        case OrientationType::RIGHT_CENTER:
             x_offset = -size.width / 2;
             y_offset = 0;
             break;
@@ -89,16 +89,16 @@ namespace Parameters2D
 
     Position Position::Normalize(ParametersApp::Size size)
     {
-        return Position((x + orentation.x_offset) / (size.d_width / 2) - 1, 1 - ((y + orentation.y_offset) / (size.d_height / 2)));
+        return Position((x + orientation.x_offset) / (size.d_width / 2) - 1, 1 - ((y + orientation.y_offset) / (size.d_height / 2)));
     }
 
     void Position::NormalizeThis(ParametersApp::Size size)
     {
-        x = (x + orentation.x_offset ) / size.d_width - 1;
-        y = 1 - ((y + orentation.y_offset ) / size.d_height);
+        x = (x + orientation.x_offset ) / size.d_width - 1;
+        y = 1 - ((y + orientation.y_offset ) / size.d_height);
     }
 
-    // FIXME: Denormalize with orentation
+    // FIXME: Denormalize with orientation
     /**
      *& *===============================FIXIT===================================
      *& * DESCRIPTION: Denormalize the position with orientation calculated in
@@ -118,8 +118,8 @@ namespace Parameters2D
 
     void Position::CalcOrientation(Transform2D* transform)
     {
-       orentation.type = transform->GetOrentationType();
-       orentation.CalculateOffset(*transform->Size());
+       orientation.type = transform->GetOrientationType();
+       orientation.CalculateOffset(*transform->Size());
     }
 
 

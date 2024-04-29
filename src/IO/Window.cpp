@@ -169,20 +169,20 @@ void Window::Render()
     //// }
     for (int i = 0; i < objects.size(); i++)
     {
-        if (objects[i]->HasComponent<ShaderComponent2D>()) //// .&& objects[i]->tag & ObjectTags::Renderable)
+        if (ShaderComponent2D* shc2D = objects[i]->GetComponent<ShaderComponent2D>()) //// .&& objects[i]->tag & ObjectTags::Renderable)
         {
-            objects[i]->GetComponent<ShaderComponent2D>()->Render();
+            shc2D->Render();
         }
 
         // HACK CAUTION: TextComponent2D render
         /**
          *^  *=======================================================================
-         *^  * DESCRIPTION: Maybe make it so all rednerable stuff is inside the Texture2D / ShaderComponent2D. And the overrinde render will determine tho többi
+         *^  * DESCRIPTION: Maybe make it so all renderable stuff is inside the Texture2D / ShaderComponent2D. And the overrinde render will determine tho többi
          *^  *=======================================================================
          **/
-        if (objects[i]->HasComponent<TextComponent2D>())
+        if (TextComponent2D* tc2D = objects[i]->GetComponent<TextComponent2D>())
         {
-            objects[i]->GetComponent<TextComponent2D>()->Render();
+            tc2D->Render();
         }
     }
     OnLateRender.Invoke(this);

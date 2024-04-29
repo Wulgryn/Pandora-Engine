@@ -44,7 +44,7 @@ namespace Parameters2D
     struct Size;
     struct Vector2;
 
-    enum class OrentationType
+    enum class OrientationType
     {
         TOP_LEFT,
         TOP_RIGHT,
@@ -57,12 +57,12 @@ namespace Parameters2D
         RIGHT_CENTER,
     };
 
-    struct Orentation
+    struct Orientation
     {
         double x_offset, y_offset;
-        OrentationType type = OrentationType::TOP_LEFT;
-        Orentation();
-        Orentation(OrentationType type);
+        OrientationType type = OrientationType::TOP_LEFT;
+        Orientation();
+        Orientation(OrientationType type);
 
         void CalculateOffset(Size size);
     };
@@ -90,7 +90,7 @@ namespace Parameters2D
         Position* operator+=(double position);
         Position* operator+=(Vector2 vector);
     private:
-        Orentation orentation;
+        Orientation orientation;
     };
 
     struct Size

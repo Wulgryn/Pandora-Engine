@@ -14,7 +14,7 @@ Text2D::Text2D()
     {
         DebugConsole::WriteLine("Failed to initialize GLT");
     }
-    text = "UNDEFINED";
+    text = "UNDEFINIED";
     gltText = gltCreateText();
     gltSetText(gltText, text.c_str());
 }
@@ -34,4 +34,9 @@ void Text2D::SetText(std::string text)
 {
     this->text = text;
     gltSetText(gltText, text.c_str());
+}
+
+Parameters2D::Size Text2D::GetSize()
+{
+    return {gltGetTextWidth(gltText, (scale.x + scale.y) / 2), gltGetTextHeight(gltText, (scale.x + scale.y) / 2)};
 }
