@@ -1,0 +1,23 @@
+method name: 
+    void method();
+    void long_method_name();
+
+private static method name:
+    static void __method_name();
+
+public var name:
+    int Alma;
+    string LongVariableName;
+
+private var name:
+    int _alma;
+    string _longVariableName;
+
+const name:
+    int THIS_IS_CONST = 0;
+
+Class name: class MyClass
+
+namespace name: PandoraEngine
+
+Interface name: IMyInterface
