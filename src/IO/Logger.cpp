@@ -84,6 +84,14 @@ namespace PandoraEngine
             free(buffer); // memória felszabadítása
         }
 
+        void WriteLine(std::string format, ...)
+        {
+            va_list args;
+            va_start(args, format);
+            WriteLine(format, args);
+            va_end(args);
+        }
+
         void Write(std::string format, va_list args)
         {
             int size = vsnprintf(nullptr, 0, format.c_str(), args) + 1;
@@ -95,6 +103,14 @@ namespace PandoraEngine
             log_file << buffer;
 
             free(buffer); // memória felszabadítása
+        }
+
+        void Write(std::string format, ...)
+        {
+            va_list args;
+            va_start(args, format);
+            Write(format, args);
+            va_end(args);
         }
     } // namespace Logger
 } // namespace PandoraEngine

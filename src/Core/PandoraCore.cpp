@@ -1,18 +1,22 @@
 #include "PandoraCore.hpp"
 #include "Console.hpp"
 #include "IO/Logger.hpp"
-
-using namespace PandoraEngine;
+#include "IO/Monitor.hpp"
+#include "Exceptions.hpp"
 
 #include "GLFW/glfw3.h"
 
-#include <iostream>
+using namespace PandoraEngine;
+using namespace Console;
 using namespace std;
+
 
 void error_callback(int error, const char *description)
 {
 #ifdef PE_DEBUG_CONSOLE
     DebugConsole::WriteLine("[GLFW ERROR] (%d) -> %s", error, description);
+    Exceptions::GLFWException e(error + " -> " + string(description));
+    e.print();
 #else
     Logger::WriteLine("[GLFW ERROR] (%d) -> %s", error, description);
 #endif
@@ -45,6 +49,8 @@ void init_glfw()
     if (!glfwInit())
     {
         Console::WriteLine("[GLFW ERROR] Failed to initialize GLFW!");
+        Exceptions::GLFWException e("Failed to initialize GLFW!");
+        e.throw_();
         return;
     }
 #ifdef PE_DEBUG_CONSOLE
@@ -82,6 +88,18 @@ void init_logger()
     Logger::Initialize();
 }
 
+void init_monitors()
+{
+#ifdef PE_DEBUG_CONSOLE
+    MonitorInfo::initialize(true);
+#else
+    MonitorInfo::initialize();
+#endif
+#ifdef PE_DEBUG_CONSOLE
+    DebugConsole::WriteLine("Monitors initialized successfully!");
+#endif
+}
+
 /**=======================================================================================================================*
  **                                           END OF REGION SUB_INITS
  *========================================================================================================================*/
@@ -98,6 +116,7 @@ void PandoraEngine::initialize()
     DebugConsole::WriteLine("Debug mode enabled");
     DebugConsole::WriteLine("Logger initialized successfully!");
 #endif
+    init_monitors();
     init_unicode_console();
     init_random();
     init_glfw();

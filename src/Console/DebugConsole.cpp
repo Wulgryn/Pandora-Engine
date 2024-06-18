@@ -10,11 +10,13 @@
 
 using namespace std;
 using namespace std::chrono;
+using namespace PandoraEngine;
+using namespace Console;
 
-bool PandoraEngine::DebugConsole::EnableTimePrefix = true;
-PandoraEngine::DebugConsole::ConsoleClockPrecision PandoraEngine::DebugConsole::ClockPrecision = PandoraEngine::DebugConsole::ConsoleClockPrecision::MILLISECONDS;
+bool DebugConsole::EnableTimePrefix = true;
+DebugConsole::ConsoleClockPrecision DebugConsole::ClockPrecision = DebugConsole::ConsoleClockPrecision::MILLISECONDS;
 
-void PandoraEngine::DebugConsole::WriteTime()
+void DebugConsole::WriteTime()
 {
     auto now = system_clock::now();
     auto time = system_clock::to_time_t(now);
@@ -44,7 +46,7 @@ void PandoraEngine::DebugConsole::WriteTime()
     }
 }
 
-void PandoraEngine::DebugConsole::WriteLine(std::string message, ...)
+void DebugConsole::WriteLine(std::string message, ...)
 {
     va_list args;
     va_start(args, message);
@@ -62,7 +64,7 @@ void PandoraEngine::DebugConsole::WriteLine(std::string message, ...)
     Logger::WriteLine(message + "\n", args);
 }
 
-void PandoraEngine::DebugConsole::Write(std::string message, ...)
+void DebugConsole::Write(std::string message, ...)
 {
     va_list args;
     va_start(args, message);

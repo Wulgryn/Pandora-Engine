@@ -26,28 +26,29 @@ namespace PandoraEngine
         DLL void WriteLine(std::string message, ...);
 
         DLL void Write(std::string message, ...);
+
+        namespace DebugConsole
+        {
+            enum class ConsoleClockPrecision
+            {
+                SECONDS,
+                MILLISECONDS,
+                MICROSECONDS,
+                NANOSECOND
+            };
+
+            extern DLL bool EnableTimePrefix;
+            extern DLL ConsoleClockPrecision ClockPrecision;
+
+            DLL void WriteTime();
+
+            DLL void WriteLine(std::string message, ...);
+
+            DLL void Write(std::string message, ...);
+
+        }; // namespace DebugConsole
     } // namespace Console
 
-    namespace DebugConsole
-    {
-        enum class ConsoleClockPrecision
-        {
-            SECONDS,
-            MILLISECONDS,
-            MICROSECONDS,
-            NANOSECOND
-        };
-
-        extern DLL bool EnableTimePrefix;
-        extern DLL ConsoleClockPrecision ClockPrecision;
-
-        DLL void WriteTime();
-
-        DLL void WriteLine(std::string message, ...);
-
-        DLL void Write(std::string message, ...);
-
-    }; // namespace DebugConsole
 } // namespace PandoraEngine
 
 #endif // CONSOLE_HPP
