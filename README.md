@@ -1,31 +1,21 @@
 <h1> Pandora Engine </h1>
-
-[![Latest Release](https://img.shields.io/github/v/release/Wulgryn/Pandora-Engine)](https://github.com/Wulgryn/Pandora-Engine/releases/latest)
 [![wakatime](https://wakatime.com/badge/user/38c8044d-05b0-44ea-8e46-881575fa92bb/project/1fb98319-a103-4268-b8c1-6bc48a0928ce.svg)](https://wakatime.com/badge/user/38c8044d-05b0-44ea-8e46-881575fa92bb/project/1fb98319-a103-4268-b8c1-6bc48a0928ce)
+
+### About
+This is my game engine. <p>I am working on this as a hobby. Feel free to fix any bug or error if you would like to.
+
+### What is it trying to be?
+Beside a game engine it will be an all included API with not only UI, IO and NET management, but also with built in trainable AI.<br>
+That is why I make it separate, so that it can be used as an individual API.
+<br>
 
 ## Latest info
 
-It has no documentation, because it's an experimental release.<br>
-But you can still use it. In <b>[src/main.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/main.cpp)</b> you can see some example code. Also in <b>[src/test.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/test.cpp)</b>.
-
+#### Refactored the whole project structure
+From single file Pandora Engine to <br>-> PandoraIO<br>-> PandoraNET<br>-> PandoraUI<br>-> PandoraUX<br>-> PandoraEX<br>-> PandoraAI<br>-> PandoraEngine
+<br>More description from these in later releases.
 <p>
-
-#### Link sources
-
-##### <b>[src/main.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/main.cpp)</b><br><b>[src/test.cpp](https://github.com/Wulgryn/Pandora-Engine/blob/main/src/test.cpp)</b>
-<br>
-
-## About
-This is my game engine. <p> It is recommended to check the other branches, because I only merge with <br>the <b>[main](https://github.com/Wulgryn/Pandora-Engine/tree/main)</b> branch  if I finish the changes in other branch I am working on.
-
-<br>
-
-## How to use
-
-Coming soon...
-
-
-<br>
+<b>[Archived old branches into tags](https://github.com/Wulgryn/Pandora-Engine/tags)</b><p>
 
 ## Future plans:
 <p>- reworked rendering system
