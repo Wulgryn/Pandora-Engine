@@ -1,6 +1,6 @@
 <h1> EdenFX </h1>
 
-[![wakatime](https://wakatime.com/badge/github/Wulgryn/EdenFX.svg)](https://wakatime.com/badge/github/Wulgryn/EdenFX)
+![wakatime](https://wulgryn.net/eden-badge)
 
 ### About
 This is a collector repo for my framework and game engine. <br>I am working on this as a hobby. Feel free to fix any bug or error if you would like to.
