@@ -1,15 +1,9 @@
-<h1> Pandora Engine </h1>
+<h1> EdenFX </h1>
 
-[![wakatime](https://wakatime.com/badge/user/38c8044d-05b0-44ea-8e46-881575fa92bb/project/1fb98319-a103-4268-b8c1-6bc48a0928ce.svg)](https://wakatime.com/badge/user/38c8044d-05b0-44ea-8e46-881575fa92bb/project/1fb98319-a103-4268-b8c1-6bc48a0928ce)
+[![wakatime](https://wakatime.com/badge/github/Wulgryn/EdenFX.svg)](https://wakatime.com/badge/github/Wulgryn/EdenFX)
 
 ### About
-This is my game engine. <p>I am working on this as a hobby. Feel free to fix any bug or error if you would like to.
-
-### What is it trying to be?
-Beside a game engine it will be an all included API with not only UI, IO and NET management, but also with built in trainable AI.<br>
-That is why I make it separate, so that it can be used as an individual API.
-<br>
-
+This is a collector repo for my framework and game engine. <br>I am working on this as a hobby. Feel free to fix any bug or error if you would like to.
 
 ## Latest info
 
