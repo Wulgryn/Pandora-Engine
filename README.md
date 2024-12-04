@@ -1,6 +1,6 @@
 <h1> EdenFX </h1>
 
-![Total Code Time](http://wulgryn.net/edenfx-total-code-time-badge)
+![Total Code Time](https://wulgryn.net/edenfx-total-code-time-badge)
 
 ### About
 This is a collector repo for my framework and game engine. <br>I am working on this as a hobby. Feel free to fix any bug or error if you would like to.
